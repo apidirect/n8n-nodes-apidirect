@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Changed
+
+- The node and credential icons are redrawn from the API Direct "A" logo as clean vector outlines (straight strokes, sharp corners, 1 KB path instead of 11 KB), in light and dark variants.
+
 ## [0.6.1] - 2026-10-01
 
 ### Changed
