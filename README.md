@@ -66,6 +66,7 @@ Requires n8n 1.94.0 or later. Developed and tested against n8n 1.x (2026).
 
 ## Version history
 
+- **0.6.0** — Reddit Search Posts: new Posted Ago filter (past hour to past year). X Search Posts: new Posted Ago, Start Date and End Date filters.
 - **0.5.0** — New Bluesky resource: Search Posts, Search Users, User Profile, User Posts, User Followers, User Following, User Likes, Post Details, Post Comments, Post Likes, Post Quotes, and Post Reposts. Instagram User Followers description updated to match the API.
 - **0.4.0** — New Trustpilot resource: Company Reviews, Company Search, Category Companies, Category Newest, Category Details, Category Search, and User Profile. Page caps updated to match the API.
 - **0.3.0** — Nine new Instagram operations: User Followers, User Following, User Stories, User Highlights, Highlight Stories, Post Comments, Comment Replies, Post Likes, Hashtag Posts.

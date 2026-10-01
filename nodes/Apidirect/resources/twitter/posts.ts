@@ -8,7 +8,7 @@ export const twitterPostsFields: INodeProperties[] = [
 		name: "query",
 		type: "string",
 		default: "",
-		description: "Search keyword (max 500 characters)",
+		description: "Search keyword (max 500 characters). Supports X search operators.",
 		routing: {
 			send: {
 				type: "query",
@@ -38,6 +38,19 @@ export const twitterPostsFields: INodeProperties[] = [
 		},
 		options: [
 			{
+				displayName: "End Date",
+				name: "endDate",
+				type: "string",
+				default: "",
+				description: "Only posts up to and including this date (YYYY-MM-DD, UTC). Not with posted_ago.",
+				routing: {
+					send: {
+						type: "query",
+						property: "end_date",
+					},
+				},
+			},
+			{
 				displayName: "Get Sentiment",
 				name: "getSentiment",
 				type: "boolean",
@@ -64,6 +77,45 @@ export const twitterPostsFields: INodeProperties[] = [
 				},
 			},
 			{
+				displayName: "Posted Ago",
+				name: "postedAgo",
+				type: "options",
+				options: [
+					{
+						name: "12m",
+						value: "12m",
+					},
+					{
+						name: "1h",
+						value: "1h",
+					},
+					{
+						name: "24h",
+						value: "24h",
+					},
+					{
+						name: "30d",
+						value: "30d",
+					},
+					{
+						name: "7d",
+						value: "7d",
+					},
+					{
+						name: "Default",
+						value: "",
+					},
+				],
+				default: "",
+				description: "Only posts from this period: \"1h\", \"24h\", \"7d\", \"30d\", or \"12m\" (default: all time). Works with both sort orders.",
+				routing: {
+					send: {
+						type: "query",
+						property: "posted_ago",
+					},
+				},
+			},
+			{
 				displayName: "Sort By",
 				name: "sortBy",
 				type: "options",
@@ -83,6 +135,19 @@ export const twitterPostsFields: INodeProperties[] = [
 					send: {
 						type: "query",
 						property: "sort_by",
+					},
+				},
+			},
+			{
+				displayName: "Start Date",
+				name: "startDate",
+				type: "string",
+				default: "",
+				description: "Only posts from this date onward (YYYY-MM-DD, UTC). Not with posted_ago.",
+				routing: {
+					send: {
+						type: "query",
+						property: "start_date",
 					},
 				},
 			},

@@ -64,6 +64,45 @@ export const redditPostsFields: INodeProperties[] = [
 				},
 			},
 			{
+				displayName: "Posted Ago",
+				name: "postedAgo",
+				type: "options",
+				options: [
+					{
+						name: "12m",
+						value: "12m",
+					},
+					{
+						name: "1h",
+						value: "1h",
+					},
+					{
+						name: "24h",
+						value: "24h",
+					},
+					{
+						name: "30d",
+						value: "30d",
+					},
+					{
+						name: "7d",
+						value: "7d",
+					},
+					{
+						name: "Default",
+						value: "",
+					},
+				],
+				default: "",
+				description: "Only posts from this period: \"1h\", \"24h\", \"7d\", \"30d\", or \"12m\" (default: all time). Works with every sort_by.",
+				routing: {
+					send: {
+						type: "query",
+						property: "posted_ago",
+					},
+				},
+			},
+			{
 				displayName: "Sort By",
 				name: "sortBy",
 				type: "options",
