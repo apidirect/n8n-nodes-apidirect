@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- The package is now maintained under the API Direct GitHub organization ([apidirect/n8n-nodes-apidirect](https://github.com/apidirect/n8n-nodes-apidirect)), and package.json lists API Direct as author.
 - The node subtitle now shows readable names, such as "Twitter: Search Posts", instead of raw values like "posts: twitter".
 
 ## [0.6.0] - 2026-10-01
