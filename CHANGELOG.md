@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.6.2] - 2026-10-01
+
 ### Changed
 
 - The node and credential icons are redrawn from the API Direct "A" logo as clean vector outlines (straight strokes, sharp corners, 1 KB path instead of 11 KB), in light and dark variants.
@@ -88,6 +90,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Initial release: 9 resources and 58 operations, API key credential with a connection test, AI sentiment analysis fields, and support for use as an AI Agent tool.
 
 [Unreleased]: https://www.npmjs.com/package/n8n-nodes-apidirect?activeTab=versions
+[0.6.2]: https://www.npmjs.com/package/n8n-nodes-apidirect/v/0.6.2
 [0.6.1]: https://www.npmjs.com/package/n8n-nodes-apidirect/v/0.6.1
 [0.6.0]: https://www.npmjs.com/package/n8n-nodes-apidirect/v/0.6.0
 [0.5.0]: https://www.npmjs.com/package/n8n-nodes-apidirect/v/0.5.0

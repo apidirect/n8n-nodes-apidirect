@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-apidirect",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "n8n community node for API Direct - search and monitor social media, news, and the web (Twitter/X, Facebook, Instagram, TikTok, YouTube, Reddit, Threads, Truth Social, Google)",
   "license": "MIT",
   "homepage": "https://apidirect.io",
