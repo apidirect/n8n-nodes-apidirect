@@ -5,9 +5,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.6.1] - 2026-10-01
+
 ### Changed
 
 - The package is now maintained under the API Direct GitHub organization ([apidirect/n8n-nodes-apidirect](https://github.com/apidirect/n8n-nodes-apidirect)), and package.json lists API Direct as author.
+- The node and credential icons now use the API Direct logo.
 - The node subtitle now shows readable names, such as "Twitter: Search Posts", instead of raw values like "posts: twitter".
 
 ## [0.6.0] - 2026-10-01
@@ -81,6 +84,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Initial release: 9 resources and 58 operations, API key credential with a connection test, AI sentiment analysis fields, and support for use as an AI Agent tool.
 
 [Unreleased]: https://www.npmjs.com/package/n8n-nodes-apidirect?activeTab=versions
+[0.6.1]: https://www.npmjs.com/package/n8n-nodes-apidirect/v/0.6.1
 [0.6.0]: https://www.npmjs.com/package/n8n-nodes-apidirect/v/0.6.0
 [0.5.0]: https://www.npmjs.com/package/n8n-nodes-apidirect/v/0.5.0
 [0.4.0]: https://www.npmjs.com/package/n8n-nodes-apidirect/v/0.4.0
