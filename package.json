@@ -18,12 +18,16 @@
     "google-search"
   ],
   "author": {
-    "name": "joshwallerr",
-    "email": "support@apidirect.io"
+    "name": "API Direct",
+    "email": "support@apidirect.io",
+    "url": "https://apidirect.io"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/joshwallerr/n8n-nodes-apidirect.git"
+    "url": "git+https://github.com/apidirect/n8n-nodes-apidirect.git"
+  },
+  "bugs": {
+    "url": "https://github.com/apidirect/n8n-nodes-apidirect/issues"
   },
   "publishConfig": {
     "access": "public"

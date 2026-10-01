@@ -11,7 +11,7 @@
 <p align="center">
   <a href="https://www.npmjs.com/package/n8n-nodes-apidirect"><img src="https://img.shields.io/npm/v/n8n-nodes-apidirect?label=npm" alt="npm version"></a>
   <a href="https://www.npmjs.com/package/n8n-nodes-apidirect"><img src="https://img.shields.io/npm/dm/n8n-nodes-apidirect" alt="npm downloads"></a>
-  <a href="https://github.com/joshwallerr/n8n-nodes-apidirect/actions/workflows/ci.yml"><img src="https://github.com/joshwallerr/n8n-nodes-apidirect/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="https://github.com/apidirect/n8n-nodes-apidirect/actions/workflows/ci.yml"><img src="https://github.com/apidirect/n8n-nodes-apidirect/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
   <a href="LICENSE.md"><img src="https://img.shields.io/npm/l/n8n-nodes-apidirect" alt="License: MIT"></a>
 </p>
 
