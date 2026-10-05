@@ -1,7 +1,7 @@
 // GENERATED FILE: do not edit by hand. Run `python3 scripts/generate_catalog.py`.
-// Endpoint catalog rendered from spec/openapi.json (API Direct OpenAPI 1.0.0).
+// Endpoint catalog rendered from spec/openapi.json (API Direct OpenAPI 1.1.0).
 var CATALOG = {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "baseUrl": "https://apidirect.io",
   "platforms": [
     {
@@ -68,6 +68,7 @@ var CATALOG = {
       "description": "Search Amazon products by free-text keyword (or an ASIN) across 24 marketplaces.",
       "price": "$0.005 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "products",
       "params": [
@@ -263,6 +264,7 @@ var CATALOG = {
       "description": "Get full details for an Amazon product by its 10-character ASIN — pricing, buy box with seller ID, availability, photos, videos, spec tables, rating breakdown per star, and top reviews.",
       "price": "$0.005 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "detail",
       "listKey": "product",
       "params": [
@@ -371,6 +373,7 @@ var CATALOG = {
       "description": "Get an Amazon seller's profile by seller ID — name, logo, about text, registered business name and address, average rating, and feedback percentages over 30 days, 90 days, 12 months, and lifetime.",
       "price": "$0.005 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "detail",
       "listKey": "seller",
       "params": [
@@ -447,6 +450,7 @@ var CATALOG = {
       "description": "Get customer feedback for an Amazon seller by seller ID.",
       "price": "$0.005 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "reviews",
       "params": [
@@ -548,6 +552,7 @@ var CATALOG = {
       "description": "Get the products sold by an Amazon seller by seller ID — the same product objects as Product Search plus the seller's total catalog size.",
       "price": "$0.005 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "products",
       "params": [
@@ -657,6 +662,7 @@ var CATALOG = {
       "description": "Get Amazon best-seller rankings for a category — Best Sellers, New Releases, Movers & Shakers, Most Wished For, or Gift Ideas.",
       "price": "$0.005 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "products",
       "params": [
@@ -751,6 +757,7 @@ var CATALOG = {
       "description": "Search Bluesky posts by keyword.",
       "price": "$0.003 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "posts",
       "params": [
@@ -853,6 +860,7 @@ var CATALOG = {
       "description": "Search Bluesky users by keyword.",
       "price": "$0.003 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "users",
       "params": [
@@ -897,6 +905,7 @@ var CATALOG = {
       "description": "Get a Bluesky user's full profile by handle, DID, or profile URL.",
       "price": "$0.003 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "detail",
       "listKey": "user",
       "params": [
@@ -948,6 +957,7 @@ var CATALOG = {
       "description": "Get a user's feed by handle: their posts, replies, and reposts in feed order (the pinned post first, then newest first), each flagged with is_reply, is_repost, and is_pinned.",
       "price": "$0.003 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "posts",
       "params": [
@@ -1031,6 +1041,7 @@ var CATALOG = {
       "description": "Get the followers of a Bluesky user, newest first.",
       "price": "$0.003 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "followers",
       "params": [
@@ -1082,6 +1093,7 @@ var CATALOG = {
       "description": "Get the accounts a Bluesky user follows, newest first.",
       "price": "$0.003 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "following",
       "params": [
@@ -1133,6 +1145,7 @@ var CATALOG = {
       "description": "Get the posts a Bluesky user has liked, newest first.",
       "price": "$0.003 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "posts",
       "params": [
@@ -1222,6 +1235,7 @@ var CATALOG = {
       "description": "Get a single Bluesky post by URL or ID.",
       "price": "$0.003 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "detail",
       "listKey": "post",
       "params": [
@@ -1292,6 +1306,7 @@ var CATALOG = {
       "description": "Get the replies to a Bluesky post.",
       "price": "$0.003 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "comments",
       "params": [
@@ -1362,6 +1377,7 @@ var CATALOG = {
       "description": "Get the users who liked a Bluesky post, newest first.",
       "price": "$0.003 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "likes",
       "params": [
@@ -1414,6 +1430,7 @@ var CATALOG = {
       "description": "Get the posts that quote a Bluesky post, newest first.",
       "price": "$0.003 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "quotes",
       "params": [
@@ -1502,6 +1519,7 @@ var CATALOG = {
       "description": "Get the users who reposted a Bluesky post, newest first.",
       "price": "$0.003 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "reposts",
       "params": [
@@ -1553,6 +1571,7 @@ var CATALOG = {
       "description": "Search for Facebook posts globally by keyword.",
       "price": "$0.008 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "posts",
       "params": [
@@ -1652,6 +1671,7 @@ var CATALOG = {
       "description": "Resolve a place name (city, region, or country) to Facebook location IDs.",
       "price": "$0.004 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "results",
       "params": [
@@ -1681,6 +1701,7 @@ var CATALOG = {
       "description": "Search for Facebook pages by keyword.",
       "price": "$0.008 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "results",
       "params": [
@@ -1723,6 +1744,7 @@ var CATALOG = {
       "description": "Search for Facebook videos by keyword.",
       "price": "$0.008 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "videos",
       "params": [
@@ -1802,6 +1824,7 @@ var CATALOG = {
       "description": "Search for Facebook events by keyword.",
       "price": "$0.008 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "events",
       "params": [
@@ -1862,6 +1885,7 @@ var CATALOG = {
       "description": "Get detailed information about a Facebook page including follower count, category, description, and the page_id / delegate_page_id / reels_page_id needed for other endpoints.",
       "price": "$0.008 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "detail",
       "listKey": "page",
       "params": [
@@ -1908,6 +1932,7 @@ var CATALOG = {
       "description": "Get posts from a specific Facebook page.",
       "price": "$0.008 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "posts",
       "params": [
@@ -1988,6 +2013,7 @@ var CATALOG = {
       "description": "Get photos from a specific Facebook page.",
       "price": "$0.008 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "photos",
       "params": [
@@ -2026,6 +2052,7 @@ var CATALOG = {
       "description": "Get videos from a specific Facebook page.",
       "price": "$0.008 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "videos",
       "params": [
@@ -2077,6 +2104,7 @@ var CATALOG = {
       "description": "Get reels from a specific Facebook page.",
       "price": "$0.008 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "reels",
       "params": [
@@ -2135,6 +2163,7 @@ var CATALOG = {
       "description": "Get the reviews and recommendations posted to a Facebook page.",
       "price": "$0.008 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "reviews",
       "params": [
@@ -2184,6 +2213,7 @@ var CATALOG = {
       "description": "Get detailed information about a Facebook group including name, description, privacy, member count, location and cover photo.",
       "price": "$0.008 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "detail",
       "listKey": "group",
       "params": [
@@ -2218,6 +2248,7 @@ var CATALOG = {
       "description": "Get posts from a specific Facebook group.",
       "price": "$0.008 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "posts",
       "params": [
@@ -2286,6 +2317,94 @@ var CATALOG = {
       "docs": "https://apidirect.io/docs/facebook-group-posts"
     },
     {
+      "key": "facebook/group/search",
+      "path": "/v1/facebook/group/search",
+      "method": "GET",
+      "platform": "facebook",
+      "label": "Group Posts Search",
+      "summary": "Search Facebook Group Posts",
+      "description": "Search for posts within a specific Facebook group by keyword.",
+      "price": "$0.008 per page",
+      "freeTier": "50 requests/month",
+      "suspended": true,
+      "kind": "list",
+      "listKey": "posts",
+      "params": [
+        {
+          "name": "query",
+          "label": "Query",
+          "type": "string",
+          "required": true,
+          "description": "Search query (max 500 characters)"
+        },
+        {
+          "name": "group_id",
+          "label": "Group ID",
+          "type": "string",
+          "required": true,
+          "description": "Numeric Facebook group ID (from Group Details endpoint)"
+        },
+        {
+          "name": "pages",
+          "label": "Pages",
+          "type": "integer",
+          "required": false,
+          "description": "Number of pages to fetch and merge into one response (1-10). Billed per page.",
+          "default": 1,
+          "min": 1,
+          "max": 10
+        },
+        {
+          "name": "start_date",
+          "label": "Start Date",
+          "type": "string",
+          "required": false,
+          "description": "Filter posts from this date (YYYY-MM-DD)"
+        },
+        {
+          "name": "end_date",
+          "label": "End Date",
+          "type": "string",
+          "required": false,
+          "description": "Filter posts until this date (YYYY-MM-DD)"
+        },
+        {
+          "name": "get_sentiment",
+          "label": "Get Sentiment",
+          "type": "boolean",
+          "required": false,
+          "description": "Set to true to add AI emotion analysis to each post. Adds a `sentiment` object containing `emotions` (joy, trust, fear, surprise, sadness, disgust, anger and anticipation, each scored 0-100), `dominant_emotion`, `emotional_intensity` (0-10), and `polarity` (positive, negative or neutral). Any post that cannot be scored returns `sentiment: null`.",
+          "default": false
+        }
+      ],
+      "fields": [
+        "author_id",
+        "author_name",
+        "author_profile_picture",
+        "author_url",
+        "comments_count",
+        "date",
+        "external_url",
+        "image_url",
+        "message",
+        "post_id",
+        "reactions.angry",
+        "reactions.care",
+        "reactions.haha",
+        "reactions.like",
+        "reactions.love",
+        "reactions.sad",
+        "reactions.wow",
+        "reactions_count",
+        "reshare_count",
+        "timestamp",
+        "url",
+        "video"
+      ],
+      "saveable": true,
+      "docs": "https://apidirect.io/docs/facebook-group-search"
+    },
+    {
       "key": "facebook/post/comments",
       "path": "/v1/facebook/post/comments",
       "method": "GET",
@@ -2295,6 +2414,7 @@ var CATALOG = {
       "description": "Get comments on a Facebook post by post ID.",
       "price": "$0.008 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "comments",
       "params": [
@@ -2357,6 +2477,7 @@ var CATALOG = {
       "description": "Search for forum posts across the web, including discussion boards, Q&A sites, and community boards.",
       "price": "$0.008 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "posts",
       "params": [
@@ -2431,6 +2552,7 @@ var CATALOG = {
       "description": "Search Google Maps places (local businesses, restaurants, hotels, shops and points of interest) by free-text query.",
       "price": "$0.01 per page",
       "freeTier": "20 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "places",
       "params": [
@@ -2559,6 +2681,7 @@ var CATALOG = {
       "description": "Get full details for a single Google Maps place by `place_id`.",
       "price": "$0.003 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "detail",
       "listKey": "place",
       "params": [
@@ -2659,6 +2782,7 @@ var CATALOG = {
       "description": "Get user reviews for a place by `place_id`.",
       "price": "$0.01 per page",
       "freeTier": "20 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "reviews",
       "params": [
@@ -2773,6 +2897,7 @@ var CATALOG = {
       "description": "Get photos and videos for a place by `place_id`.",
       "price": "$0.01 per page",
       "freeTier": "20 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "photos",
       "params": [
@@ -2834,6 +2959,7 @@ var CATALOG = {
       "description": "Run a real-time Google search and return organic results with position, rank, title, URL, snippet, source, domain, and displayed link.",
       "price": "$0.004 per page (+$0.002 flat per request when `include_ai_overview=true`)",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "results",
       "params": [
@@ -2937,6 +3063,7 @@ var CATALOG = {
       "description": "Send a prompt to Google's AI Mode and receive a structured conversational reply broken into ordered parts (paragraph, heading, list, images) with cited reference links.",
       "price": "$0.005 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "text",
       "listKey": null,
       "params": [
@@ -2985,6 +3112,7 @@ var CATALOG = {
       "description": "Search for Instagram posts by keyword.",
       "price": "$0.006 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "posts",
       "params": [
@@ -3066,6 +3194,7 @@ var CATALOG = {
       "description": "Search for Instagram users by keyword.",
       "price": "$0.006 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "users",
       "params": [
@@ -3100,6 +3229,7 @@ var CATALOG = {
       "description": "Look up a single Instagram user by username or profile URL.",
       "price": "$0.006 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "detail",
       "listKey": "user",
       "params": [
@@ -3158,6 +3288,7 @@ var CATALOG = {
       "description": "Get a single Instagram user's recent posts and reels (their feed) by profile URL or username.",
       "price": "$0.006 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "posts",
       "params": [
@@ -3246,6 +3377,7 @@ var CATALOG = {
       "description": "Look up a single Instagram post, reel, or IGTV video by URL, shortcode, or numeric media ID.",
       "price": "$0.006 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "detail",
       "listKey": "post",
       "params": [
@@ -3328,6 +3460,7 @@ var CATALOG = {
       "description": "Get a user's followers by username or profile URL.",
       "price": "$0.006 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "followers",
       "params": [
@@ -3385,6 +3518,7 @@ var CATALOG = {
       "description": "Get the accounts a user follows by username or profile URL.",
       "price": "$0.006 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "following",
       "params": [
@@ -3442,6 +3576,7 @@ var CATALOG = {
       "description": "Get a user's currently active stories by username or profile URL.",
       "price": "$0.006 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "stories",
       "params": [
@@ -3505,6 +3640,7 @@ var CATALOG = {
       "description": "Get a user's story highlights by username or profile URL.",
       "price": "$0.006 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "highlights",
       "params": [
@@ -3550,6 +3686,7 @@ var CATALOG = {
       "description": "Get the stories saved in a single Instagram highlight by highlight ID (from the User Highlights endpoint) or highlight URL.",
       "price": "$0.006 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "stories",
       "params": [
@@ -3606,6 +3743,7 @@ var CATALOG = {
       "description": "Get the comments on an Instagram post or reel by URL or shortcode.",
       "price": "$0.006 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "comments",
       "params": [
@@ -3689,6 +3827,7 @@ var CATALOG = {
       "description": "Get the replies to a single Instagram comment by post URL or shortcode plus the comment ID from the Post Comments endpoint.",
       "price": "$0.006 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "replies",
       "params": [
@@ -3769,6 +3908,7 @@ var CATALOG = {
       "description": "Get the users who liked an Instagram post or reel by URL or shortcode.",
       "price": "$0.006 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "likes",
       "params": [
@@ -3809,6 +3949,7 @@ var CATALOG = {
       "description": "Get posts and reels for any Instagram hashtag.",
       "price": "$0.006 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "posts",
       "params": [
@@ -3903,6 +4044,7 @@ var CATALOG = {
       "description": "Search for LinkedIn posts by keyword.",
       "price": "$0.006 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "posts",
       "params": [
@@ -4045,6 +4187,7 @@ var CATALOG = {
       "description": "Get a LinkedIn person's profile: name, headline, about, location, follower and connection counts, open-to-work status, and the experience, education, skills, certifications, languages, honors, publications, volunteering, and projects sections.",
       "price": "$0.006 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "detail",
       "listKey": null,
       "params": [
@@ -4099,6 +4242,7 @@ var CATALOG = {
       "description": "Get the recent posts authored by a LinkedIn person by profile URL or public slug.",
       "price": "$0.006 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "posts",
       "params": [
@@ -4164,6 +4308,7 @@ var CATALOG = {
       "description": "Get detailed information about a specific LinkedIn post including full content, likes, comments, shares, reactions, embedded links, images, and author details.",
       "price": "$0.002 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "detail",
       "listKey": null,
       "params": [
@@ -4216,6 +4361,7 @@ var CATALOG = {
       "description": "Search for LinkedIn company pages by keyword.",
       "price": "$0.006 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "companies",
       "params": [
@@ -4254,11 +4400,12 @@ var CATALOG = {
       "path": "/v1/linkedin/company",
       "method": "GET",
       "platform": "linkedin",
-      "label": "Company Profile",
-      "summary": "LinkedIn Company Profile",
+      "label": "Company Details",
+      "summary": "LinkedIn Company Details",
       "description": "Get detailed information about a LinkedIn company page including description, follower count, industry, headquarters, employee count, founded year, specialities, locations, similar companies, and showcase pages.",
       "price": "$0.006 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "detail",
       "listKey": null,
       "params": [
@@ -4313,6 +4460,7 @@ var CATALOG = {
       "description": "Retrieve recent posts published by a specific LinkedIn company page.",
       "price": "$0.006 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "posts",
       "params": [
@@ -4381,6 +4529,7 @@ var CATALOG = {
       "description": "Search for LinkedIn job listings by keyword.",
       "price": "$0.006 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "jobs",
       "params": [
@@ -4481,6 +4630,7 @@ var CATALOG = {
       "description": "Get detailed information about a specific LinkedIn job listing by URL or numeric job ID.",
       "price": "$0.002 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "detail",
       "listKey": null,
       "params": [
@@ -4525,6 +4675,7 @@ var CATALOG = {
       "description": "Search for news articles from worldwide sources by keyword.",
       "price": "$0.008 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "articles",
       "params": [
@@ -4610,6 +4761,7 @@ var CATALOG = {
       "description": "Search for Reddit posts by keyword across all subreddits.",
       "price": "$0.003 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "posts",
       "params": [
@@ -4694,6 +4846,7 @@ var CATALOG = {
       "description": "Search for Reddit comments by keyword across all subreddits.",
       "price": "$0.003 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "posts",
       "params": [
@@ -4763,6 +4916,7 @@ var CATALOG = {
       "description": "Search for Reddit users by keyword.",
       "price": "$0.003 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "users",
       "params": [
@@ -4801,6 +4955,7 @@ var CATALOG = {
       "description": "Search for Threads posts by keyword.",
       "price": "$0.006 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "posts",
       "params": [
@@ -4860,6 +5015,7 @@ var CATALOG = {
       "description": "Search for Threads users by keyword.",
       "price": "$0.006 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "users",
       "params": [
@@ -4893,6 +5049,7 @@ var CATALOG = {
       "description": "Look up a single Threads user by username.",
       "price": "$0.006 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "detail",
       "listKey": "user",
       "params": [
@@ -4931,6 +5088,7 @@ var CATALOG = {
       "description": "Get a single Threads user's recent posts (their feed) by username.",
       "price": "$0.006 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "posts",
       "params": [
@@ -4991,6 +5149,7 @@ var CATALOG = {
       "description": "Search for TikTok videos by keyword.",
       "price": "$0.006 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "videos",
       "params": [
@@ -5090,6 +5249,7 @@ var CATALOG = {
       "description": "Search for TikTok users by keyword.",
       "price": "$0.006 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "users",
       "params": [
@@ -5138,6 +5298,7 @@ var CATALOG = {
       "description": "Look up a single TikTok user by username, numeric user ID, or profile URL.",
       "price": "$0.006 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "detail",
       "listKey": "user",
       "params": [
@@ -5200,6 +5361,7 @@ var CATALOG = {
       "description": "Look up a single TikTok video by URL or numeric video ID.",
       "price": "$0.006 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "detail",
       "listKey": "video",
       "params": [
@@ -5270,6 +5432,7 @@ var CATALOG = {
       "description": "Get a company's Trustpilot reviews and full profile by website domain.",
       "price": "$0.005 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "reviews",
       "params": [
@@ -5395,6 +5558,7 @@ var CATALOG = {
       "description": "Search Trustpilot companies by name or keyword.",
       "price": "$0.005 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "companies",
       "params": [
@@ -5472,6 +5636,7 @@ var CATALOG = {
       "description": "List the companies in a Trustpilot category, ranked, 20 per page, along with the category's size and subcategories.",
       "price": "$0.005 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "companies",
       "params": [
@@ -5563,6 +5728,7 @@ var CATALOG = {
       "description": "Get the newest companies added to a Trustpilot category — the short list shown on the category page, plus the category's size and subcategories.",
       "price": "$0.005 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "companies",
       "params": [
@@ -5604,6 +5770,7 @@ var CATALOG = {
       "description": "Get a Trustpilot category's display name, business count, parent, and subcategories.",
       "price": "$0.005 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "detail",
       "listKey": "category",
       "params": [
@@ -5636,6 +5803,7 @@ var CATALOG = {
       "description": "Search Trustpilot categories by keyword to find category IDs at any level of the taxonomy.",
       "price": "$0.005 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "categories",
       "params": [
@@ -5664,6 +5832,7 @@ var CATALOG = {
       "description": "Get a Trustpilot reviewer's public profile and the reviews they have written across all companies, 20 per page.",
       "price": "$0.005 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "reviews",
       "params": [
@@ -5720,6 +5889,7 @@ var CATALOG = {
       "description": "Get a single Truth Social user's recent posts (their feed) by username.",
       "price": "$0.006 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "posts",
       "params": [
@@ -5785,6 +5955,7 @@ var CATALOG = {
       "description": "Search for tweets by keyword.",
       "price": "$0.006 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "posts",
       "params": [
@@ -5889,6 +6060,7 @@ var CATALOG = {
       "description": "Search for Twitter/X users by keyword.",
       "price": "$0.006 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "users",
       "params": [
@@ -5936,6 +6108,7 @@ var CATALOG = {
       "description": "Get detailed profile information for a Twitter/X user by username.",
       "price": "$0.006 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "detail",
       "listKey": "user",
       "params": [
@@ -5981,6 +6154,7 @@ var CATALOG = {
       "description": "Get tweets posted by a specific Twitter/X user.",
       "price": "$0.006 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "tweets",
       "params": [
@@ -6045,6 +6219,7 @@ var CATALOG = {
       "description": "Get the followers of a specific Twitter/X user.",
       "price": "$0.006 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "followers",
       "params": [
@@ -6092,6 +6267,7 @@ var CATALOG = {
       "description": "Get the accounts that a specific Twitter/X user follows.",
       "price": "$0.006 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "following",
       "params": [
@@ -6139,6 +6315,7 @@ var CATALOG = {
       "description": "Get the verified (blue checkmark) followers of a specific Twitter/X user.",
       "price": "$0.006 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "verified_followers",
       "params": [
@@ -6186,6 +6363,7 @@ var CATALOG = {
       "description": "Get replies posted by a specific Twitter/X user.",
       "price": "$0.006 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "replies",
       "params": [
@@ -6250,6 +6428,7 @@ var CATALOG = {
       "description": "Get detailed information for a single tweet by its ID.",
       "price": "$0.006 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "detail",
       "listKey": "tweet",
       "params": [
@@ -6304,6 +6483,7 @@ var CATALOG = {
       "description": "Get the users who retweeted a specific tweet.",
       "price": "$0.006 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "retweets",
       "params": [
@@ -6339,6 +6519,7 @@ var CATALOG = {
       "description": "Get the quote tweets for a specific tweet.",
       "price": "$0.006 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "quotes",
       "params": [
@@ -6382,6 +6563,7 @@ var CATALOG = {
       "description": "Get the comments (replies) on a specific tweet.",
       "price": "$0.006 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "comments",
       "params": [
@@ -6446,6 +6628,7 @@ var CATALOG = {
       "description": "Get the current trending topics for a specific location on Twitter/X.",
       "price": "$0.006 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "trends",
       "params": [
@@ -6477,6 +6660,7 @@ var CATALOG = {
       "description": "Search for YouTube videos by keyword.",
       "price": "$0.005 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "posts",
       "params": [
@@ -6550,6 +6734,7 @@ var CATALOG = {
       "description": "Search for YouTube channels by keyword.",
       "price": "$0.005 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "channels",
       "params": [
@@ -6592,6 +6777,7 @@ var CATALOG = {
       "description": "Get detailed information about a YouTube channel by channel ID, URL, or name/handle.",
       "price": "$0.005 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "detail",
       "listKey": "channel",
       "params": [
@@ -6646,6 +6832,7 @@ var CATALOG = {
       "description": "Get detailed information about a YouTube video by URL or video ID.",
       "price": "$0.005 per request",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "detail",
       "listKey": "video",
       "params": [
@@ -6686,6 +6873,7 @@ var CATALOG = {
       "description": "Get comments (comment threads) from a YouTube video.",
       "price": "$0.005 per page",
       "freeTier": "50 requests/month",
+      "suspended": false,
       "kind": "list",
       "listKey": "comments",
       "params": [
@@ -6762,6 +6950,7 @@ var CATALOG = {
     "facebook pages": "facebook/pages",
     "facebook videos": "facebook/videos",
     "facebook events": "facebook/events",
+    "facebook search": "facebook/group/search",
     "instagram posts": "instagram/posts",
     "instagram users": "instagram/users",
     "linkedin posts": "linkedin/posts",

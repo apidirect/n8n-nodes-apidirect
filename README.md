@@ -87,12 +87,12 @@ Pick every hour, 6 hours, 12 hours, day or week. Google allows add-on time-drive
 
 ## Endpoints
 
-100 endpoints across 13 platforms, the same set as the [n8n node](https://github.com/apidirect/n8n-nodes-apidirect) plus LinkedIn:
+101 endpoints across 13 platforms, every public data endpoint in the [API reference](https://apidirect.io/openapi.json), the same set as the [n8n node](https://github.com/apidirect/n8n-nodes-apidirect) plus LinkedIn:
 
 | Platform | Endpoints |
 |---|---|
 | **Twitter/X** | Search Posts, Search Users, User Profile, User Tweets, User Followers, User Following, Verified Followers, User Replies, Tweet Details, Tweet Retweets, Tweet Quotes, Tweet Comments, Trends |
-| **Facebook** | Search Posts, Search Pages, Search Videos, Search Events, Search Locations, Page Details, Page Posts, Page Photos, Page Videos, Page Reels, Page Reviews, Group Details, Group Posts, Post Comments |
+| **Facebook** | Search Posts, Search Pages, Search Videos, Search Events, Search Locations, Page Details, Page Posts, Page Photos, Page Videos, Page Reels, Page Reviews, Group Details, Group Posts, Group Posts Search\*, Post Comments |
 | **Instagram** | Search Posts, Search Users, User Profile, User Posts, Post Details, User Followers, User Following, User Stories, User Highlights, Highlight Stories, Post Comments, Comment Replies, Post Likes, Hashtag Posts |
 | **TikTok** | Search Videos, Search Users, User Profile, Video Details |
 | **YouTube** | Search Videos, Search Channels, Channel Details, Video Details, Video Comments |
@@ -104,6 +104,8 @@ Pick every hour, 6 hours, 12 hours, day or week. Google allows add-on time-drive
 | **Amazon** | Search Products, Product Details, Seller Profile, Seller Reviews, Seller Products, Best Sellers |
 | **Trustpilot** | Company Reviews, Search Companies, Category Companies, Category Newest, Category Details, Search Categories, User Profile |
 | **Google** | Web Search, AI Mode, News Articles, Forum Posts, Places Search, Place Details, Place Reviews, Place Photos |
+
+\* Marked temporarily unavailable by the API while it is upgraded: the sidebar says so and requests return the API's 503 message until it is back. No add-on update is needed when it returns.
 
 Most list endpoints accept `get_sentiment=true` to add AI emotion, polarity and intensity scores to each row. The catalog (`src/Catalog.js`) is generated from the public [OpenAPI spec](https://apidirect.io/openapi.json), so names, parameters and prices match the API docs.
 

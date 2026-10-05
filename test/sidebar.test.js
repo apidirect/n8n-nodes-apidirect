@@ -10,7 +10,8 @@ test('getSidebarData returns the trimmed catalog, settings, schedules and the ac
   env.setApiKey('ak_live_testkey12345');
   env.spreadsheet.setActive('Sheet1', 3, 2);
   const data = env.fn('getSidebarData')();
-  assert.equal(data.catalog.endpoints.length, 100);
+  assert.equal(data.catalog.endpoints.length, 101);
+  assert.equal(data.catalog.endpoints.filter((e) => e.suspended).length, 1, 'the suspended flag reaches the sidebar');
   assert.ok(data.catalog.endpoints[0].params);
   assert.equal(data.catalog.endpoints[0].path, undefined, 'internal fields are left out');
   assert.equal(data.settings.hasKey, true);

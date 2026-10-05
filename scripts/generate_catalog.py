@@ -170,8 +170,13 @@ TEXT_ENDPOINTS = {"/v1/web/ai-mode"}
 # Which array holds the rows when the response has more than one.
 LIST_KEY_OVERRIDES = {"/v1/trustpilot/companies": "companies", "/v1/trustpilot/user": "reviews"}
 
-# Marked "temporarily unavailable" by the API at the time of writing (see #9 Zapier notes).
-SKIP_ENDPOINTS = {"/v1/facebook/group/search"}
+# Public operations deliberately left out of the catalog (none at the moment; every data
+# endpoint in the spec ships, including ones the API marks temporarily unavailable).
+SKIP_ENDPOINTS = set()
+
+# The API prefixes a suspended endpoint's description with this notice; the catalog carries
+# it as `suspended: true` so the sidebar can say so, and keeps the real description.
+SUSPENDED_RE = re.compile(r"^\s*Temporarily unavailable:.*?as it behaves when available\.\s*", re.S)
 
 PARAM_LABELS = {
     "query": "Query", "sort_by": "Sort By", "get_sentiment": "Get Sentiment", "asin": "ASIN",
@@ -326,7 +331,10 @@ def build(spec):
                     raise SystemExit("cannot find the detail object for %s: %s" % (path, list(props)))
                 list_key = objects[0]  # the wrapper key, e.g. "user"
                 fields = field_names(spec, props[list_key])
-        price, free_tier = price_for(op.get("description", ""))
+        description = op.get("description", "")
+        suspended = bool(SUSPENDED_RE.match(description))
+        description = SUSPENDED_RE.sub("", description, count=1)
+        price, free_tier = price_for(description)
         endpoints.append({
             "key": key,
             "path": path,
@@ -334,9 +342,10 @@ def build(spec):
             "platform": platform,
             "label": label_for(key, platform, op.get("summary", key)),
             "summary": op.get("summary", key),
-            "description": short_description(op.get("description", "")),
+            "description": short_description(description),
             "price": price,
             "freeTier": free_tier,
+            "suspended": suspended,
             "kind": kind,
             "listKey": list_key,
             "params": params,

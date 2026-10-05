@@ -78,7 +78,8 @@ test('APIDIRECT_ENDPOINTS and APIDIRECT_FIELDS describe the catalog', () => {
   const env = createEnv();
   const all = env.fn('APIDIRECT_ENDPOINTS')();
   assert.deepEqual(all[0], ['platform', 'endpoint', 'name', 'price', 'required', 'optional', 'docs']);
-  assert.equal(all.length, 101);
+  assert.equal(all.length, 102);
+  assert.ok(all.some((row) => row[1] === 'facebook/group/search' && /temporarily unavailable/.test(row[2])), 'suspended endpoints are listed and flagged');
   const li = env.fn('APIDIRECT_ENDPOINTS')('LinkedIn');
   assert.equal(li.length, 10);
   assert.equal(li[1][0], 'LinkedIn');

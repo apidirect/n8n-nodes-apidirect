@@ -13,7 +13,7 @@ function getSidebarData() {
       endpoints: CATALOG.endpoints.map(function (e) {
         return {
           key: e.key, label: e.label, platform: e.platform, kind: e.kind, price: e.price,
-          freeTier: e.freeTier, description: e.description, docs: e.docs, saveable: e.saveable,
+          freeTier: e.freeTier, description: e.description, docs: e.docs, saveable: e.saveable, suspended: e.suspended,
           params: e.params, fields: e.fields,
         };
       }),

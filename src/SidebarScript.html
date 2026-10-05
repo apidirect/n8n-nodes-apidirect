@@ -52,7 +52,7 @@
     var select = $('endpoint');
     select.innerHTML = '';
     platformEndpoints($('platform').value).forEach(function (e) {
-      select.appendChild(el('option', { value: e.key, text: e.label }));
+      select.appendChild(el('option', { value: e.key, text: e.label + (e.suspended ? ' (temporarily unavailable)' : '') }));
     });
     select.onchange = selectEndpoint;
     selectEndpoint();
@@ -103,6 +103,9 @@
     info.appendChild(document.createTextNode(e.description + ' '));
     info.appendChild(el('span', { text: e.price ? '· ' + e.price + (e.freeTier ? ', free tier ' + e.freeTier : '') + ' ' : '' }));
     info.appendChild(el('a', { href: e.docs, target: '_blank', text: 'Docs' }));
+    if (e.suspended) {
+      info.appendChild(el('div', { class: 'error small', text: 'Temporarily unavailable: API Direct is upgrading this endpoint, so requests return a 503 until it is back. No add-on update is needed when it returns.' }));
+    }
 
     var required = e.params.filter(function (p) { return p.required; });
     var optional = e.params.filter(function (p) { return !p.required; });

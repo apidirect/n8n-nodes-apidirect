@@ -188,6 +188,9 @@ function describeHttpError_(status, body) {
       }
       return 'API Direct rate limit (429).' + detail + ' Fewer formulas at once, or use the sidebar to pull the data in one request.';
     default:
+      if (status === 503 && code === 'endpoint_suspended') {
+        return 'API Direct: this endpoint is temporarily offline while it is being upgraded (503).' + detail + ' Try another endpoint for now; it comes back without an add-on update.';
+      }
       if (status >= 500) return 'API Direct is temporarily unavailable (' + status + ').' + detail + ' Try again in a moment.';
       return 'API Direct error (' + status + ').' + detail;
   }
@@ -198,6 +201,7 @@ function parseJson_(text) {
 }
 
 function isRetryable_(status, body) {
+  if (status === 503 && body && body.code === 'endpoint_suspended') return false;
   if (status === 502 || status === 503 || status === 504) return true;
   if (status === 429) {
     var code = body && body.code;

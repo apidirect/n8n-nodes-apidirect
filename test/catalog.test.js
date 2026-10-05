@@ -8,7 +8,11 @@ const CATALOG = env.get('CATALOG');
 
 test('catalog has every platform and one endpoint per public operation', () => {
   assert.equal(CATALOG.platforms.length, 13);
-  assert.equal(CATALOG.endpoints.length, 100);
+  assert.equal(CATALOG.endpoints.length, 101);
+  const suspended = CATALOG.endpoints.filter((e) => e.suspended);
+  assert.deepEqual(suspended.map((e) => e.key), ['facebook/group/search'], 'suspended endpoints still ship, flagged');
+  assert.match(suspended[0].description, /^Search for posts within a specific Facebook group/);
+  assert.equal(suspended[0].price, '$0.008 per page');
   const linkedin = CATALOG.endpoints.filter((e) => e.platform === 'linkedin');
   assert.equal(linkedin.length, 9, 'LinkedIn ships by default');
   const keys = new Set(CATALOG.endpoints.map((e) => e.key));
@@ -38,7 +42,6 @@ test('internal endpoints are not exposed', () => {
     assert.ok(!e.path.startsWith('/v1/saved-searches'), e.path);
     assert.ok(!e.path.startsWith('/v1/batch'), e.path);
     assert.notEqual(e.path, '/v1/time');
-    assert.notEqual(e.path, '/v1/facebook/group/search', 'skipped while the API marks it unavailable');
   }
 });
 

@@ -104,7 +104,7 @@ function APIDIRECT_ENDPOINTS(platform) {
     if (filter && e.platform !== filter) return;
     var required = e.params.filter(function (p) { return p.required; }).map(function (p) { return p.name; });
     var optional = e.params.filter(function (p) { return !p.required; }).map(function (p) { return p.name; });
-    rows.push([platformIds[e.platform], e.key, e.label, e.price, required.join(', '), optional.join(', '), e.docs]);
+    rows.push([platformIds[e.platform], e.key, e.label + (e.suspended ? ' (temporarily unavailable)' : ''), e.price, required.join(', '), optional.join(', '), e.docs]);
   });
   return rows;
 }
