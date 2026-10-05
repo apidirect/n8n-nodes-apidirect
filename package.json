@@ -1,0 +1,38 @@
+{
+  "name": "apidirect-zapier",
+  "version": "1.0.0",
+  "description": "Zapier integration for API Direct: real-time public data from LinkedIn, X/Twitter, Reddit, YouTube, Instagram, TikTok, Facebook, Threads, Bluesky, Truth Social, Google, news sites, forums, Amazon and Trustpilot, plus polling triggers on saved searches.",
+  "main": "index.js",
+  "private": true,
+  "license": "MIT",
+  "homepage": "https://apidirect.io",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apidirect/zapier-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/apidirect/zapier-app/issues"
+  },
+  "author": {
+    "name": "API Direct",
+    "email": "support@apidirect.io",
+    "url": "https://apidirect.io"
+  },
+  "engines": {
+    "node": ">=18.20"
+  },
+  "scripts": {
+    "test": "jest --testTimeout 10000",
+    "generate": "python3 scripts/generate.py spec/openapi.json",
+    "validate": "zapier-platform validate",
+    "build": "zapier-platform build"
+  },
+  "dependencies": {
+    "zapier-platform-core": "19.1.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nock": "^13.5.6",
+    "zapier-platform-cli": "19.1.0"
+  }
+}

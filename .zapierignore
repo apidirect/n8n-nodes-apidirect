@@ -1,0 +1,7 @@
+# Not needed in the bundle Zapier runs
+spec/
+scripts/
+test/
+assets/
+.github/
+*.md

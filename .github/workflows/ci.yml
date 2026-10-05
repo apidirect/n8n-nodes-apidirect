@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Catalog is up to date with the spec
+        run: |
+          npm run generate
+          git diff --exit-code -- src/catalog
+      - run: npm test
+      - name: Zapier schema validation
+        run: npx zapier-platform validate --without-style
