@@ -9,6 +9,7 @@ var UTM = 'utm_source=google-sheets';
 var SIGNUP_URL = 'https://apidirect.io/signup?' + UTM;
 var KEYS_URL = 'https://apidirect.io/dashboard/keys?' + UTM;
 var BILLING_URL = 'https://apidirect.io/dashboard/billing?' + UTM;
+var SPENDING_LIMITS_URL = 'https://apidirect.io/dashboard/settings?' + UTM;
 var DOCS_URL = 'https://apidirect.io/docs/google-sheets?' + UTM;
 var PRICING_URL = 'https://apidirect.io/docs/pricing?' + UTM;
 
@@ -176,12 +177,15 @@ function describeHttpError_(status, body) {
     case 401:
       return 'API Direct rejected the API key (401). Set a valid key via Extensions > API Direct > Set API key. Keys start with ak_live_ and live at ' + KEYS_URL;
     case 402:
-      return 'API Direct: no credit left or spending limit reached (402).' + detail + ' Top up at ' + BILLING_URL;
+      return 'API Direct: free tier used up and no payment method on the account (402).' + detail + ' Add one at ' + BILLING_URL;
     case 403:
       return 'API Direct refused the request (403).' + detail;
     case 404:
       return 'API Direct: not found (404).' + detail;
     case 429:
+      if (code === 'daily_limit_exceeded' || code === 'monthly_limit_exceeded') {
+        return 'API Direct: spending limit reached (429).' + detail + ' Raise it at ' + SPENDING_LIMITS_URL;
+      }
       return 'API Direct rate limit (429).' + detail + ' Fewer formulas at once, or use the sidebar to pull the data in one request.';
     default:
       if (status >= 500) return 'API Direct is temporarily unavailable (' + status + ').' + detail + ' Try again in a moment.';

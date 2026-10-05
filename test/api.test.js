@@ -71,7 +71,10 @@ test('sendRequest sets the key header, parses JSON and maps errors', () => {
   env.setFetchHandler(() => ({ code: 401, body: { error: 'Invalid API key', code: 'invalid_api_key' } }));
   assert.throws(() => send({ method: 'get', url: 'u', payload: null }, { apiKey: 'bad' }), (e) => e.status === 401 && /Set API key/.test(e.message));
   env.setFetchHandler(() => ({ code: 402, body: { error: 'Insufficient credit', code: 'insufficient_credit' } }));
-  assert.throws(() => send({ method: 'get', url: 'u', payload: null }, { apiKey: 'k' }), /no credit left.*Insufficient credit/);
+  assert.throws(() => send({ method: 'get', url: 'u', payload: null }, { apiKey: 'k' }), /free tier used up.*Insufficient credit/);
+  env.setFetchHandler(() => ({ code: 429, body: { error: 'Daily spending limit reached', code: 'daily_limit_exceeded' } }));
+  assert.throws(() => send({ method: 'get', url: 'u', payload: null }, { apiKey: 'k' }), (e) => e.status === 429 && /spending limit reached.*Daily spending limit reached/.test(e.message));
+  assert.equal(env.fetchLog.length, 4, 'a spending-limit 429 is not retried');
   env.setFetchHandler(() => ({ code: 400, body: { error: 'query is required', code: 'missing_parameter' } }));
   assert.throws(() => send({ method: 'get', url: 'u', payload: null }, { apiKey: 'k' }), (e) => e.status === 400 && e.code === 'missing_parameter' && /query is required/.test(e.message));
   env.setFetchHandler(() => ({ code: 200, body: 'not json' }));

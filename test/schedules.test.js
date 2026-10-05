@@ -118,7 +118,7 @@ test('trigger runs record failures, keep others going, and deleting the last sch
   env.fn('runScheduledRefreshes')();
   const list = env.fn('listSchedules')();
   assert.equal(list[0].lastStatus, 'error');
-  assert.match(list[0].lastMessage, /no credit left/);
+  assert.match(list[0].lastMessage, /free tier used up/);
   assert.equal(list[1].lastStatus, 'ok');
   assert.ok(Date.parse(list[0].nextRunAt) < Date.now() + 2 * 3600 * 1000, 'failed schedules retry within the hour');
 
