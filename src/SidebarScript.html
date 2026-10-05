@@ -1,0 +1,341 @@
+<script>
+(function () {
+  var state = { data: null, endpoint: null };
+
+  function $(id) { return document.getElementById(id); }
+  function el(tag, attrs, children) {
+    var node = document.createElement(tag);
+    Object.keys(attrs || {}).forEach(function (k) {
+      if (k === 'text') node.textContent = attrs[k];
+      else if (k === 'html') node.innerHTML = attrs[k];
+      else if (k.indexOf('on') === 0) node.addEventListener(k.slice(2), attrs[k]);
+      else node.setAttribute(k, attrs[k]);
+    });
+    (children || []).forEach(function (c) { node.appendChild(c); });
+    return node;
+  }
+  function call(name) {
+    var args = Array.prototype.slice.call(arguments, 1);
+    return new Promise(function (resolve, reject) {
+      var runner = google.script.run.withSuccessHandler(resolve).withFailureHandler(function (e) {
+        reject(new Error(e && e.message ? e.message : String(e)));
+      });
+      runner[name].apply(runner, args);
+    });
+  }
+  function setStatus(id, kind, text) {
+    var box = $(id);
+    box.hidden = !text;
+    box.className = 'status ' + (kind || '');
+    box.textContent = text || '';
+  }
+  function showTab(name) {
+    document.querySelectorAll('.tab').forEach(function (t) { t.classList.toggle('active', t.dataset.tab === name); });
+    ['run', 'schedules', 'settings'].forEach(function (t) { $('tab-' + t).hidden = t !== name; });
+    if (name === 'schedules') renderSchedules(state.data.schedules);
+  }
+
+  function platformEndpoints(platformId) {
+    return state.data.catalog.endpoints.filter(function (e) { return e.platform === platformId; });
+  }
+
+  function fillPlatforms() {
+    var select = $('platform');
+    state.data.catalog.platforms.forEach(function (p) {
+      select.appendChild(el('option', { value: p.id, text: p.label }));
+    });
+    select.addEventListener('change', fillEndpoints);
+    fillEndpoints();
+  }
+
+  function fillEndpoints() {
+    var select = $('endpoint');
+    select.innerHTML = '';
+    platformEndpoints($('platform').value).forEach(function (e) {
+      select.appendChild(el('option', { value: e.key, text: e.label }));
+    });
+    select.onchange = selectEndpoint;
+    selectEndpoint();
+  }
+
+  function paramInput(p) {
+    var id = 'param-' + p.name;
+    var input;
+    if (p.enum) {
+      input = el('select', { id: id });
+      input.appendChild(el('option', { value: '', text: p.default !== undefined ? 'Default (' + p.default + ')' : '—' }));
+      p.enum.forEach(function (v) { input.appendChild(el('option', { value: v, text: v })); });
+    } else if (p.type === 'boolean') {
+      input = el('input', { id: id, type: 'checkbox' });
+    } else if (p.type === 'integer' || p.type === 'number') {
+      input = el('input', { id: id, type: 'number', step: p.type === 'integer' ? '1' : 'any' });
+      if (p.min !== undefined) input.min = p.min;
+      if (p.max !== undefined) input.max = p.max;
+      if (p.default !== undefined) input.placeholder = 'Default: ' + p.default;
+    } else if (p.name === 'prompt' || p.name === 'query') {
+      input = el('textarea', { id: id, rows: '2' });
+    } else {
+      input = el('input', { id: id, type: 'text' });
+      if (p.default !== undefined) input.placeholder = 'Default: ' + p.default;
+    }
+    input.title = p.description || '';
+    input.dataset.param = p.name;
+    input.dataset.type = p.type;
+    var label = el('label', { for: id });
+    if (p.type === 'boolean') {
+      label.appendChild(input);
+      label.appendChild(document.createTextNode(' ' + p.label));
+      var g = el('div', { class: 'form-group' }, [label, el('div', { class: 'muted small', text: p.description || '' })]);
+      return g;
+    }
+    label.appendChild(document.createTextNode(p.label + ' '));
+    if (p.required) label.appendChild(el('span', { class: 'required', text: '*' }));
+    return el('div', { class: 'form-group' }, [label, input, el('div', { class: 'muted small', text: p.description || '' })]);
+  }
+
+  function selectEndpoint() {
+    var key = $('endpoint').value;
+    state.endpoint = state.data.catalog.endpoints.filter(function (e) { return e.key === key; })[0];
+    var e = state.endpoint;
+    if (!e) return;
+    var info = $('endpoint-info');
+    info.innerHTML = '';
+    info.appendChild(document.createTextNode(e.description + ' '));
+    info.appendChild(el('span', { text: e.price ? '· ' + e.price + (e.freeTier ? ', free tier ' + e.freeTier : '') + ' ' : '' }));
+    info.appendChild(el('a', { href: e.docs, target: '_blank', text: 'Docs' }));
+
+    var required = e.params.filter(function (p) { return p.required; });
+    var optional = e.params.filter(function (p) { return !p.required; });
+    var box = $('params');
+    box.innerHTML = '';
+    required.forEach(function (p) { box.appendChild(paramInput(p)); });
+    var optionalBox = $('optional-params');
+    optionalBox.innerHTML = '';
+    optional.forEach(function (p) { optionalBox.appendChild(paramInput(p)); });
+    $('toggle-optional').hidden = optional.length === 0;
+    optionalBox.hidden = true;
+    $('toggle-optional').textContent = 'More options (' + optional.length + ')';
+
+    var fields = $('fields');
+    fields.innerHTML = '';
+    e.fields.forEach(function (f) { fields.appendChild(el('option', { value: f, text: f })); });
+    fields.parentNode.hidden = e.fields.length === 0 || e.kind === 'text';
+
+    var modeGroup = $('schedule-mode-group');
+    modeGroup.querySelector('input[value=append]').disabled = !e.saveable;
+    if (!e.saveable) modeGroup.querySelector('input[value=replace]').checked = true;
+    else modeGroup.querySelector('input[value=append]').checked = true;
+  }
+
+  function collectParams() {
+    var params = {};
+    document.querySelectorAll('#params [data-param], #optional-params [data-param]').forEach(function (input) {
+      var name = input.dataset.param;
+      if (input.type === 'checkbox') {
+        if (input.checked) params[name] = true;
+      } else if (input.value !== '') {
+        params[name] = input.value;
+      }
+    });
+    return params;
+  }
+
+  function collectFields() {
+    return Array.prototype.slice.call($('fields').selectedOptions).map(function (o) { return o.value; });
+  }
+
+  function paramSummary(params) {
+    return Object.keys(params).map(function (k) { return k + '=' + params[k]; }).join(', ');
+  }
+
+  function run() {
+    if (!state.endpoint) return;
+    var request = {
+      endpoint: state.endpoint.key,
+      params: collectParams(),
+      fields: collectFields(),
+      maxRows: $('max-rows').value || null,
+      headers: $('headers').checked,
+      destination: $('destination').value || 'active',
+      clearBelow: $('clear-below').checked,
+    };
+    $('run').disabled = true;
+    setStatus('run-status', 'busy', 'Fetching ' + state.endpoint.label + '…');
+    call('runToSheet', request).then(function (result) {
+      $('run').disabled = false;
+      var rows = result.rows === 1 ? '1 row' : result.rows + ' rows';
+      setStatus('run-status', 'ok', 'Wrote ' + rows + ' × ' + result.columns + ' columns to ' + result.range + '.');
+    }).catch(function (err) {
+      $('run').disabled = false;
+      setStatus('run-status', 'error', err.message);
+    });
+  }
+
+  function openScheduleForm() {
+    if (!state.endpoint) return;
+    var params = collectParams();
+    var first = params.query || params.url || params.username || params.prompt || params.hashtag || params.domain || '';
+    var base = state.endpoint.label + (first ? ' – ' + first : '');
+    $('schedule-name').value = base.slice(0, 100);
+    $('schedule-sheet').value = base.replace(/[\[\]\*\?\/\\:]/g, ' ').slice(0, 100);
+    $('schedule-form').hidden = false;
+    setStatus('schedule-status', '', '');
+    $('schedule-form').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function createSchedule() {
+    var definition = {
+      name: $('schedule-name').value,
+      sheetName: $('schedule-sheet').value,
+      endpoint: state.endpoint.key,
+      params: collectParams(),
+      fields: collectFields(),
+      intervalHours: Number($('schedule-interval').value),
+      mode: document.querySelector('input[name=schedule-mode]:checked').value,
+    };
+    $('schedule-create').disabled = true;
+    setStatus('schedule-status', 'busy', 'Creating the schedule and running it once…');
+    call('createSchedule', definition).then(function (schedules) {
+      $('schedule-create').disabled = false;
+      state.data.schedules = schedules;
+      $('schedule-form').hidden = true;
+      showTab('schedules');
+      setStatus('schedules-status', 'ok', 'Schedule created. The first results are in "' + definition.sheetName + '".');
+    }).catch(function (err) {
+      $('schedule-create').disabled = false;
+      setStatus('schedule-status', 'error', err.message);
+    });
+  }
+
+  function relativeTime(iso) {
+    if (!iso) return '';
+    var diff = Date.parse(iso) - Date.now();
+    var abs = Math.abs(diff);
+    var unit, n;
+    if (abs < 60 * 60 * 1000) { n = Math.max(1, Math.round(abs / 60000)); unit = 'min'; }
+    else if (abs < 48 * 60 * 60 * 1000) { n = Math.round(abs / 3600000); unit = n === 1 ? 'hour' : 'hours'; }
+    else { n = Math.round(abs / 86400000); unit = n === 1 ? 'day' : 'days'; }
+    return diff >= 0 ? 'in ' + n + ' ' + unit : n + ' ' + unit + ' ago';
+  }
+
+  function intervalLabel(hours) {
+    var match = state.data.intervals.filter(function (i) { return i.hours === hours; })[0];
+    return match ? match.label.toLowerCase() : 'every ' + hours + ' hours';
+  }
+
+  function renderSchedules(schedules) {
+    state.data.schedules = schedules;
+    var list = $('schedules-list');
+    list.innerHTML = '';
+    $('schedules-empty').hidden = schedules.length > 0;
+    schedules.forEach(function (s) {
+      var last;
+      if (s.lastStatus === 'ok') {
+        last = el('div', { class: 'meta last ok', text: 'Last run ' + relativeTime(s.lastRunAt) + ': ' + s.lastRows + ' new row' + (s.lastRows === 1 ? '' : 's') + ' (' + s.totalRows + ' total)' });
+      } else if (s.lastStatus === 'error') {
+        last = el('div', { class: 'meta last error', text: 'Last run failed: ' + s.lastMessage });
+      } else {
+        last = el('div', { class: 'meta last', text: 'Not run yet' });
+      }
+      var card = el('div', { class: 'schedule' }, [
+        el('div', { class: 'name', text: s.name }),
+        el('div', { class: 'meta', text: s.endpointLabel + (paramSummary(s.params) ? ' · ' + paramSummary(s.params) : '') }),
+        el('div', { class: 'meta', text: (s.mode === 'append' ? 'Appends new results' : 'Replaces the table') + ' in "' + s.sheetName + '" ' + intervalLabel(s.intervalHours) + (s.nextRunAt ? ' · next ' + relativeTime(s.nextRunAt) : '') }),
+        last,
+        el('div', { class: 'actions' }, [
+          el('button', { type: 'button', text: 'Run now', onclick: function () { scheduleAction('runScheduleNow', s.id, 'Running "' + s.name + '"…'); } }),
+          el('button', { type: 'button', text: 'Delete', onclick: function () {
+            if (confirm('Delete "' + s.name + '"? The sheet keeps its data.')) scheduleAction('deleteSchedule', s.id, 'Deleting…');
+          } }),
+        ]),
+      ]);
+      if (!s.triggerActive) card.appendChild(el('div', { class: 'meta last error', text: 'The hourly trigger is missing; create a new schedule to restore it.' }));
+      list.appendChild(card);
+    });
+  }
+
+  function scheduleAction(fn, id, busyText) {
+    setStatus('schedules-status', 'busy', busyText);
+    call(fn, id).then(function (schedules) {
+      renderSchedules(schedules);
+      setStatus('schedules-status', 'ok', 'Done.');
+    }).catch(function (err) {
+      setStatus('schedules-status', 'error', err.message);
+      call('listSchedules').then(renderSchedules).catch(function () {});
+    });
+  }
+
+  function renderSettings(settings) {
+    state.data.settings = settings;
+    $('key-state').textContent = settings.hasKey ? 'Current key: ' + settings.maskedKey : 'No key saved yet.';
+    $('nokey').hidden = settings.hasKey;
+    $('remove-key').hidden = !settings.hasKey;
+    $('signup-link').href = settings.signupUrl;
+    $('keys-link').href = settings.keysUrl;
+    $('docs-link').href = settings.docsUrl;
+    $('pricing-link').href = settings.pricingUrl;
+    $('version').textContent = 'v' + settings.version;
+  }
+
+  function saveKey() {
+    var key = $('api-key').value.trim();
+    $('save-key').disabled = true;
+    setStatus('settings-status', 'busy', 'Checking the key with API Direct…');
+    call('saveApiKey', key).then(function (settings) {
+      $('save-key').disabled = false;
+      $('api-key').value = '';
+      renderSettings(settings);
+      setStatus('settings-status', 'ok', 'Key saved. You are ready to run requests.');
+    }).catch(function (err) {
+      $('save-key').disabled = false;
+      setStatus('settings-status', 'error', err.message);
+    });
+  }
+
+  function removeKey() {
+    call('clearApiKey').then(function (settings) {
+      renderSettings(settings);
+      setStatus('settings-status', 'ok', 'Key removed.');
+    }).catch(function (err) { setStatus('settings-status', 'error', err.message); });
+  }
+
+  function init(data) {
+    state.data = data;
+    $('loading').hidden = true;
+    fillPlatforms();
+    data.intervals.forEach(function (i) {
+      var option = el('option', { value: String(i.hours), text: i.label });
+      if (i.hours === 24) option.selected = true;
+      $('schedule-interval').appendChild(option);
+    });
+    $('destination').value = data.activeCell || '';
+    renderSettings(data.settings);
+    renderSchedules(data.schedules);
+    showTab(INITIAL_TAB || 'run');
+  }
+
+  document.querySelectorAll('.tab').forEach(function (t) { t.addEventListener('click', function () { showTab(t.dataset.tab); }); });
+  document.querySelectorAll('[data-goto]').forEach(function (a) {
+    a.addEventListener('click', function (ev) { ev.preventDefault(); showTab(a.dataset.goto); });
+  });
+  $('toggle-optional').addEventListener('click', function () {
+    var box = $('optional-params');
+    box.hidden = !box.hidden;
+    $('toggle-optional').textContent = (box.hidden ? 'More options (' : 'Fewer options (') + box.children.length + ')';
+  });
+  $('use-selection').addEventListener('click', function () {
+    call('getActiveCellA1').then(function (a1) { $('destination').value = a1; }).catch(function (err) { setStatus('run-status', 'error', err.message); });
+  });
+  $('run').addEventListener('click', run);
+  $('schedule-open').addEventListener('click', openScheduleForm);
+  $('schedule-cancel').addEventListener('click', function () { $('schedule-form').hidden = true; });
+  $('schedule-create').addEventListener('click', createSchedule);
+  $('save-key').addEventListener('click', saveKey);
+  $('remove-key').addEventListener('click', removeKey);
+  $('api-key').addEventListener('keydown', function (ev) { if (ev.key === 'Enter') saveKey(); });
+
+  call('getSidebarData').then(init).catch(function (err) {
+    $('loading').textContent = 'Could not load: ' + err.message;
+  });
+})();
+</script>

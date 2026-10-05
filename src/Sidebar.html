@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
+  <?!= include('SidebarStyle'); ?>
+</head>
+<body>
+  <div class="tabs" role="tablist">
+    <button type="button" class="tab" data-tab="run">Run</button>
+    <button type="button" class="tab" data-tab="schedules">Schedules</button>
+    <button type="button" class="tab" data-tab="settings">Settings</button>
+  </div>
+
+  <div id="loading" class="panel muted">Loading…</div>
+
+  <section id="tab-run" class="panel" hidden>
+    <div id="nokey" class="banner" hidden>
+      Add your API key under <a href="#" data-goto="settings">Settings</a> to get started.
+      New accounts get $5 of free credit: <a id="signup-link" href="#" target="_blank">create a free account</a>.
+    </div>
+
+    <div class="block form-group">
+      <label for="platform">Platform</label>
+      <select id="platform"></select>
+    </div>
+    <div class="block form-group">
+      <label for="endpoint">Endpoint</label>
+      <select id="endpoint"></select>
+      <div id="endpoint-info" class="muted small"></div>
+    </div>
+
+    <div id="params"></div>
+    <button type="button" id="toggle-optional" class="linklike" hidden>More options</button>
+    <div id="optional-params" hidden></div>
+
+    <details id="output-details" class="block">
+      <summary>Output</summary>
+      <div class="form-group">
+        <label for="max-rows">Max rows <span class="muted">(blank = all)</span></label>
+        <input type="number" id="max-rows" min="1" step="1">
+      </div>
+      <div class="form-group">
+        <label for="fields">Columns <span class="muted">(blank = all)</span></label>
+        <select id="fields" multiple size="5"></select>
+        <div class="muted small">Ctrl/Cmd-click to pick several.</div>
+      </div>
+      <div class="form-group">
+        <label for="destination">Write to</label>
+        <div class="inline">
+          <input type="text" id="destination" placeholder="Sheet1!A1">
+          <button type="button" id="use-selection" title="Use the selected cell">Selected cell</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label><input type="checkbox" id="headers" checked> Include a header row</label>
+      </div>
+      <div class="form-group">
+        <label><input type="checkbox" id="clear-below"> Clear old data below first</label>
+      </div>
+    </details>
+
+    <div class="block actions">
+      <button type="button" id="run" class="action">Run</button>
+      <button type="button" id="schedule-open">Schedule…</button>
+    </div>
+    <div id="run-status" class="status" hidden></div>
+
+    <div id="schedule-form" class="block card" hidden>
+      <h3>Schedule this request</h3>
+      <div class="form-group">
+        <label for="schedule-name">Name</label>
+        <input type="text" id="schedule-name" maxlength="100">
+      </div>
+      <div class="form-group">
+        <label for="schedule-sheet">Sheet to write to <span class="muted">(created if missing)</span></label>
+        <input type="text" id="schedule-sheet" maxlength="100">
+      </div>
+      <div class="form-group">
+        <label for="schedule-interval">How often</label>
+        <select id="schedule-interval"></select>
+        <div class="muted small">Each run is billed like a normal request.</div>
+      </div>
+      <div class="form-group" id="schedule-mode-group">
+        <label><input type="radio" name="schedule-mode" value="append" checked> Append only new results <span class="muted">(API Direct remembers what it already sent)</span></label>
+        <label><input type="radio" name="schedule-mode" value="replace"> Replace the whole table each time</label>
+      </div>
+      <div class="actions">
+        <button type="button" id="schedule-create" class="action">Create and run now</button>
+        <button type="button" id="schedule-cancel">Cancel</button>
+      </div>
+      <div id="schedule-status" class="status" hidden></div>
+    </div>
+  </section>
+
+  <section id="tab-schedules" class="panel" hidden>
+    <div id="schedules-empty" class="muted">
+      No scheduled refreshes in this spreadsheet yet. Set one up from the Run tab with "Schedule…".
+    </div>
+    <div id="schedules-list"></div>
+    <div class="muted small block">
+      Schedules run in your name with your API key, at most once an hour, while this add-on stays installed.
+    </div>
+    <div id="schedules-status" class="status" hidden></div>
+  </section>
+
+  <section id="tab-settings" class="panel" hidden>
+    <div class="form-group">
+      <label for="api-key">API key</label>
+      <input type="password" id="api-key" placeholder="ak_live_…" autocomplete="off">
+      <div id="key-state" class="muted small"></div>
+    </div>
+    <div class="actions">
+      <button type="button" id="save-key" class="action">Save and test</button>
+      <button type="button" id="remove-key">Remove</button>
+    </div>
+    <div id="settings-status" class="status" hidden></div>
+    <p class="muted small">
+      Your key is stored in your own Google account settings for this add-on, not in the spreadsheet.
+      Get a key from <a id="keys-link" href="#" target="_blank">apidirect.io/dashboard/keys</a>.
+    </p>
+    <p class="small">
+      <a id="docs-link" href="#" target="_blank">Documentation</a> ·
+      <a id="pricing-link" href="#" target="_blank">Pricing</a> ·
+      <a href="mailto:support@apidirect.io">Support</a>
+    </p>
+    <p class="muted small">API Direct for Google Sheets <span id="version"></span></p>
+  </section>
+
+  <script>
+    var INITIAL_TAB = '<?= initialTab ?>';
+  </script>
+  <?!= include('SidebarScript'); ?>
+</body>
+</html>

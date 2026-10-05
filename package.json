@@ -1,0 +1,27 @@
+{
+  "name": "@apidirect/sheets-addon",
+  "version": "1.0.0",
+  "private": true,
+  "description": "API Direct for Google Sheets: custom functions, a sidebar and scheduled refreshes for social media, news, web and marketplace data.",
+  "license": "MIT",
+  "homepage": "https://apidirect.io/docs/google-sheets",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/apidirect/sheets-addon.git"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test \"test/**/*.test.js\"",
+    "catalog": "python3 scripts/generate_catalog.py",
+    "catalog:check": "python3 scripts/generate_catalog.py --check",
+    "assets": "node scripts/render_assets.js",
+    "push": "clasp push",
+    "open": "clasp open-script",
+    "logs": "clasp logs"
+  },
+  "devDependencies": {
+    "@google/clasp": "^3.4.1"
+  }
+}
