@@ -189,7 +189,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New YouTube Video Matching Search",
-      "description": "Triggers when a new YouTube video matches your search. Each check runs Search YouTube Videos ($0.005 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a new YouTube video matches your search. Each check runs Search YouTube Videos ($0.005 per page).",
       "inputFields": [
         {
           "key": "query",
@@ -421,7 +421,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New YouTube Channel Matching Search",
-      "description": "Triggers when a new YouTube channel matches your search. Each check runs Search YouTube Channels ($0.005 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a new YouTube channel matches your search. Each check runs Search YouTube Channels ($0.005 per page).",
       "inputFields": [
         {
           "key": "query",
@@ -923,7 +923,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New YouTube Video Comment",
-      "description": "Triggers when a YouTube video gets a new comment. Each check runs Get YouTube Video Comments ($0.005 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a YouTube video gets a new comment. Each check runs Get YouTube Video Comments ($0.005 per page).",
       "inputFields": [
         {
           "key": "url",

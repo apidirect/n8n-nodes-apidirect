@@ -271,7 +271,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Facebook Post Matching Search",
-      "description": "Triggers when a new public Facebook post matches your search. Each check runs Search Facebook Posts ($0.008 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a new public Facebook post matches your search. Each check runs Search Facebook Posts ($0.008 per page).",
       "inputFields": [
         {
           "key": "query",
@@ -531,7 +531,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Facebook Location Matching Search",
-      "description": "Triggers when a new Facebook location matches your search. Each check runs Search Facebook Locations ($0.004 per request after the free tier (50 requests/month)).",
+      "description": "Triggers when a new Facebook location matches your search. Each check runs Search Facebook Locations ($0.004 per request).",
       "inputFields": [
         {
           "key": "query",
@@ -665,7 +665,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Facebook Page Matching Search",
-      "description": "Triggers when a new Facebook page matches your search. Each check runs Search Facebook Pages ($0.008 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a new Facebook page matches your search. Each check runs Search Facebook Pages ($0.008 per page).",
       "inputFields": [
         {
           "key": "query",
@@ -882,7 +882,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Facebook Video Matching Search",
-      "description": "Triggers when a new Facebook video matches your search. Each check runs Search Facebook Videos ($0.008 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a new Facebook video matches your search. Each check runs Search Facebook Videos ($0.008 per page).",
       "inputFields": [
         {
           "key": "query",
@@ -1092,7 +1092,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Facebook Event Matching Search",
-      "description": "Triggers when a new Facebook event matches your search. Each check runs Search Facebook Events ($0.008 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a new Facebook event matches your search. Each check runs Search Facebook Events ($0.008 per page).",
       "inputFields": [
         {
           "key": "query",
@@ -1546,7 +1546,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Facebook Page Post",
-      "description": "Triggers when a Facebook page publishes a new post. Each check runs Get Facebook Page Posts ($0.008 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a Facebook page publishes a new post. Each check runs Get Facebook Page Posts ($0.008 per page).",
       "inputFields": [
         {
           "key": "page_id",
@@ -1793,7 +1793,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Facebook Page Photo",
-      "description": "Triggers when a Facebook page posts a new photo. Each check runs Get Facebook Page Photos ($0.008 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a Facebook page posts a new photo. Each check runs Get Facebook Page Photos ($0.008 per page).",
       "inputFields": [
         {
           "key": "page_id",
@@ -1941,7 +1941,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Facebook Page Video",
-      "description": "Triggers when a Facebook page posts a new video. Each check runs Get Facebook Page Videos ($0.008 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a Facebook page posts a new video. Each check runs Get Facebook Page Videos ($0.008 per page).",
       "inputFields": [
         {
           "key": "delegate_page_id",
@@ -2185,7 +2185,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Facebook Page Reel",
-      "description": "Triggers when a Facebook page posts a new reel. Each check runs Get Facebook Page Reels ($0.008 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a Facebook page posts a new reel. Each check runs Get Facebook Page Reels ($0.008 per page).",
       "inputFields": [
         {
           "key": "reels_page_id",
@@ -2394,7 +2394,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Facebook Page Review",
-      "description": "Triggers when a Facebook page gets a new review. Each check runs Get Facebook Page Reviews ($0.008 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a Facebook page gets a new review. Each check runs Get Facebook Page Reviews ($0.008 per page).",
       "inputFields": [
         {
           "key": "page_id",
@@ -2778,7 +2778,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Facebook Group Post",
-      "description": "Triggers when a new post appears in a public Facebook group. Each check runs Get Facebook Group Posts ($0.008 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a new post appears in a public Facebook group. Each check runs Get Facebook Group Posts ($0.008 per page).",
       "inputFields": [
         {
           "key": "group_id",
@@ -2842,6 +2842,447 @@ module.exports = [
         "reshare_count": 0,
         "timestamp": 1775341369,
         "url": "https://www.facebook.com/groups/2200032550/posts/10162223151097551/",
+        "video": null
+      },
+      "outputFields": [
+        {
+          "key": "id",
+          "label": "ID",
+          "primary": true
+        },
+        {
+          "key": "author_id",
+          "label": "Author ID"
+        },
+        {
+          "key": "author_name",
+          "label": "Author Name"
+        },
+        {
+          "key": "author_profile_picture",
+          "label": "Author Profile Picture"
+        },
+        {
+          "key": "author_url",
+          "label": "Author URL"
+        },
+        {
+          "key": "comments_count",
+          "label": "Comments Count",
+          "type": "number"
+        },
+        {
+          "key": "date",
+          "label": "Date"
+        },
+        {
+          "key": "external_url",
+          "label": "External URL"
+        },
+        {
+          "key": "image_url",
+          "label": "Image URL"
+        },
+        {
+          "key": "message",
+          "label": "Message"
+        },
+        {
+          "key": "post_id",
+          "label": "Post ID"
+        },
+        {
+          "key": "reactions__angry",
+          "label": "Reactions Angry",
+          "type": "number"
+        },
+        {
+          "key": "reactions__care",
+          "label": "Reactions Care",
+          "type": "number"
+        },
+        {
+          "key": "reactions__haha",
+          "label": "Reactions Haha",
+          "type": "number"
+        },
+        {
+          "key": "reactions__like",
+          "label": "Reactions Like",
+          "type": "number"
+        },
+        {
+          "key": "reactions__love",
+          "label": "Reactions Love",
+          "type": "number"
+        },
+        {
+          "key": "reactions__sad",
+          "label": "Reactions Sad",
+          "type": "number"
+        },
+        {
+          "key": "reactions__wow",
+          "label": "Reactions Wow",
+          "type": "number"
+        },
+        {
+          "key": "reactions_count",
+          "label": "Reactions Count",
+          "type": "number"
+        },
+        {
+          "key": "reshare_count",
+          "label": "Reshare Count",
+          "type": "number"
+        },
+        {
+          "key": "timestamp",
+          "label": "Timestamp",
+          "type": "number"
+        },
+        {
+          "key": "url",
+          "label": "URL"
+        },
+        {
+          "key": "video",
+          "label": "Video"
+        }
+      ]
+    }
+  },
+  {
+    "key": "facebook_group_search",
+    "path": "/v1/facebook/group/search",
+    "method": "GET",
+    "platform": "Facebook",
+    "noun": "Post",
+    "kind": "list",
+    "listKey": "posts",
+    "unwrapKey": null,
+    "docs": "https://apidirect.io/docs/facebook-group-search",
+    "action": {
+      "label": "Search Facebook Group Posts",
+      "description": "Searches for posts within a specific Facebook group by keyword. Supports date filtering. Currently offline on the API side while the endpoint is upgraded (every request returns 503 endpoint_suspended). $0.008 per page after the free tier (50 requests/month)."
+    },
+    "inputFields": [
+      {
+        "key": "query",
+        "label": "Search Query",
+        "required": true,
+        "type": "string",
+        "helpText": "Search query (max 500 characters)",
+        "placeholder": "help"
+      },
+      {
+        "key": "group_id",
+        "label": "Group ID",
+        "required": true,
+        "type": "string",
+        "helpText": "Numeric Facebook group ID (from Group Details endpoint)",
+        "placeholder": "137206643664121"
+      },
+      {
+        "key": "pages",
+        "label": "Pages to Fetch",
+        "required": false,
+        "type": "integer",
+        "default": "1",
+        "helpText": "Number of pages to fetch and merge into one response (1-10). Billed per page (1-10)."
+      },
+      {
+        "key": "start_date",
+        "label": "Start Date",
+        "required": false,
+        "type": "string",
+        "helpText": "Filter posts from this date (YYYY-MM-DD)"
+      },
+      {
+        "key": "end_date",
+        "label": "End Date",
+        "required": false,
+        "type": "string",
+        "helpText": "Filter posts until this date (YYYY-MM-DD)"
+      },
+      {
+        "key": "get_sentiment",
+        "label": "Add Sentiment Analysis",
+        "required": false,
+        "type": "boolean",
+        "helpText": "Set to true to add AI emotion analysis to each post. Adds a `sentiment` object containing `emotions` (joy, trust, fear, surprise, sadness, disgust, anger and anticipation, each scored 0-100), `dominant_emotion`, `emotional_intensity` (0-10), and `polarity` (positive, negative or neutral). Any post that cannot be scored returns `sentiment: null`."
+      }
+    ],
+    "sample": {
+      "count": 7,
+      "pages": 1,
+      "posts": [
+        {
+          "author_id": "pfbid02uG76ygE6PgHR8aVgM4Dno6X7nqRhhWa4SNQM68yajDBFyHWzVcmX68VtaqEWbAcTl",
+          "author_name": "Mey Mousa",
+          "author_profile_picture": "https://scontent.farn1-2.fna.fbcdn.net/v/t39.30808-1/474574659_3567779366700455_878732740218883390_n.jpg?stp=cp0_dst-jpg_s48x48_tt6&_nc_cat=109&ccb=1-7&_nc_sid=e99d92&_nc_ohc=7deKbZL2krUQ7kNvwEl8Td3&…",
+          "author_url": "https://www.facebook.com/pfbid02uG76ygE6PgHR8aVgM4Dno6X7nqRhhWa4SNQM68yajDBFyHWzVcmX68VtaqEWbAcTl",
+          "comments_count": 1,
+          "date": "2026-01-16T06:11:10Z",
+          "external_url": null,
+          "image_url": null,
+          "message": "Mediterranean & Arabic homemade food for gatherings, parties, and birthday celebrations 🥗🥙🎉\n\nI prepare fresh Mediterranean food trays, mini pastries, and a variety of homemade Arabic & Mediterranean …",
+          "post_id": "10161914008977551",
+          "reactions": {
+            "angry": 0,
+            "care": 0,
+            "haha": 0,
+            "like": 11,
+            "love": 1,
+            "sad": 1,
+            "wow": 0
+          },
+          "reactions_count": 13,
+          "reshare_count": 0,
+          "timestamp": 1768543870,
+          "url": "https://www.facebook.com/groups/2200032550/posts/10161914008977551/",
+          "video": null
+        },
+        {
+          "author_id": "1507810471",
+          "author_name": "Keri Muniz",
+          "author_profile_picture": "https://scontent.farn1-2.fna.fbcdn.net/v/t39.30808-1/480667391_10235837886476750_7295232765831778380_n.jpg?stp=cp0_dst-jpg_s48x48_tt6&_nc_cat=102&ccb=1-7&_nc_sid=1d2534&_nc_ohc=sxrki6A1BsoQ7kNvwHXuVN…",
+          "author_url": "https://www.facebook.com/kerilyn29",
+          "comments_count": 0,
+          "date": "2026-03-06T21:18:21Z",
+          "external_url": null,
+          "image_url": null,
+          "message": "Clearly Elegant!! A beautiful way to serve and store your food!! Imagine this on your dinner table with salad or fruit!! What a steal for the 5 pc set!!\n@everyone",
+          "post_id": "10162108131467551",
+          "reactions": {
+            "angry": 0,
+            "care": 0,
+            "haha": 0,
+            "like": 1,
+            "love": 0,
+            "sad": 0,
+            "wow": 0
+          },
+          "reactions_count": 1,
+          "reshare_count": 0,
+          "timestamp": 1772831901,
+          "url": "https://www.facebook.com/groups/2200032550/posts/10162108131467551/",
+          "video": null
+        },
+        {
+          "author_id": "pfbid0MLLj3hUnE3GHJbEvDWbWzrpmyZ3mhUEeqZ6TQVKZWUywqdbou4uqak714bUEvUMWl",
+          "author_name": "La Xen",
+          "author_profile_picture": "https://scontent.farn1-2.fna.fbcdn.net/v/t1.6435-1/41915666_10210022756763760_190576396232294400_n.jpg?stp=cp0_dst-jpg_s48x48_tt6&_nc_cat=107&ccb=1-7&_nc_sid=e99d92&_nc_ohc=WZXpRZh3d3sQ7kNvwGLI9GK&_n…",
+          "author_url": "https://www.facebook.com/laxen88",
+          "comments_count": 39,
+          "date": "2026-02-25T00:46:39Z",
+          "external_url": null,
+          "image_url": null,
+          "message": "Hi everyone! \n\nWe’re new in Orange County/Irvine and on a serious food exploration mission 😄\nNow we’re looking for the best ribs ever, the kind that are fall-off-the-bone, smoky, saucy and unforgetta…",
+          "post_id": "10162069221112551",
+          "reactions": {
+            "angry": 0,
+            "care": 0,
+            "haha": 0,
+            "like": 4,
+            "love": 0,
+            "sad": 0,
+            "wow": 0
+          },
+          "reactions_count": 4,
+          "reshare_count": 0,
+          "timestamp": 1771980399,
+          "url": "https://www.facebook.com/groups/2200032550/posts/10162069221112551/",
+          "video": null
+        }
+      ]
+    },
+    "outputFields": [
+      {
+        "key": "count",
+        "label": "Count",
+        "type": "number"
+      },
+      {
+        "key": "pages",
+        "label": "Pages",
+        "type": "number"
+      },
+      {
+        "key": "posts[]author_id",
+        "label": "Posts: Author ID"
+      },
+      {
+        "key": "posts[]author_name",
+        "label": "Posts: Author Name"
+      },
+      {
+        "key": "posts[]author_profile_picture",
+        "label": "Posts: Author Profile Picture"
+      },
+      {
+        "key": "posts[]author_url",
+        "label": "Posts: Author URL"
+      },
+      {
+        "key": "posts[]comments_count",
+        "label": "Posts: Comments Count",
+        "type": "number"
+      },
+      {
+        "key": "posts[]date",
+        "label": "Posts: Date"
+      },
+      {
+        "key": "posts[]external_url",
+        "label": "Posts: External URL"
+      },
+      {
+        "key": "posts[]image_url",
+        "label": "Posts: Image URL"
+      },
+      {
+        "key": "posts[]message",
+        "label": "Posts: Message"
+      },
+      {
+        "key": "posts[]post_id",
+        "label": "Posts: Post ID"
+      },
+      {
+        "key": "posts[]reactions__angry",
+        "label": "Reactions Angry",
+        "type": "number"
+      },
+      {
+        "key": "posts[]reactions__care",
+        "label": "Reactions Care",
+        "type": "number"
+      },
+      {
+        "key": "posts[]reactions__haha",
+        "label": "Reactions Haha",
+        "type": "number"
+      },
+      {
+        "key": "posts[]reactions__like",
+        "label": "Reactions Like",
+        "type": "number"
+      },
+      {
+        "key": "posts[]reactions__love",
+        "label": "Reactions Love",
+        "type": "number"
+      },
+      {
+        "key": "posts[]reactions__sad",
+        "label": "Reactions Sad",
+        "type": "number"
+      },
+      {
+        "key": "posts[]reactions__wow",
+        "label": "Reactions Wow",
+        "type": "number"
+      },
+      {
+        "key": "posts[]reactions_count",
+        "label": "Posts: Reactions Count",
+        "type": "number"
+      },
+      {
+        "key": "posts[]reshare_count",
+        "label": "Posts: Reshare Count",
+        "type": "number"
+      },
+      {
+        "key": "posts[]timestamp",
+        "label": "Posts: Timestamp",
+        "type": "number"
+      },
+      {
+        "key": "posts[]url",
+        "label": "Posts: URL"
+      },
+      {
+        "key": "posts[]video",
+        "label": "Posts: Video"
+      }
+    ],
+    "trigger": {
+      "label": "New Facebook Group Post Matching Search",
+      "description": "Triggers when a new post in a Facebook group matches your search. Each check runs Search Facebook Group Posts ($0.008 per page).",
+      "inputFields": [
+        {
+          "key": "query",
+          "label": "Search Query",
+          "required": true,
+          "type": "string",
+          "helpText": "Search query (max 500 characters)",
+          "placeholder": "help"
+        },
+        {
+          "key": "group_id",
+          "label": "Group ID",
+          "required": true,
+          "type": "string",
+          "helpText": "Numeric Facebook group ID (from Group Details endpoint)",
+          "placeholder": "137206643664121"
+        },
+        {
+          "key": "pages",
+          "label": "Pages to Fetch",
+          "required": false,
+          "type": "integer",
+          "default": "1",
+          "helpText": "Number of pages to fetch and merge into one response (1-10). Billed per page (1-10). Every check of this trigger fetches this many pages, each billed as one request."
+        },
+        {
+          "key": "start_date",
+          "label": "Start Date",
+          "required": false,
+          "type": "string",
+          "helpText": "Filter posts from this date (YYYY-MM-DD)"
+        },
+        {
+          "key": "end_date",
+          "label": "End Date",
+          "required": false,
+          "type": "string",
+          "helpText": "Filter posts until this date (YYYY-MM-DD)"
+        },
+        {
+          "key": "get_sentiment",
+          "label": "Add Sentiment Analysis",
+          "required": false,
+          "type": "boolean",
+          "helpText": "Set to true to add AI emotion analysis to each post. Adds a `sentiment` object containing `emotions` (joy, trust, fear, surprise, sadness, disgust, anger and anticipation, each scored 0-100), `dominant_emotion`, `emotional_intensity` (0-10), and `polarity` (positive, negative or neutral). Any post that cannot be scored returns `sentiment: null`."
+        }
+      ],
+      "sample": {
+        "id": "10161914008977551",
+        "author_id": "pfbid02uG76ygE6PgHR8aVgM4Dno6X7nqRhhWa4SNQM68yajDBFyHWzVcmX68VtaqEWbAcTl",
+        "author_name": "Mey Mousa",
+        "author_profile_picture": "https://scontent.farn1-2.fna.fbcdn.net/v/t39.30808-1/474574659_3567779366700455_878732740218883390_n.jpg?stp=cp0_dst-jpg_s48x48_tt6&_nc_cat=109&ccb=1-7&_nc_sid=e99d92&_nc_ohc=7deKbZL2krUQ7kNvwEl8Td3&…",
+        "author_url": "https://www.facebook.com/pfbid02uG76ygE6PgHR8aVgM4Dno6X7nqRhhWa4SNQM68yajDBFyHWzVcmX68VtaqEWbAcTl",
+        "comments_count": 1,
+        "date": "2026-01-16T06:11:10Z",
+        "external_url": null,
+        "image_url": null,
+        "message": "Mediterranean & Arabic homemade food for gatherings, parties, and birthday celebrations 🥗🥙🎉\n\nI prepare fresh Mediterranean food trays, mini pastries, and a variety of homemade Arabic & Mediterranean …",
+        "post_id": "10161914008977551",
+        "reactions": {
+          "angry": 0,
+          "care": 0,
+          "haha": 0,
+          "like": 11,
+          "love": 1,
+          "sad": 1,
+          "wow": 0
+        },
+        "reactions_count": 13,
+        "reshare_count": 0,
+        "timestamp": 1768543870,
+        "url": "https://www.facebook.com/groups/2200032550/posts/10161914008977551/",
         "video": null
       },
       "outputFields": [
@@ -3108,7 +3549,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Facebook Post Comment",
-      "description": "Triggers when a Facebook post gets a new comment. Each check runs Get Facebook Post Comments ($0.008 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a Facebook post gets a new comment. Each check runs Get Facebook Post Comments ($0.008 per page).",
       "inputFields": [
         {
           "key": "post_id",

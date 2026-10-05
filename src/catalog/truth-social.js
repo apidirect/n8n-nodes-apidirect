@@ -199,7 +199,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Truth Social Post by User",
-      "description": "Triggers when a Truth Social user publishes a new post. Each check runs Get Truth Social User Posts ($0.006 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a Truth Social user publishes a new post. Each check runs Get Truth Social User Posts ($0.006 per page).",
       "inputFields": [
         {
           "key": "username",

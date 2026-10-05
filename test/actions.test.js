@@ -26,6 +26,33 @@ describe('creates (list endpoints)', () => {
     ).rejects.toThrow(/Missing required parameter: query/);
   });
 
+  it('Ask Google AI Mode posts long prompts as JSON', async () => {
+    const prompt = 'x'.repeat(2000);
+    api().post('/v1/web/ai-mode', { prompt, country: 'us' }).reply(200, { reply_parts: ['long'], reference_links: [], session_token: 't2' });
+    const result = await appTester(App.creates.web_ai_mode.operation.perform, { authData, inputData: { prompt, country: 'us' } });
+    expect(result.reply_parts).toEqual(['long']);
+  });
+
+  it('Run Batch Requests parses the JSON array and returns per-item results', async () => {
+    api().post('/v1/batch', { requests: [{ endpoint: '/v1/twitter/user', params: { username: 'naval' } }] }).reply(200, { results: [{ index: 0, endpoint: '/v1/twitter/user', status: 200, body: { user: { username: 'naval' } } }], summary: { total: 1, succeeded: 1, failed: 0, duration_ms: 10 } });
+    const result = await appTester(App.creates.batch_requests.operation.perform, { authData, inputData: { requests: '[{"endpoint": "/v1/twitter/user", "params": {"username": "naval"}}]' } });
+    expect(result.summary.succeeded).toBe(1);
+    await expect(appTester(App.creates.batch_requests.operation.perform, { authData, inputData: { requests: 'not json' } })).rejects.toThrow(/JSON array/);
+  });
+
+  it('Check API Key returns the server time', async () => {
+    api().get('/v1/time').reply(200, { timestamp: '2026-10-05T12:00:00+00:00', unix: 1791201600, formatted: '2026-10-05 12:00:00 UTC' });
+    const result = await appTester(App.creates.check_api_key.operation.perform, { authData, inputData: {} });
+    expect(result.unix).toBe(1791201600);
+    expect(result.formatted).toBe('2026-10-05T12:00:00Z');
+  });
+
+  it('Search Facebook Group Posts is wired even while the API marks it suspended', async () => {
+    api().get('/v1/facebook/group/search').query(true).reply(503, { error: 'Endpoint temporarily unavailable', code: 'endpoint_suspended' });
+    await expect(appTester(App.creates.facebook_group_search.operation.perform, { authData, inputData: { group_id: '1', query: 'x' } })).rejects.toThrow(/temporarily unavailable/);
+    expect(App.creates.facebook_group_search.display.description).toMatch(/Currently offline/);
+  });
+
   it('Ask Google AI Mode returns the answer object', async () => {
     api().get('/v1/web/ai-mode').query({ prompt: 'best crm' }).reply(200, { reply_parts: ['x'], reference_links: [], session_token: 't' });
     const result = await appTester(App.creates.web_ai_mode.operation.perform, { authData, inputData: { prompt: 'best crm' } });

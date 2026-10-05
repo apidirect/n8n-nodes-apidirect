@@ -184,7 +184,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Reddit Post Matching Search",
-      "description": "Triggers when a new Reddit post matches your search. Each check runs Search Reddit Posts ($0.003 per request after the free tier (50 requests/month)).",
+      "description": "Triggers when a new Reddit post matches your search. Each check runs Search Reddit Posts ($0.003 per request).",
       "inputFields": [
         {
           "key": "query",
@@ -483,7 +483,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Reddit Comment Matching Search",
-      "description": "Triggers when a new Reddit comment matches your search. Each check runs Search Reddit Comments ($0.003 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a new Reddit comment matches your search. Each check runs Search Reddit Comments ($0.003 per page).",
       "inputFields": [
         {
           "key": "query",
@@ -733,7 +733,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Reddit User Matching Search",
-      "description": "Triggers when a new Reddit user matches your search. Each check runs Search Reddit Users ($0.003 per request after the free tier (50 requests/month)).",
+      "description": "Triggers when a new Reddit user matches your search. Each check runs Search Reddit Users ($0.003 per request).",
       "inputFields": [
         {
           "key": "query",

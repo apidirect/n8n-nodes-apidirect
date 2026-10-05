@@ -265,7 +265,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Twitter Post Matching Search",
-      "description": "Triggers when a new Twitter/X post matches your search. Each check runs Search Twitter Posts ($0.006 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a new Twitter/X post matches your search. Each check runs Search Twitter Posts ($0.006 per page).",
       "inputFields": [
         {
           "key": "query",
@@ -599,7 +599,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Twitter User Matching Search",
-      "description": "Triggers when a new Twitter/X user matches your search. Each check runs Search Twitter Users ($0.006 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a new Twitter/X user matches your search. Each check runs Search Twitter Users ($0.006 per page).",
       "inputFields": [
         {
           "key": "query",
@@ -1052,7 +1052,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Tweet by User",
-      "description": "Triggers when a Twitter/X user posts a new tweet. Each check runs Get Twitter User Tweets ($0.006 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a Twitter/X user posts a new tweet. Each check runs Get Twitter User Tweets ($0.006 per page).",
       "inputFields": [
         {
           "key": "username",
@@ -1349,7 +1349,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Twitter Follower",
-      "description": "Triggers when a Twitter/X user gains a new follower. Each check runs Get Twitter User Followers ($0.006 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a Twitter/X user gains a new follower. Each check runs Get Twitter User Followers ($0.006 per page).",
       "inputFields": [
         {
           "key": "username",
@@ -1585,7 +1585,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Twitter Account Followed",
-      "description": "Triggers when a Twitter/X user follows a new account. Each check runs Get Twitter User Following ($0.006 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a Twitter/X user follows a new account. Each check runs Get Twitter User Following ($0.006 per page).",
       "inputFields": [
         {
           "key": "username",
@@ -1821,7 +1821,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Verified Twitter Follower",
-      "description": "Triggers when a Twitter/X user gains a new verified follower. Each check runs Get Twitter Verified Followers ($0.006 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a Twitter/X user gains a new verified follower. Each check runs Get Twitter Verified Followers ($0.006 per page).",
       "inputFields": [
         {
           "key": "username",
@@ -2140,7 +2140,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Twitter Reply by User",
-      "description": "Triggers when a Twitter/X user posts a new reply. Each check runs Get Twitter User Replies ($0.006 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a Twitter/X user posts a new reply. Each check runs Get Twitter User Replies ($0.006 per page).",
       "inputFields": [
         {
           "key": "username",
@@ -2589,7 +2589,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Tweet Retweet",
-      "description": "Triggers when a tweet gets a new retweet. Each check runs Get Tweet Retweets ($0.006 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a tweet gets a new retweet. Each check runs Get Tweet Retweets ($0.006 per page).",
       "inputFields": [
         {
           "key": "tweet_id",
@@ -2907,7 +2907,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Tweet Quote",
-      "description": "Triggers when a tweet is quoted in a new tweet. Each check runs Get Quote Tweets ($0.006 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a tweet is quoted in a new tweet. Each check runs Get Quote Tweets ($0.006 per page).",
       "inputFields": [
         {
           "key": "tweet_id",
@@ -3238,7 +3238,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Tweet Reply",
-      "description": "Triggers when a tweet gets a new reply. Each check runs Get Tweet Replies ($0.006 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a tweet gets a new reply. Each check runs Get Tweet Replies ($0.006 per page).",
       "inputFields": [
         {
           "key": "tweet_id",
@@ -3477,7 +3477,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Twitter Trending Topic",
-      "description": "Triggers when a new topic starts trending on Twitter/X in a location. Each check runs Get Twitter Trending Topics ($0.006 per request after the free tier (50 requests/month)).",
+      "description": "Triggers when a new topic starts trending on Twitter/X in a location. Each check runs Get Twitter Trending Topics ($0.006 per request).",
       "inputFields": [
         {
           "key": "woeid",

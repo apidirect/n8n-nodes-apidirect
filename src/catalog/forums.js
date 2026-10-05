@@ -142,7 +142,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Forum Post Matching Search",
-      "description": "Triggers when a new forum post matches your search. Each check runs Search Forum Posts ($0.008 per request after the free tier (50 requests/month)).",
+      "description": "Triggers when a new forum post matches your search. Each check runs Search Forum Posts ($0.008 per request).",
       "inputFields": [
         {
           "key": "query",

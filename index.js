@@ -15,12 +15,16 @@ const runSavedSearch = require('./src/creates/run_saved_search');
 const updateSavedSearch = require('./src/creates/update_saved_search');
 const deleteSavedSearch = require('./src/creates/delete_saved_search');
 const findSavedSearch = require('./src/searches/find_saved_search');
+const checkApiKey = require('./src/creates/check_api_key');
+const batchRequests = require('./src/creates/batch_requests');
 
 const triggers = {
   [newSavedSearchResult.key]: newSavedSearchResult,
   [savedSearchList.key]: savedSearchList,
 };
 const creates = {
+  [checkApiKey.key]: checkApiKey,
+  [batchRequests.key]: batchRequests,
   [createSavedSearch.key]: createSavedSearch,
   [runSavedSearch.key]: runSavedSearch,
   [updateSavedSearch.key]: updateSavedSearch,

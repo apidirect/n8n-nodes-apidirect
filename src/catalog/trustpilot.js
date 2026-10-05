@@ -484,7 +484,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Trustpilot Company Review",
-      "description": "Triggers when a company gets a new Trustpilot review. Each check runs Get Trustpilot Company Reviews ($0.005 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a company gets a new Trustpilot review. Each check runs Get Trustpilot Company Reviews ($0.005 per page).",
       "inputFields": [
         {
           "key": "domain",
@@ -930,7 +930,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Trustpilot Company Matching Search",
-      "description": "Triggers when a new Trustpilot company matches your search. Each check runs Search Trustpilot Companies ($0.005 per request after the free tier (50 requests/month)).",
+      "description": "Triggers when a new Trustpilot company matches your search. Each check runs Search Trustpilot Companies ($0.005 per request).",
       "inputFields": [
         {
           "key": "query",
@@ -1393,7 +1393,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Trustpilot Company in Category",
-      "description": "Triggers when a new company appears in a Trustpilot category. Each check runs Get Trustpilot Category Companies ($0.005 per request after the free tier (50 requests/month)).",
+      "description": "Triggers when a new company appears in a Trustpilot category. Each check runs Get Trustpilot Category Companies ($0.005 per request).",
       "inputFields": [
         {
           "key": "category_id",
@@ -1779,7 +1779,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "Newly Listed Trustpilot Company in Category",
-      "description": "Triggers when a company is newly listed in a Trustpilot category. Each check runs Get Newest Trustpilot Companies in Category ($0.005 per request after the free tier (50 requests/month)).",
+      "description": "Triggers when a company is newly listed in a Trustpilot category. Each check runs Get Newest Trustpilot Companies in Category ($0.005 per request).",
       "inputFields": [
         {
           "key": "category_id",
@@ -2054,7 +2054,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Trustpilot Category Matching Search",
-      "description": "Triggers when a new Trustpilot category matches your search. Each check runs Search Trustpilot Categories ($0.005 per request after the free tier (50 requests/month)).",
+      "description": "Triggers when a new Trustpilot category matches your search. Each check runs Search Trustpilot Categories ($0.005 per request).",
       "inputFields": [
         {
           "key": "query",
@@ -2330,7 +2330,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Trustpilot Review by User",
-      "description": "Triggers when a Trustpilot user writes a new review. Each check runs Get Trustpilot User Reviews ($0.005 per request after the free tier (50 requests/month)).",
+      "description": "Triggers when a Trustpilot user writes a new review. Each check runs Get Trustpilot User Reviews ($0.005 per request).",
       "inputFields": [
         {
           "key": "user_id",

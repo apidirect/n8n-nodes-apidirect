@@ -280,7 +280,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New LinkedIn Post Matching Search",
-      "description": "Triggers when a new LinkedIn post matches your search or filters. Each check runs Search LinkedIn Posts ($0.006 per request after the free tier (50 requests/month)).",
+      "description": "Triggers when a new LinkedIn post matches your search or filters. Each check runs Search LinkedIn Posts ($0.006 per request).",
       "inputFields": [
         {
           "key": "query",
@@ -1134,7 +1134,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New LinkedIn Post by Person",
-      "description": "Triggers when a LinkedIn member publishes a new post. Each check runs Get LinkedIn Person Posts ($0.006 per request after the free tier (50 requests/month)).",
+      "description": "Triggers when a LinkedIn member publishes a new post. Each check runs Get LinkedIn Person Posts ($0.006 per request).",
       "inputFields": [
         {
           "key": "url",
@@ -1536,7 +1536,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New LinkedIn Company Matching Search",
-      "description": "Triggers when a new LinkedIn company matches your search. Each check runs Search LinkedIn Companies ($0.006 per request after the free tier (50 requests/month)).",
+      "description": "Triggers when a new LinkedIn company matches your search. Each check runs Search LinkedIn Companies ($0.006 per request).",
       "inputFields": [
         {
           "key": "query",
@@ -2166,7 +2166,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New LinkedIn Company Post",
-      "description": "Triggers when a LinkedIn company page publishes a new post. Each check runs Get LinkedIn Company Posts ($0.006 per request after the free tier (50 requests/month)).",
+      "description": "Triggers when a LinkedIn company page publishes a new post. Each check runs Get LinkedIn Company Posts ($0.006 per request).",
       "inputFields": [
         {
           "key": "url",
@@ -2529,7 +2529,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New LinkedIn Job Matching Search",
-      "description": "Triggers when a new LinkedIn job listing matches your search. Each check runs Search LinkedIn Jobs ($0.006 per request after the free tier (50 requests/month)).",
+      "description": "Triggers when a new LinkedIn job listing matches your search. Each check runs Search LinkedIn Jobs ($0.006 per request).",
       "inputFields": [
         {
           "key": "query",

@@ -183,7 +183,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Threads Post Matching Search",
-      "description": "Triggers when a new Threads post matches your search. Each check runs Search Threads Posts ($0.006 per request after the free tier (50 requests/month)).",
+      "description": "Triggers when a new Threads post matches your search. Each check runs Search Threads Posts ($0.006 per request).",
       "inputFields": [
         {
           "key": "query",
@@ -425,7 +425,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Threads User Matching Search",
-      "description": "Triggers when a new Threads user matches your search. Each check runs Search Threads Users ($0.006 per request after the free tier (50 requests/month)).",
+      "description": "Triggers when a new Threads user matches your search. Each check runs Search Threads Users ($0.006 per request).",
       "inputFields": [
         {
           "key": "query",
@@ -776,7 +776,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Threads Post by User",
-      "description": "Triggers when a Threads user publishes a new post. Each check runs Get Threads User Posts ($0.006 per request after the free tier (50 requests/month)).",
+      "description": "Triggers when a Threads user publishes a new post. Each check runs Get Threads User Posts ($0.006 per request).",
       "inputFields": [
         {
           "key": "username",

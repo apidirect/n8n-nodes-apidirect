@@ -402,7 +402,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Google Place Matching Search",
-      "description": "Triggers when a new place matches your Google Maps search. Each check runs Search Google Places ($0.01 per page after the free tier (20 requests/month)).",
+      "description": "Triggers when a new place matches your Google Maps search. Each check runs Search Google Places ($0.01 per page).",
       "inputFields": [
         {
           "key": "query",
@@ -1430,7 +1430,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Google Place Review",
-      "description": "Triggers when a place gets a new Google Maps review. Each check runs Get Google Place Reviews ($0.01 per page after the free tier (20 requests/month)).",
+      "description": "Triggers when a place gets a new Google Maps review. Each check runs Get Google Place Reviews ($0.01 per page).",
       "inputFields": [
         {
           "key": "place_id",
@@ -1769,7 +1769,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Google Place Photo",
-      "description": "Triggers when a place gets a new Google Maps photo. Each check runs Get Google Place Photos ($0.01 per page after the free tier (20 requests/month)).",
+      "description": "Triggers when a place gets a new Google Maps photo. Each check runs Get Google Place Photos ($0.01 per page).",
       "inputFields": [
         {
           "key": "place_id",

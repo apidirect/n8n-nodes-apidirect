@@ -85,6 +85,19 @@ describe('every step', () => {
     expect(new Set(labels).size).toBe(labels.length);
   });
 
+  it('covers every operation in the spec', () => {
+    const spec = require('../spec/openapi.json');
+    const covered = new Set([
+      ...catalog.map((e) => e.path),
+      '/v1/time', // Check API Key
+      '/v1/batch', // Run Batch Requests
+    ]);
+    for (const path of Object.keys(spec.paths)) {
+      if (path.startsWith('/v1/saved-searches')) continue; // hand-written saved search steps
+      expect({ path, covered: covered.has(path) }).toEqual({ path, covered: true });
+    }
+  });
+
   it('covers every catalog entry', () => {
     for (const entry of catalog) {
       if (entry.kind === 'detail') expect(App.searches[`find_${entry.key}`]).toBeTruthy();

@@ -181,7 +181,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New News Article Matching Search",
-      "description": "Triggers when a new news article matches your search. Each check runs Search News Articles ($0.008 per request after the free tier (50 requests/month)).",
+      "description": "Triggers when a new news article matches your search. Each check runs Search News Articles ($0.008 per request).",
       "inputFields": [
         {
           "key": "query",

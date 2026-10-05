@@ -6,8 +6,8 @@ Built with the [Zapier Platform CLI](https://docs.zapier.com/platform/quickstart
 
 ## What it does
 
-- **100 actions**, one per API Direct endpoint. Endpoints that return a list (Search Twitter Posts, Get LinkedIn Company Posts, Get Google Place Reviews, ...) are actions whose results come through as line items. Endpoints that return one object (Find Twitter User, Find LinkedIn Person, Find Google Place, ...) are searches.
-- **78 polling triggers**, one per endpoint that returns a list: New Twitter Post Matching Search, New Reddit Post Matching Search, New LinkedIn Job Matching Search, New Google Place Review, New Instagram Follower, and so on. Each one is built on a [saved search](https://apidirect.io/docs/saved-searches): the first poll creates a saved search for the step's endpoint and inputs (named `Zapier · <trigger> · <fingerprint>`), later polls run it, and the API gives every result a stable `id` that Zapier dedupes on.
+- **103 actions covering every operation in the public spec** (104 operations: AI Mode's GET and POST are one action that posts long prompts). Endpoints that return a list (Search Twitter Posts, Get LinkedIn Company Posts, Get Google Place Reviews, ...) are actions whose results come through as line items. Endpoints that return one object (Find Twitter User, Find LinkedIn Person, Find Google Place, ...) are searches. Run Batch Requests and Check API Key cover `/v1/batch` and `/v1/time`.
+- **79 polling triggers**, one per endpoint that returns a list: New Twitter Post Matching Search, New Reddit Post Matching Search, New LinkedIn Job Matching Search, New Google Place Review, New Instagram Follower, and so on. Each one is built on a [saved search](https://apidirect.io/docs/saved-searches): the first poll creates a saved search for the step's endpoint and inputs (named `Zapier · <trigger> · <fingerprint>`), later polls run it, and the API gives every result a stable `id` that Zapier dedupes on.
 - **Saved search steps**: New Saved Search Result (trigger, with a dropdown of the account's saved searches), Create / Update / Delete / Run Saved Search (actions) and Find Saved Search (search), for searches managed outside the trigger.
 
 Authentication is the API key from the [dashboard](https://apidirect.io/dashboard/keys), sent as `X-API-Key`. Every endpoint has a monthly free tier; beyond it, each call bills at the price on its [pricing](https://apidirect.io/docs/pricing) row (the step descriptions repeat it).
@@ -36,13 +36,13 @@ npm test                         # jest: auth, actions, triggers, publishing che
 npx zapier-platform validate     # Zapier schema validation (+ integration checks when logged in)
 ```
 
-To add or change endpoints, update `spec/openapi.json` (a copy of the public spec, https://apidirect.io/openapi.json; until the public spec carries the LinkedIn operations, build it from the API repo's `specs/build_openapi.py` with LinkedIn included) and the label tables at the top of `scripts/generate.py`, then:
+To add or change endpoints, update `spec/openapi.json` (a copy of the public spec, https://apidirect.io/openapi.json) and the label tables at the top of `scripts/generate.py`, then:
 
 ```bash
 npm run generate                 # rewrites src/catalog/
 ```
 
-CI fails if `src/catalog/` is out of date with the spec.
+CI fails if `src/catalog/` is out of date with the spec, and `test/catalog.test.js` fails if any operation in the spec has no step.
 
 ## Deploy
 

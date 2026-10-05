@@ -245,7 +245,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New TikTok Video Matching Search",
-      "description": "Triggers when a new TikTok video matches your search. Each check runs Search TikTok Videos ($0.006 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a new TikTok video matches your search. Each check runs Search TikTok Videos ($0.006 per page).",
       "inputFields": [
         {
           "key": "query",
@@ -573,7 +573,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New TikTok User Matching Search",
-      "description": "Triggers when a new TikTok user matches your search. Each check runs Search TikTok Users ($0.006 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a new TikTok user matches your search. Each check runs Search TikTok Users ($0.006 per page).",
       "inputFields": [
         {
           "key": "query",

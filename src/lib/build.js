@@ -8,12 +8,20 @@ const { normalizeDates } = require('./dates');
 const { toQuery } = require('./params');
 const savedSearches = require('./saved-searches');
 
+// AI Mode prompts can run to 12,000 characters, longer than a query string
+// should carry, so prompts past this length go in a JSON body (POST /v1/web/ai-mode).
+const AI_MODE_PATH = '/v1/web/ai-mode';
+const AI_MODE_POST_THRESHOLD = 1500;
+
 const callEndpoint = async (z, bundle, entry) => {
-  const response = await z.request({
-    url: BASE_URL + entry.path,
-    method: entry.method || 'GET',
-    params: toQuery(bundle.inputData, entry.inputFields),
-  });
+  const params = toQuery(bundle.inputData, entry.inputFields);
+  const request = { url: BASE_URL + entry.path, method: entry.method || 'GET', params };
+  if (entry.path === AI_MODE_PATH && String(params.prompt || '').length > AI_MODE_POST_THRESHOLD) {
+    request.method = 'POST';
+    request.body = params;
+    request.params = {};
+  }
+  const response = await z.request(request);
   return normalizeDates(response.data);
 };
 

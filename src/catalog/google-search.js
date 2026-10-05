@@ -203,7 +203,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Google Search Result",
-      "description": "Triggers when a new web page appears in Google results for your search. Each check runs Search Google ($0.004 per page (+$0.002 flat per request when include_ai_overview=true) after the free tier (50 requests/month)).",
+      "description": "Triggers when a new web page appears in Google results for your search. Each check runs Search Google ($0.004 per page (+$0.002 flat per request when include_ai_overview=true)).",
       "inputFields": [
         {
           "key": "query",

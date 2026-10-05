@@ -326,7 +326,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Amazon Product Matching Search",
-      "description": "Triggers when a new product matches your Amazon search. Each check runs Search Amazon Products ($0.005 per request after the free tier (50 requests/month)).",
+      "description": "Triggers when a new product matches your Amazon search. Each check runs Search Amazon Products ($0.005 per request).",
       "inputFields": [
         {
           "key": "query",
@@ -1428,7 +1428,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Amazon Seller Review",
-      "description": "Triggers when an Amazon seller gets a new review. Each check runs Get Amazon Seller Reviews ($0.005 per request after the free tier (50 requests/month)).",
+      "description": "Triggers when an Amazon seller gets a new review. Each check runs Get Amazon Seller Reviews ($0.005 per request).",
       "inputFields": [
         {
           "key": "seller_id",
@@ -1789,7 +1789,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Amazon Seller Product",
-      "description": "Triggers when an Amazon seller lists a new product. Each check runs Get Amazon Seller Products ($0.005 per request after the free tier (50 requests/month)).",
+      "description": "Triggers when an Amazon seller lists a new product. Each check runs Get Amazon Seller Products ($0.005 per request).",
       "inputFields": [
         {
           "key": "seller_id",
@@ -2160,7 +2160,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Amazon Best Seller",
-      "description": "Triggers when a product enters an Amazon best sellers list. Each check runs Get Amazon Best Sellers ($0.005 per request after the free tier (50 requests/month)).",
+      "description": "Triggers when a product enters an Amazon best sellers list. Each check runs Get Amazon Best Sellers ($0.005 per request).",
       "inputFields": [
         {
           "key": "category",

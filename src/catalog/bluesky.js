@@ -270,7 +270,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Bluesky Post Matching Search",
-      "description": "Triggers when a new Bluesky post matches your search. Each check runs Search Bluesky Posts ($0.003 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a new Bluesky post matches your search. Each check runs Search Bluesky Posts ($0.003 per page).",
       "inputFields": [
         {
           "key": "query",
@@ -612,7 +612,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Bluesky User Matching Search",
-      "description": "Triggers when a new Bluesky user matches your search. Each check runs Search Bluesky Users ($0.003 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a new Bluesky user matches your search. Each check runs Search Bluesky Users ($0.003 per page).",
       "inputFields": [
         {
           "key": "query",
@@ -1069,7 +1069,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Bluesky Post by User",
-      "description": "Triggers when a Bluesky user publishes a new post. Each check runs Get Bluesky User Posts ($0.003 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a Bluesky user publishes a new post. Each check runs Get Bluesky User Posts ($0.003 per page).",
       "inputFields": [
         {
           "key": "username",
@@ -1397,7 +1397,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Bluesky Follower",
-      "description": "Triggers when a Bluesky user gains a new follower. Each check runs Get Bluesky User Followers ($0.003 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a Bluesky user gains a new follower. Each check runs Get Bluesky User Followers ($0.003 per page).",
       "inputFields": [
         {
           "key": "username",
@@ -1585,7 +1585,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Bluesky Account Followed",
-      "description": "Triggers when a Bluesky user follows a new account. Each check runs Get Bluesky User Following ($0.003 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a Bluesky user follows a new account. Each check runs Get Bluesky User Following ($0.003 per page).",
       "inputFields": [
         {
           "key": "username",
@@ -1946,7 +1946,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Bluesky Like by User",
-      "description": "Triggers when a Bluesky user likes a new post. Each check runs Get Bluesky User Likes ($0.003 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a Bluesky user likes a new post. Each check runs Get Bluesky User Likes ($0.003 per page).",
       "inputFields": [
         {
           "key": "username",
@@ -2624,7 +2624,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Bluesky Post Comment",
-      "description": "Triggers when a Bluesky post gets a new reply. Each check runs Get Bluesky Post Comments ($0.003 per request after the free tier (50 requests/month)).",
+      "description": "Triggers when a Bluesky post gets a new reply. Each check runs Get Bluesky Post Comments ($0.003 per request).",
       "inputFields": [
         {
           "key": "url",
@@ -2939,7 +2939,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Bluesky Post Like",
-      "description": "Triggers when a Bluesky post gets a new like. Each check runs Get Bluesky Post Likes ($0.003 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a Bluesky post gets a new like. Each check runs Get Bluesky Post Likes ($0.003 per page).",
       "inputFields": [
         {
           "key": "url",
@@ -3306,7 +3306,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Bluesky Post Quote",
-      "description": "Triggers when a Bluesky post is quoted in a new post. Each check runs Get Bluesky Post Quotes ($0.003 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a Bluesky post is quoted in a new post. Each check runs Get Bluesky Post Quotes ($0.003 per page).",
       "inputFields": [
         {
           "key": "url",
@@ -3668,7 +3668,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Bluesky Post Repost",
-      "description": "Triggers when a Bluesky post gets a new repost. Each check runs Get Bluesky Post Reposts ($0.003 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a Bluesky post gets a new repost. Each check runs Get Bluesky Post Reposts ($0.003 per page).",
       "inputFields": [
         {
           "key": "url",

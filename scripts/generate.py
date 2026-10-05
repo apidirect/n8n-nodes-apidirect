@@ -8,9 +8,8 @@ Every GET operation in the spec becomes one catalog entry: an action (a Zapier
 one object) and, for endpoints a saved search can run, a polling trigger. The
 hand-written modules in src/ turn these entries into Zapier definitions.
 
-The spec is the one served at https://apidirect.io/openapi.json plus the
-LinkedIn operations, which the public spec leaves out. Rebuild it with
-api-arbitrage's specs/build_openapi.py and copy it to spec/openapi.json.
+The spec is a copy of https://apidirect.io/openapi.json. Operations the
+generator does not cover (SKIP below) are hand-written in src/.
 
 Standard library only.
 """
@@ -23,9 +22,10 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT_DIR = os.path.join(ROOT, "src", "catalog")
 SITE = "https://apidirect.io"
 
-# Operations the app does not expose as generated entries: /v1/time is the auth
-# test, /v1/batch has no place in a Zap step, saved searches are hand-written
-# in src/, and the POST variant of AI Mode duplicates the GET.
+# Operations with hand-written steps instead of generated ones: /v1/time
+# (Check API Key, also the auth test), /v1/batch (Run Batch Requests) and the
+# saved-search endpoints. The POST variant of AI Mode takes the same fields as
+# the GET; the generated AI Mode action sends a POST when the prompt is long.
 SKIP = {("get", "/v1/time"), ("post", "/v1/batch"), ("post", "/v1/web/ai-mode")}
 SKIP_PREFIXES = ("/v1/saved-searches",)
 
@@ -345,9 +345,16 @@ def pricing(description):
     return line
 
 
+_SUSPENDED_RE = re.compile(r"^Temporarily unavailable:.*?The rest of this reference describes the endpoint as it behaves when available\.\s*", re.S)
+
+
 def action_description(op, label):
-    head = strip_markdown(op["description"].split("\n\n")[0])
+    head = op["description"].split("\n\n")[0]
+    suspended = bool(_SUSPENDED_RE.match(head))
+    head = strip_markdown(_SUSPENDED_RE.sub("", head))
     head = third_person(head)
+    if suspended:
+        head = head.rstrip(".") + ". Currently offline on the API side while the endpoint is upgraded (every request returns 503 endpoint_suspended)."
     if not head.endswith("."):
         head += "."
     price = pricing(op["description"])
@@ -552,8 +559,8 @@ def build_entry(spec, method, path, op, tag):
 
     if kind == "list":
         tlabel, tdesc = TRIGGERS[path]
-        price = pricing(op["description"])
-        tdesc = f"{tdesc} Each check runs {label}" + (f" ({price})." if price else ".")
+        price = re.search(r"\*\*Price:\*\*\s*(.+?)\.(?:\s|$)", op["description"])
+        tdesc = f"{tdesc} Each check runs {label}" + (f" ({strip_markdown(price.group(1))})." if price else ".")
         items = example[list_key]
         if not items or not isinstance(items[0], dict):
             sys.exit(f"{path}: the 200 example has no {list_key} item to sample")
@@ -587,9 +594,6 @@ def main():
                 continue
             if method != "get":
                 sys.exit(f"{method.upper()} {path}: only GET operations are generated; add it to SKIP or handle it by hand")
-            if op.get("description", "").startswith("Temporarily unavailable"):
-                print(f"skipping {path}: the spec marks it temporarily unavailable", file=sys.stderr)
-                continue
             tag = op["tags"][0]
             by_tag.setdefault(tag, []).append(build_entry(spec, method, path, op, tag))
 

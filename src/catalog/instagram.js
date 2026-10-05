@@ -365,7 +365,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Instagram Post Matching Search",
-      "description": "Triggers when a new Instagram post matches your search. Each check runs Search Instagram Posts ($0.006 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a new Instagram post matches your search. Each check runs Search Instagram Posts ($0.006 per page).",
       "inputFields": [
         {
           "key": "query",
@@ -718,7 +718,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Instagram User Matching Search",
-      "description": "Triggers when a new Instagram user matches your search. Each check runs Search Instagram Users ($0.006 per request after the free tier (50 requests/month)).",
+      "description": "Triggers when a new Instagram user matches your search. Each check runs Search Instagram Users ($0.006 per request).",
       "inputFields": [
         {
           "key": "query",
@@ -1303,7 +1303,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Instagram Post by User",
-      "description": "Triggers when an Instagram user publishes a new post. Each check runs Get Instagram User Posts ($0.006 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when an Instagram user publishes a new post. Each check runs Get Instagram User Posts ($0.006 per page).",
       "inputFields": [
         {
           "key": "url",
@@ -2020,7 +2020,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Instagram Follower",
-      "description": "Triggers when an Instagram user gains a new follower. Each check runs Get Instagram User Followers ($0.006 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when an Instagram user gains a new follower. Each check runs Get Instagram User Followers ($0.006 per page).",
       "inputFields": [
         {
           "key": "username",
@@ -2214,7 +2214,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Instagram Account Followed",
-      "description": "Triggers when an Instagram user follows a new account. Each check runs Get Instagram User Following ($0.006 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when an Instagram user follows a new account. Each check runs Get Instagram User Following ($0.006 per page).",
       "inputFields": [
         {
           "key": "username",
@@ -2520,7 +2520,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Instagram Story",
-      "description": "Triggers when an Instagram user posts a new story. Each check runs Get Instagram User Stories ($0.006 per request after the free tier (50 requests/month)).",
+      "description": "Triggers when an Instagram user posts a new story. Each check runs Get Instagram User Stories ($0.006 per request).",
       "inputFields": [
         {
           "key": "username",
@@ -2837,7 +2837,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Instagram Highlight",
-      "description": "Triggers when an Instagram user adds a new highlight. Each check runs Get Instagram User Highlights ($0.006 per request after the free tier (50 requests/month)).",
+      "description": "Triggers when an Instagram user adds a new highlight. Each check runs Get Instagram User Highlights ($0.006 per request).",
       "inputFields": [
         {
           "key": "username",
@@ -3201,7 +3201,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Instagram Highlight Story",
-      "description": "Triggers when a new story is added to an Instagram highlight. Each check runs Get Instagram Highlight Stories ($0.006 per request after the free tier (50 requests/month)).",
+      "description": "Triggers when a new story is added to an Instagram highlight. Each check runs Get Instagram Highlight Stories ($0.006 per request).",
       "inputFields": [
         {
           "key": "highlight_id",
@@ -3588,7 +3588,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Instagram Post Comment",
-      "description": "Triggers when an Instagram post gets a new comment. Each check runs Get Instagram Post Comments ($0.006 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when an Instagram post gets a new comment. Each check runs Get Instagram Post Comments ($0.006 per page).",
       "inputFields": [
         {
           "key": "url",
@@ -3966,7 +3966,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Instagram Comment Reply",
-      "description": "Triggers when an Instagram comment gets a new reply. Each check runs Get Instagram Comment Replies ($0.006 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when an Instagram comment gets a new reply. Each check runs Get Instagram Comment Replies ($0.006 per page).",
       "inputFields": [
         {
           "key": "comment_id",
@@ -4234,7 +4234,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Instagram Post Like",
-      "description": "Triggers when an Instagram post gets a new like. Each check runs Get Instagram Post Likes ($0.006 per request after the free tier (50 requests/month)).",
+      "description": "Triggers when an Instagram post gets a new like. Each check runs Get Instagram Post Likes ($0.006 per request).",
       "inputFields": [
         {
           "key": "url",
@@ -4598,7 +4598,7 @@ module.exports = [
     ],
     "trigger": {
       "label": "New Instagram Hashtag Post",
-      "description": "Triggers when a new Instagram post uses a hashtag. Each check runs Get Instagram Hashtag Posts ($0.006 per page after the free tier (50 requests/month)).",
+      "description": "Triggers when a new Instagram post uses a hashtag. Each check runs Get Instagram Hashtag Posts ($0.006 per page).",
       "inputFields": [
         {
           "key": "hashtag",
