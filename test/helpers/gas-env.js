@@ -51,6 +51,7 @@ class FakeSheet {
     this.maxRows = 1000;
     this.maxCols = 26;
     this.notes = new Map();
+    this.formats = new Map();
     this.frozenRows = 0;
     this.lastRowUsed = 0;
     this.lastColUsed = 0;
@@ -134,6 +135,8 @@ class FakeRange {
     return this;
   }
   setNote(note) { this.sheet.notes.set(`${this.row},${this.col}`, note); return this; }
+  setNumberFormat(format) { this.sheet.formats.set(`${this.row},${this.col}`, format); return this; }
+  getNumberFormat() { return this.sheet.formats.get(`${this.row},${this.col}`) || '0.###############'; }
   getNote() { return this.sheet.notes.get(`${this.row},${this.col}`) || ''; }
 }
 

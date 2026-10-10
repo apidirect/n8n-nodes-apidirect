@@ -32,14 +32,14 @@ test('every endpoint is well formed', () => {
       assert.ok(p.name && p.label, e.key + ' param label');
       assert.ok(['string', 'integer', 'number', 'boolean'].includes(p.type), e.key + '.' + p.name + ' type ' + p.type);
     }
-    if (e.saveable) assert.equal(e.kind, 'list', e.key + ' saveable endpoints return lists');
+    if (e.kind === 'list') assert.ok(e.idFields.length, e.key + ' list endpoints name their identifying fields');
+    else assert.deepEqual(e.idFields, [], e.key + ' only list endpoints have identifying fields');
     assert.ok(!e.label.includes(CATALOG.platforms.find((p) => p.id === e.platform).label.split('/')[0]) || e.platform === 'google', e.key + ' label repeats platform: ' + e.label);
   }
 });
 
 test('internal endpoints are not exposed', () => {
   for (const e of CATALOG.endpoints) {
-    assert.ok(!e.path.startsWith('/v1/saved-searches'), e.path);
     assert.ok(!e.path.startsWith('/v1/batch'), e.path);
     assert.notEqual(e.path, '/v1/time');
   }

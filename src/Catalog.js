@@ -251,7 +251,10 @@ var CATALOG = {
         "badge",
         "coupon_text"
       ],
-      "saveable": true,
+      "idFields": [
+        "asin",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/amazon-products"
     },
     {
@@ -360,7 +363,7 @@ var CATALOG = {
         "rating_distribution.5",
         "top_reviews"
       ],
-      "saveable": false,
+      "idFields": [],
       "docs": "https://apidirect.io/docs/amazon-product-details"
     },
     {
@@ -437,7 +440,7 @@ var CATALOG = {
         "review_summary.lifetime",
         "country"
       ],
-      "saveable": false,
+      "idFields": [],
       "docs": "https://apidirect.io/docs/amazon-seller-profile"
     },
     {
@@ -539,7 +542,13 @@ var CATALOG = {
         "review_date",
         "has_response"
       ],
-      "saveable": true,
+      "idFields": [
+        [
+          "author_name",
+          "review_date",
+          "review_text"
+        ]
+      ],
       "docs": "https://apidirect.io/docs/amazon-seller-reviews"
     },
     {
@@ -649,7 +658,10 @@ var CATALOG = {
         "badge",
         "coupon_text"
       ],
-      "saveable": true,
+      "idFields": [
+        "asin",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/amazon-seller-products"
     },
     {
@@ -744,7 +756,10 @@ var CATALOG = {
         "url",
         "photo"
       ],
-      "saveable": true,
+      "idFields": [
+        "asin",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/amazon-best-sellers"
     },
     {
@@ -847,7 +862,10 @@ var CATALOG = {
         "carousel_media",
         "post_id"
       ],
-      "saveable": true,
+      "idFields": [
+        "post_id",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/bluesky-posts"
     },
     {
@@ -892,7 +910,11 @@ var CATALOG = {
         "date_joined",
         "url"
       ],
-      "saveable": true,
+      "idFields": [
+        "user_id",
+        "username",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/bluesky-users"
     },
     {
@@ -944,7 +966,7 @@ var CATALOG = {
         "pinned_post_id",
         "url"
       ],
-      "saveable": false,
+      "idFields": [],
       "docs": "https://apidirect.io/docs/bluesky-user"
     },
     {
@@ -1028,7 +1050,10 @@ var CATALOG = {
         "reposted_by",
         "is_pinned"
       ],
-      "saveable": true,
+      "idFields": [
+        "post_id",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/bluesky-user-posts"
     },
     {
@@ -1080,7 +1105,11 @@ var CATALOG = {
         "date_joined",
         "url"
       ],
-      "saveable": true,
+      "idFields": [
+        "user_id",
+        "username",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/bluesky-user-followers"
     },
     {
@@ -1132,7 +1161,11 @@ var CATALOG = {
         "date_joined",
         "url"
       ],
-      "saveable": true,
+      "idFields": [
+        "user_id",
+        "username",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/bluesky-user-following"
     },
     {
@@ -1222,7 +1255,10 @@ var CATALOG = {
         "post_id",
         "liked_at"
       ],
-      "saveable": true,
+      "idFields": [
+        "post_id",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/bluesky-user-likes"
     },
     {
@@ -1293,7 +1329,7 @@ var CATALOG = {
         "carousel_media",
         "post_id"
       ],
-      "saveable": false,
+      "idFields": [],
       "docs": "https://apidirect.io/docs/bluesky-post"
     },
     {
@@ -1364,7 +1400,10 @@ var CATALOG = {
         "carousel_media",
         "post_id"
       ],
-      "saveable": true,
+      "idFields": [
+        "post_id",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/bluesky-post-comments"
     },
     {
@@ -1417,7 +1456,11 @@ var CATALOG = {
         "url",
         "liked_at"
       ],
-      "saveable": true,
+      "idFields": [
+        "user_id",
+        "username",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/bluesky-post-likes"
     },
     {
@@ -1506,7 +1549,10 @@ var CATALOG = {
         "carousel_media",
         "post_id"
       ],
-      "saveable": true,
+      "idFields": [
+        "post_id",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/bluesky-post-quotes"
     },
     {
@@ -1558,7 +1604,11 @@ var CATALOG = {
         "date_joined",
         "url"
       ],
-      "saveable": true,
+      "idFields": [
+        "user_id",
+        "username",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/bluesky-post-reposts"
     },
     {
@@ -1658,7 +1708,10 @@ var CATALOG = {
         "url",
         "video"
       ],
-      "saveable": true,
+      "idFields": [
+        "post_id",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/facebook-search-posts"
     },
     {
@@ -1688,7 +1741,9 @@ var CATALOG = {
         "label",
         "timezone"
       ],
-      "saveable": true,
+      "idFields": [
+        "id"
+      ],
       "docs": "https://apidirect.io/docs/facebook-search-locations"
     },
     {
@@ -1731,7 +1786,11 @@ var CATALOG = {
         "profile_url",
         "url"
       ],
-      "saveable": true,
+      "idFields": [
+        "facebook_id",
+        "profile_url",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/facebook-search-pages"
     },
     {
@@ -1811,7 +1870,10 @@ var CATALOG = {
         "video_id",
         "video_url"
       ],
-      "saveable": true,
+      "idFields": [
+        "video_id",
+        "video_url"
+      ],
       "docs": "https://apidirect.io/docs/facebook-search-videos"
     },
     {
@@ -1872,7 +1934,10 @@ var CATALOG = {
         "title",
         "url"
       ],
-      "saveable": true,
+      "idFields": [
+        "event_id",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/facebook-search-events"
     },
     {
@@ -1919,7 +1984,7 @@ var CATALOG = {
         "verified",
         "website"
       ],
-      "saveable": false,
+      "idFields": [],
       "docs": "https://apidirect.io/docs/facebook-page-details"
     },
     {
@@ -2000,7 +2065,10 @@ var CATALOG = {
         "url",
         "video"
       ],
-      "saveable": true,
+      "idFields": [
+        "post_id",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/facebook-page-posts"
     },
     {
@@ -2039,7 +2107,10 @@ var CATALOG = {
         "image_url",
         "photo_id"
       ],
-      "saveable": true,
+      "idFields": [
+        "photo_id",
+        "image_url"
+      ],
       "docs": "https://apidirect.io/docs/facebook-page-photos"
     },
     {
@@ -2091,7 +2162,10 @@ var CATALOG = {
         "url",
         "video_id"
       ],
-      "saveable": true,
+      "idFields": [
+        "video_id",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/facebook-page-videos"
     },
     {
@@ -2150,7 +2224,11 @@ var CATALOG = {
         "url",
         "video_id"
       ],
-      "saveable": true,
+      "idFields": [
+        "video_id",
+        "post_id",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/facebook-page-reels"
     },
     {
@@ -2200,7 +2278,12 @@ var CATALOG = {
         "recommend",
         "review_text"
       ],
-      "saveable": true,
+      "idFields": [
+        [
+          "author_url",
+          "review_text"
+        ]
+      ],
       "docs": "https://apidirect.io/docs/facebook-page-reviews"
     },
     {
@@ -2235,7 +2318,7 @@ var CATALOG = {
         "privacy",
         "url"
       ],
-      "saveable": false,
+      "idFields": [],
       "docs": "https://apidirect.io/docs/facebook-group-details"
     },
     {
@@ -2313,7 +2396,10 @@ var CATALOG = {
         "url",
         "video"
       ],
-      "saveable": true,
+      "idFields": [
+        "post_id",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/facebook-group-posts"
     },
     {
@@ -2401,7 +2487,10 @@ var CATALOG = {
         "url",
         "video"
       ],
-      "saveable": true,
+      "idFields": [
+        "post_id",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/facebook-group-search"
     },
     {
@@ -2464,7 +2553,9 @@ var CATALOG = {
         "image",
         "video"
       ],
-      "saveable": true,
+      "idFields": [
+        "comment_id"
+      ],
       "docs": "https://apidirect.io/docs/facebook-post-comments"
     },
     {
@@ -2539,7 +2630,9 @@ var CATALOG = {
         "title",
         "url"
       ],
-      "saveable": true,
+      "idFields": [
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/forum-posts"
     },
     {
@@ -2668,7 +2761,9 @@ var CATALOG = {
         "owner_link",
         "cid"
       ],
-      "saveable": true,
+      "idFields": [
+        "place_id"
+      ],
       "docs": "https://apidirect.io/docs/places-search"
     },
     {
@@ -2769,7 +2864,7 @@ var CATALOG = {
         "emails_and_contacts.yelp",
         "emails_and_contacts.github"
       ],
-      "saveable": false,
+      "idFields": [],
       "docs": "https://apidirect.io/docs/places-details"
     },
     {
@@ -2884,7 +2979,10 @@ var CATALOG = {
         "author_local_guide_level",
         "owner_response"
       ],
-      "saveable": true,
+      "idFields": [
+        "review_id",
+        "review_link"
+      ],
       "docs": "https://apidirect.io/docs/places-reviews"
     },
     {
@@ -2946,7 +3044,10 @@ var CATALOG = {
         "photo_datetime_utc",
         "photo_timestamp"
       ],
-      "saveable": true,
+      "idFields": [
+        "photo_id",
+        "photo_url"
+      ],
       "docs": "https://apidirect.io/docs/places-photos"
     },
     {
@@ -3050,7 +3151,9 @@ var CATALOG = {
         "domain",
         "displayed_link"
       ],
-      "saveable": true,
+      "idFields": [
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/web-search"
     },
     {
@@ -3099,7 +3202,7 @@ var CATALOG = {
         }
       ],
       "fields": [],
-      "saveable": false,
+      "idFields": [],
       "docs": "https://apidirect.io/docs/google-ai-mode"
     },
     {
@@ -3181,7 +3284,10 @@ var CATALOG = {
         "audio.audio_id",
         "audio.duration_ms"
       ],
-      "saveable": true,
+      "idFields": [
+        "media_id",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/instagram-posts"
     },
     {
@@ -3216,7 +3322,11 @@ var CATALOG = {
         "user_id",
         "username"
       ],
-      "saveable": true,
+      "idFields": [
+        "user_id",
+        "username",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/instagram-users"
     },
     {
@@ -3275,7 +3385,7 @@ var CATALOG = {
         "is_ai_generated_profile",
         "url"
       ],
-      "saveable": false,
+      "idFields": [],
       "docs": "https://apidirect.io/docs/instagram-user"
     },
     {
@@ -3364,7 +3474,10 @@ var CATALOG = {
         "audio",
         "is_pinned"
       ],
-      "saveable": true,
+      "idFields": [
+        "media_id",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/instagram-user-posts"
     },
     {
@@ -3447,7 +3560,7 @@ var CATALOG = {
         "is_pinned",
         "accessibility_caption"
       ],
-      "saveable": false,
+      "idFields": [],
       "docs": "https://apidirect.io/docs/instagram-post"
     },
     {
@@ -3505,7 +3618,11 @@ var CATALOG = {
         "profile_pic_url",
         "url"
       ],
-      "saveable": true,
+      "idFields": [
+        "user_id",
+        "username",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/instagram-user-followers"
     },
     {
@@ -3563,7 +3680,11 @@ var CATALOG = {
         "profile_pic_url",
         "url"
       ],
-      "saveable": true,
+      "idFields": [
+        "user_id",
+        "username",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/instagram-user-following"
     },
     {
@@ -3627,7 +3748,10 @@ var CATALOG = {
         "ai_label.label",
         "ai_label.detection_method"
       ],
-      "saveable": true,
+      "idFields": [
+        "media_id",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/instagram-user-stories"
     },
     {
@@ -3673,7 +3797,10 @@ var CATALOG = {
         "author",
         "author_id"
       ],
-      "saveable": true,
+      "idFields": [
+        "highlight_id",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/instagram-user-highlights"
     },
     {
@@ -3730,7 +3857,10 @@ var CATALOG = {
         "ai_label.label",
         "ai_label.detection_method"
       ],
-      "saveable": true,
+      "idFields": [
+        "media_id",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/instagram-highlight-stories"
     },
     {
@@ -3814,7 +3944,9 @@ var CATALOG = {
         "domain",
         "gif_url"
       ],
-      "saveable": true,
+      "idFields": [
+        "comment_id"
+      ],
       "docs": "https://apidirect.io/docs/instagram-post-comments"
     },
     {
@@ -3895,7 +4027,9 @@ var CATALOG = {
         "parent_comment_id",
         "replied_to_comment_id"
       ],
-      "saveable": true,
+      "idFields": [
+        "comment_id"
+      ],
       "docs": "https://apidirect.io/docs/instagram-comment-replies"
     },
     {
@@ -3936,7 +4070,11 @@ var CATALOG = {
         "profile_pic_url",
         "url"
       ],
-      "saveable": true,
+      "idFields": [
+        "user_id",
+        "username",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/instagram-post-likes"
     },
     {
@@ -4031,7 +4169,10 @@ var CATALOG = {
         "audio.audio_id",
         "audio.duration_ms"
       ],
-      "saveable": true,
+      "idFields": [
+        "media_id",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/instagram-hashtag-posts"
     },
     {
@@ -4174,7 +4315,10 @@ var CATALOG = {
         "video.duration",
         "video.thumbnail"
       ],
-      "saveable": true,
+      "idFields": [
+        "urn",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/linkedin-posts"
     },
     {
@@ -4229,7 +4373,7 @@ var CATALOG = {
         "urn",
         "volunteering"
       ],
-      "saveable": false,
+      "idFields": [],
       "docs": "https://apidirect.io/docs/linkedin-person"
     },
     {
@@ -4295,7 +4439,10 @@ var CATALOG = {
         "video.duration",
         "video.thumbnail"
       ],
-      "saveable": true,
+      "idFields": [
+        "urn",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/linkedin-person-posts"
     },
     {
@@ -4348,7 +4495,7 @@ var CATALOG = {
         "url",
         "urn"
       ],
-      "saveable": false,
+      "idFields": [],
       "docs": "https://apidirect.io/docs/linkedin-post"
     },
     {
@@ -4392,7 +4539,10 @@ var CATALOG = {
         "subtitle",
         "url"
       ],
-      "saveable": true,
+      "idFields": [
+        "company_id",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/linkedin-companies"
     },
     {
@@ -4447,7 +4597,7 @@ var CATALOG = {
         "url",
         "website"
       ],
-      "saveable": false,
+      "idFields": [],
       "docs": "https://apidirect.io/docs/linkedin-company"
     },
     {
@@ -4516,7 +4666,10 @@ var CATALOG = {
         "video.duration",
         "video.thumbnail"
       ],
-      "saveable": true,
+      "idFields": [
+        "urn",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/linkedin-company-posts"
     },
     {
@@ -4617,7 +4770,9 @@ var CATALOG = {
         "apply_url",
         "applicants"
       ],
-      "saveable": true,
+      "idFields": [
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/linkedin-jobs"
     },
     {
@@ -4662,7 +4817,7 @@ var CATALOG = {
         "apply_url",
         "applicants"
       ],
-      "saveable": false,
+      "idFields": [],
       "docs": "https://apidirect.io/docs/linkedin-job"
     },
     {
@@ -4748,7 +4903,9 @@ var CATALOG = {
         "title",
         "url"
       ],
-      "saveable": true,
+      "idFields": [
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/news-articles"
     },
     {
@@ -4833,7 +4990,9 @@ var CATALOG = {
         "crossposts",
         "url"
       ],
-      "saveable": true,
+      "idFields": [
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/reddit-posts"
     },
     {
@@ -4903,7 +5062,9 @@ var CATALOG = {
         "post_comments",
         "url"
       ],
-      "saveable": true,
+      "idFields": [
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/reddit-comments"
     },
     {
@@ -4942,7 +5103,11 @@ var CATALOG = {
         "user_id",
         "username"
       ],
-      "saveable": true,
+      "idFields": [
+        "user_id",
+        "username",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/reddit-users"
     },
     {
@@ -5002,7 +5167,10 @@ var CATALOG = {
         "post_id",
         "code"
       ],
-      "saveable": true,
+      "idFields": [
+        "post_id",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/threads-posts"
     },
     {
@@ -5036,7 +5204,11 @@ var CATALOG = {
         "profile_pic_url",
         "url"
       ],
-      "saveable": true,
+      "idFields": [
+        "user_id",
+        "username",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/threads-users"
     },
     {
@@ -5075,7 +5247,7 @@ var CATALOG = {
         "profile_tags",
         "url"
       ],
-      "saveable": false,
+      "idFields": [],
       "docs": "https://apidirect.io/docs/threads-user"
     },
     {
@@ -5136,7 +5308,10 @@ var CATALOG = {
         "post_id",
         "code"
       ],
-      "saveable": true,
+      "idFields": [
+        "post_id",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/threads-user-posts"
     },
     {
@@ -5236,7 +5411,9 @@ var CATALOG = {
         "title",
         "url"
       ],
-      "saveable": true,
+      "idFields": [
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/tiktok-videos"
     },
     {
@@ -5285,7 +5462,11 @@ var CATALOG = {
         "verified",
         "video_count"
       ],
-      "saveable": true,
+      "idFields": [
+        "user_id",
+        "username",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/tiktok-users"
     },
     {
@@ -5348,7 +5529,7 @@ var CATALOG = {
         "youtube_channel_title",
         "url"
       ],
-      "saveable": false,
+      "idFields": [],
       "docs": "https://apidirect.io/docs/tiktok-user"
     },
     {
@@ -5419,7 +5600,7 @@ var CATALOG = {
         "music_duration",
         "mentioned_user_ids"
       ],
-      "saveable": false,
+      "idFields": [],
       "docs": "https://apidirect.io/docs/tiktok-video"
     },
     {
@@ -5545,7 +5726,10 @@ var CATALOG = {
         "author_link",
         "owner_response"
       ],
-      "saveable": true,
+      "idFields": [
+        "review_id",
+        "review_link"
+      ],
       "docs": "https://apidirect.io/docs/trustpilot-company-reviews"
     },
     {
@@ -5623,7 +5807,11 @@ var CATALOG = {
         "zipcode",
         "is_recommended"
       ],
-      "saveable": true,
+      "idFields": [
+        "business_unit_id",
+        "domain",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/trustpilot-companies"
     },
     {
@@ -5715,7 +5903,11 @@ var CATALOG = {
         "zipcode",
         "is_recommended"
       ],
-      "saveable": true,
+      "idFields": [
+        "business_unit_id",
+        "domain",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/trustpilot-category-companies"
     },
     {
@@ -5757,7 +5949,11 @@ var CATALOG = {
         "zipcode",
         "is_recommended"
       ],
-      "saveable": true,
+      "idFields": [
+        "business_unit_id",
+        "domain",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/trustpilot-category-newest"
     },
     {
@@ -5790,7 +5986,7 @@ var CATALOG = {
         "url",
         "subcategories"
       ],
-      "saveable": false,
+      "idFields": [],
       "docs": "https://apidirect.io/docs/trustpilot-category"
     },
     {
@@ -5819,7 +6015,9 @@ var CATALOG = {
         "category_id",
         "name"
       ],
-      "saveable": true,
+      "idFields": [
+        "category_id"
+      ],
       "docs": "https://apidirect.io/docs/trustpilot-categories"
     },
     {
@@ -5876,7 +6074,10 @@ var CATALOG = {
         "owner_response.datetime_utc",
         "owner_response.timestamp"
       ],
-      "saveable": true,
+      "idFields": [
+        "review_id",
+        "review_link"
+      ],
       "docs": "https://apidirect.io/docs/trustpilot-user"
     },
     {
@@ -5942,7 +6143,10 @@ var CATALOG = {
         "is_reply",
         "in_reply_to_id"
       ],
-      "saveable": true,
+      "idFields": [
+        "post_id",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/truthsocial-user-posts"
     },
     {
@@ -6047,7 +6251,9 @@ var CATALOG = {
         "user_mentions",
         "views"
       ],
-      "saveable": true,
+      "idFields": [
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/twitter-posts"
     },
     {
@@ -6095,7 +6301,11 @@ var CATALOG = {
         "username",
         "verified"
       ],
-      "saveable": true,
+      "idFields": [
+        "user_id",
+        "username",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/twitter-users"
     },
     {
@@ -6141,7 +6351,7 @@ var CATALOG = {
         "username_changes",
         "verified"
       ],
-      "saveable": false,
+      "idFields": [],
       "docs": "https://apidirect.io/docs/twitter-user"
     },
     {
@@ -6206,7 +6416,9 @@ var CATALOG = {
         "user_mentions",
         "views"
       ],
-      "saveable": true,
+      "idFields": [
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/twitter-user-tweets"
     },
     {
@@ -6254,7 +6466,11 @@ var CATALOG = {
         "username",
         "verified"
       ],
-      "saveable": true,
+      "idFields": [
+        "user_id",
+        "username",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/twitter-user-followers"
     },
     {
@@ -6302,7 +6518,11 @@ var CATALOG = {
         "username",
         "verified"
       ],
-      "saveable": true,
+      "idFields": [
+        "user_id",
+        "username",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/twitter-user-following"
     },
     {
@@ -6350,7 +6570,11 @@ var CATALOG = {
         "username",
         "verified"
       ],
-      "saveable": true,
+      "idFields": [
+        "user_id",
+        "username",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/twitter-user-verified-followers"
     },
     {
@@ -6415,7 +6639,9 @@ var CATALOG = {
         "user_mentions",
         "views"
       ],
-      "saveable": true,
+      "idFields": [
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/twitter-user-replies"
     },
     {
@@ -6470,7 +6696,7 @@ var CATALOG = {
         "user_mentions",
         "views"
       ],
-      "saveable": false,
+      "idFields": [],
       "docs": "https://apidirect.io/docs/twitter-tweet"
     },
     {
@@ -6506,7 +6732,11 @@ var CATALOG = {
         }
       ],
       "fields": [],
-      "saveable": true,
+      "idFields": [
+        "user_id",
+        "username",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/twitter-tweet-retweets"
     },
     {
@@ -6550,7 +6780,9 @@ var CATALOG = {
         }
       ],
       "fields": [],
-      "saveable": true,
+      "idFields": [
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/twitter-tweet-quotes"
     },
     {
@@ -6615,7 +6847,9 @@ var CATALOG = {
         "user_mentions",
         "views"
       ],
-      "saveable": true,
+      "idFields": [
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/twitter-tweet-comments"
     },
     {
@@ -6647,7 +6881,10 @@ var CATALOG = {
         "tweet_volume",
         "url"
       ],
-      "saveable": true,
+      "idFields": [
+        "name",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/twitter-trends"
     },
     {
@@ -6721,7 +6958,10 @@ var CATALOG = {
         "video_length",
         "views"
       ],
-      "saveable": true,
+      "idFields": [
+        "video_id",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/youtube-videos"
     },
     {
@@ -6764,7 +7004,10 @@ var CATALOG = {
         "title",
         "url"
       ],
-      "saveable": true,
+      "idFields": [
+        "channel_id",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/youtube-channels"
     },
     {
@@ -6819,7 +7062,7 @@ var CATALOG = {
         "banner",
         "url"
       ],
-      "saveable": false,
+      "idFields": [],
       "docs": "https://apidirect.io/docs/youtube-channel-details"
     },
     {
@@ -6860,7 +7103,7 @@ var CATALOG = {
         "keywords",
         "thumbnail"
       ],
-      "saveable": false,
+      "idFields": [],
       "docs": "https://apidirect.io/docs/youtube-video-details"
     },
     {
@@ -6925,7 +7168,10 @@ var CATALOG = {
         "domain",
         "replies"
       ],
-      "saveable": true,
+      "idFields": [
+        "comment_id",
+        "url"
+      ],
       "docs": "https://apidirect.io/docs/youtube-comments"
     }
   ],

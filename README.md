@@ -80,10 +80,10 @@ Custom functions run with the spreadsheet owner's stored key, as Google document
 
 Click **Schedule…** under any request in the sidebar to keep a sheet up to date automatically:
 
-- **Append only new results** uses an API Direct [saved search](https://apidirect.io/docs/saved-searches): the API remembers which results it already returned, so each run appends only what is new, with a `fetched_at` column. Ideal for monitoring mentions, reviews, jobs or new followers.
+- **Append only new results** re-runs the request and appends only the rows the sheet does not hold yet, each stamped with a `fetched_at` column. Results are matched on their identifying fields (the API's post, user or review ids, or the URL), which the add-on always keeps as columns, so the sheet itself is the memory and nothing is stored anywhere else. Ideal for monitoring mentions, reviews, jobs or new followers.
 - **Replace the whole table** re-runs the request and overwrites the sheet, for leaderboards, profiles or anything you want fresh rather than accumulated.
 
-Pick every hour, 6 hours, 12 hours, day or week. Google allows add-on time-driven triggers to run at most hourly. A schedule runs in the name of the person who created it, with their key, and shows its last run, row counts and any error under the **Schedules** tab, where you can also run it now or delete it. Each run is billed like a normal request; the saved search itself is free.
+Pick every hour, 6 hours, 12 hours, day or week. Google allows add-on time-driven triggers to run at most hourly. A schedule runs in the name of the person who created it, with their key, and shows its last run, row counts and any error under the **Schedules** tab, where you can also run it now or delete it. Each run is billed like a normal request.
 
 ## Endpoints
 
@@ -127,7 +127,7 @@ The add-on sends your request parameters and your API key to API Direct and noth
 - **Concurrency**: API Direct allows 10 concurrent requests per endpoint per account. Filling a column with 50 formulas at once trips that limit; the add-on retries with backoff, but a sidebar pull or a schedule is the better tool for bulk work.
 - **Pagination**: `page` fetches one page; `pages` fetches and merges several server-side, billed per page. See [Pagination](https://apidirect.io/docs/pagination).
 - **Cell size**: values over 50,000 characters are truncated with `…`.
-- **Saved searches**: up to 100 per account, so up to 100 append-mode schedules.
+- **Append mode and edits**: new rows are recognised by their id or URL columns, so editing or deleting those columns in an append sheet lets the same result be added again. Other columns can be edited freely.
 
 ## Development
 

@@ -13,7 +13,7 @@ function getSidebarData() {
       endpoints: CATALOG.endpoints.map(function (e) {
         return {
           key: e.key, label: e.label, platform: e.platform, kind: e.kind, price: e.price,
-          freeTier: e.freeTier, description: e.description, docs: e.docs, saveable: e.saveable, suspended: e.suspended,
+          freeTier: e.freeTier, description: e.description, docs: e.docs, suspended: e.suspended,
           params: e.params, fields: e.fields,
         };
       }),
@@ -132,6 +132,12 @@ function writeTable(sheet, row, column, table, options) {
   if (needRows > 0) sheet.insertRowsAfter(sheet.getMaxRows(), needRows);
   var needCols = column + numCols - 1 - sheet.getMaxColumns();
   if (needCols > 0) sheet.insertColumnsAfter(sheet.getMaxColumns(), needCols);
+  // Long digit strings (tweet, user and media ids) must stay text: as numbers
+  // Sheets would round them past 15 digits and the ids would no longer match.
+  for (var c = 0; c < numCols; c++) {
+    var idLike = square.some(function (r) { return typeof r[c] === 'string' && /^\d{12,}$/.test(r[c]); });
+    if (idLike) sheet.getRange(row, column + c, numRows, 1).setNumberFormat('@');
+  }
   var range = sheet.getRange(row, column, numRows, numCols);
   range.setValues(square);
   return {

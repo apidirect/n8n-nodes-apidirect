@@ -39,7 +39,7 @@ The OAuth consent screen (Google Cloud → APIs & Services → OAuth consent scr
 > Pick a platform and endpoint, fill in the parameters, choose columns and a destination, and write the results as plain values. No formulas to recalculate, no API knowledge needed.
 >
 > SCHEDULED REFRESHES
-> Keep a sheet updated every hour, day or week. Append mode uses API Direct saved searches, so each run adds only the results you have not seen before: new mentions, reviews, job posts, followers or news. Replace mode rewrites a table from scratch.
+> Keep a sheet updated every hour, day or week. Append mode adds only the results that are not in the sheet yet: new mentions, reviews, job posts, followers or news. Replace mode rewrites a table from scratch.
 >
 > PRICING
 > The add-on is free. API Direct is pay as you go with no subscription: requests cost $0.002 to $0.01, every endpoint has a free monthly tier, and new accounts get $5 of credit. Create a key at apidirect.io/dashboard/keys and paste it under Extensions → API Direct → Set API key. The key is stored in your own Google account settings, never in the spreadsheet.

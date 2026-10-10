@@ -110,13 +110,13 @@ test('sendRequest retries concurrency limits and 5xx with backoff, then gives up
 });
 
 test('callPath sends JSON bodies and query strings', () => {
-  const env = createEnv({ fetchHandler: () => ({ code: 200, body: { saved_search: { id: 'ss1' } } }) });
+  const env = createEnv({ fetchHandler: () => ({ code: 200, body: { reply_parts: [] } }) });
   const callPath = env.fn('callPath');
-  callPath('POST', '/v1/saved-searches', { endpoint: '/v1/twitter/posts', params: { query: 'x' } }, { apiKey: 'k' });
-  assert.equal(env.fetchLog[0].url, 'https://apidirect.io/v1/saved-searches');
+  callPath('POST', '/v1/web/ai-mode', { prompt: 'x', country: 'us' }, { apiKey: 'k' });
+  assert.equal(env.fetchLog[0].url, 'https://apidirect.io/v1/web/ai-mode');
   assert.equal(env.fetchLog[0].options.method, 'post');
   assert.equal(env.fetchLog[0].options.contentType, 'application/json');
-  assert.deepEqual(JSON.parse(env.fetchLog[0].options.payload), { endpoint: '/v1/twitter/posts', params: { query: 'x' } });
+  assert.deepEqual(JSON.parse(env.fetchLog[0].options.payload), { prompt: 'x', country: 'us' });
   callPath('GET', '/v1/time', { a: '1' }, { apiKey: 'k' });
   assert.equal(env.fetchLog[1].url, 'https://apidirect.io/v1/time?a=1');
   assert.equal(env.fetchLog[1].options.payload, undefined);

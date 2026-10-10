@@ -264,7 +264,7 @@ function callEndpoint(endpoint, params, options) {
   return sendRequest(buildRequest(endpoint, params), options);
 }
 
-/** Raw JSON call to any path, used for saved searches and the key check. */
+/** Raw JSON call to any path, used for the key check. */
 function callPath(method, path, body, options) {
   var request = { method: method.toLowerCase(), url: API_BASE_URL + path, payload: body || null };
   if (request.method === 'get' && body) {

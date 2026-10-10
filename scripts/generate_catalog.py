@@ -67,7 +67,7 @@ LABEL_OVERRIDES = {
 }
 
 # Endpoints the add-on does not expose in the sidebar or custom functions.
-INTERNAL_PREFIXES = ("/v1/batch", "/v1/saved-searches", "/v1/time")
+INTERNAL_PREFIXES = ("/v1/batch", "/v1/time")
 
 # The first platform alias (APIDIRECT_SEARCH("twitter", ...)) maps to this endpoint.
 PRIMARY_SEARCH = {
@@ -132,33 +132,89 @@ ALIASES = {
     "places search": "places/search",
 }
 
-# Endpoints a saved search can poll (mirrors the API's saved-search table).
-SAVEABLE = {
-    "/v1/amazon/best-sellers", "/v1/amazon/products", "/v1/amazon/seller/products",
-    "/v1/amazon/seller/reviews", "/v1/bluesky/post/comments", "/v1/bluesky/post/likes",
-    "/v1/bluesky/post/quotes", "/v1/bluesky/post/reposts", "/v1/bluesky/posts",
-    "/v1/bluesky/user/followers", "/v1/bluesky/user/following", "/v1/bluesky/user/likes",
-    "/v1/bluesky/user/posts", "/v1/bluesky/users", "/v1/facebook/events",
-    "/v1/facebook/group/posts", "/v1/facebook/group/search", "/v1/facebook/locations",
-    "/v1/facebook/page/photos", "/v1/facebook/page/posts", "/v1/facebook/page/reels",
-    "/v1/facebook/page/reviews", "/v1/facebook/page/videos", "/v1/facebook/pages",
-    "/v1/facebook/post/comments", "/v1/facebook/posts", "/v1/facebook/videos",
-    "/v1/forums/posts", "/v1/instagram/comment/replies", "/v1/instagram/hashtag/posts",
-    "/v1/instagram/highlight/stories", "/v1/instagram/post/comments", "/v1/instagram/post/likes",
-    "/v1/instagram/posts", "/v1/instagram/user/followers", "/v1/instagram/user/following",
-    "/v1/instagram/user/highlights", "/v1/instagram/user/posts", "/v1/instagram/user/stories",
-    "/v1/instagram/users", "/v1/linkedin/companies", "/v1/linkedin/company/posts",
-    "/v1/linkedin/jobs", "/v1/linkedin/person/posts", "/v1/linkedin/posts", "/v1/news/articles",
-    "/v1/places/photos", "/v1/places/reviews", "/v1/places/search", "/v1/reddit/comments",
-    "/v1/reddit/posts", "/v1/reddit/users", "/v1/threads/posts", "/v1/threads/user/posts",
-    "/v1/threads/users", "/v1/tiktok/users", "/v1/tiktok/videos", "/v1/trustpilot/categories",
-    "/v1/trustpilot/category/companies", "/v1/trustpilot/category/newest",
-    "/v1/trustpilot/companies", "/v1/trustpilot/company/reviews", "/v1/trustpilot/user",
-    "/v1/truthsocial/user/posts", "/v1/twitter/posts", "/v1/twitter/trends",
-    "/v1/twitter/tweet/comments", "/v1/twitter/tweet/quotes", "/v1/twitter/tweet/retweets",
-    "/v1/twitter/user/followers", "/v1/twitter/user/following", "/v1/twitter/user/replies",
-    "/v1/twitter/user/tweets", "/v1/twitter/user/verified-followers", "/v1/twitter/users",
-    "/v1/web/search", "/v1/youtube/channels", "/v1/youtube/comments", "/v1/youtube/posts",
+# Fields that identify one result on each list endpoint, in order of preference; a nested
+# list is a composite key. The scheduled refresh keeps these columns in the sheet so repeat
+# results can be recognised on the next run; a row with none of them is keyed by its content.
+ID_FIELDS = {
+    "/v1/amazon/products": ["asin", "url"],
+    "/v1/amazon/seller/reviews": [["author_name", "review_date", "review_text"]],
+    "/v1/amazon/seller/products": ["asin", "url"],
+    "/v1/amazon/best-sellers": ["asin", "url"],
+    "/v1/bluesky/posts": ["post_id", "url"],
+    "/v1/bluesky/users": ["user_id", "username", "url"],
+    "/v1/bluesky/user/posts": ["post_id", "url"],
+    "/v1/bluesky/user/followers": ["user_id", "username", "url"],
+    "/v1/bluesky/user/following": ["user_id", "username", "url"],
+    "/v1/bluesky/user/likes": ["post_id", "url"],
+    "/v1/bluesky/post/comments": ["post_id", "url"],
+    "/v1/bluesky/post/likes": ["user_id", "username", "url"],
+    "/v1/bluesky/post/quotes": ["post_id", "url"],
+    "/v1/bluesky/post/reposts": ["user_id", "username", "url"],
+    "/v1/facebook/posts": ["post_id", "url"],
+    "/v1/facebook/locations": ["id"],
+    "/v1/facebook/pages": ["facebook_id", "profile_url", "url"],
+    "/v1/facebook/videos": ["video_id", "video_url"],
+    "/v1/facebook/events": ["event_id", "url"],
+    "/v1/facebook/page/posts": ["post_id", "url"],
+    "/v1/facebook/page/photos": ["photo_id", "image_url"],
+    "/v1/facebook/page/videos": ["video_id", "url"],
+    "/v1/facebook/page/reels": ["video_id", "post_id", "url"],
+    "/v1/facebook/page/reviews": [["author_url", "review_text"]],
+    "/v1/facebook/group/posts": ["post_id", "url"],
+    "/v1/facebook/group/search": ["post_id", "url"],
+    "/v1/facebook/post/comments": ["comment_id"],
+    "/v1/forums/posts": ["url"],
+    "/v1/news/articles": ["url"],
+    "/v1/web/search": ["url"],
+    "/v1/places/search": ["place_id"],
+    "/v1/places/reviews": ["review_id", "review_link"],
+    "/v1/places/photos": ["photo_id", "photo_url"],
+    "/v1/instagram/posts": ["media_id", "url"],
+    "/v1/instagram/users": ["user_id", "username", "url"],
+    "/v1/instagram/user/posts": ["media_id", "url"],
+    "/v1/instagram/user/followers": ["user_id", "username", "url"],
+    "/v1/instagram/user/following": ["user_id", "username", "url"],
+    "/v1/instagram/user/stories": ["media_id", "url"],
+    "/v1/instagram/user/highlights": ["highlight_id", "url"],
+    "/v1/instagram/highlight/stories": ["media_id", "url"],
+    "/v1/instagram/post/comments": ["comment_id"],
+    "/v1/instagram/comment/replies": ["comment_id"],
+    "/v1/instagram/post/likes": ["user_id", "username", "url"],
+    "/v1/instagram/hashtag/posts": ["media_id", "url"],
+    "/v1/linkedin/posts": ["urn", "url"],
+    "/v1/linkedin/person/posts": ["urn", "url"],
+    "/v1/linkedin/company/posts": ["urn", "url"],
+    "/v1/linkedin/companies": ["company_id", "url"],
+    "/v1/linkedin/jobs": ["url"],
+    "/v1/reddit/posts": ["url"],
+    "/v1/reddit/comments": ["url"],
+    "/v1/reddit/users": ["user_id", "username", "url"],
+    "/v1/threads/posts": ["post_id", "url"],
+    "/v1/threads/users": ["user_id", "username", "url"],
+    "/v1/threads/user/posts": ["post_id", "url"],
+    "/v1/tiktok/videos": ["url"],
+    "/v1/tiktok/users": ["user_id", "username", "url"],
+    "/v1/trustpilot/company/reviews": ["review_id", "review_link"],
+    "/v1/trustpilot/companies": ["business_unit_id", "domain", "url"],
+    "/v1/trustpilot/category/companies": ["business_unit_id", "domain", "url"],
+    "/v1/trustpilot/category/newest": ["business_unit_id", "domain", "url"],
+    "/v1/trustpilot/categories": ["category_id"],
+    "/v1/trustpilot/user": ["review_id", "review_link"],
+    "/v1/truthsocial/user/posts": ["post_id", "url"],
+    "/v1/twitter/posts": ["url"],
+    "/v1/twitter/users": ["user_id", "username", "url"],
+    "/v1/twitter/user/tweets": ["url"],
+    "/v1/twitter/user/followers": ["user_id", "username", "url"],
+    "/v1/twitter/user/following": ["user_id", "username", "url"],
+    "/v1/twitter/user/verified-followers": ["user_id", "username", "url"],
+    "/v1/twitter/user/replies": ["url"],
+    "/v1/twitter/tweet/retweets": ["user_id", "username", "url"],
+    "/v1/twitter/tweet/quotes": ["url"],
+    "/v1/twitter/tweet/comments": ["url"],
+    "/v1/twitter/trends": ["name", "url"],
+    "/v1/youtube/posts": ["video_id", "url"],
+    "/v1/youtube/channels": ["channel_id", "url"],
+    "/v1/youtube/comments": ["comment_id", "url"],
 }
 
 # Detail endpoints whose response is the object itself (no wrapper key).
@@ -350,9 +406,15 @@ def build(spec):
             "listKey": list_key,
             "params": params,
             "fields": fields,
-            "saveable": path in SAVEABLE,
+            "idFields": ID_FIELDS.get(path, []) if kind == "list" else [],
             "docs": "https://apidirect.io/docs/" + doc_slug(key),
         })
+    missing_ids = [e["path"] for e in endpoints if e["kind"] == "list" and not e["idFields"]]
+    if missing_ids:
+        raise SystemExit("no ID_FIELDS entry for list endpoints: %s" % missing_ids)
+    unused_ids = sorted(set(ID_FIELDS) - {e["path"] for e in endpoints})
+    if unused_ids:
+        raise SystemExit("ID_FIELDS names endpoints that are not in the catalog: %s" % unused_ids)
     by_key = {e["key"]: e for e in endpoints}
     aliases = {}
     for pid, _label, _prefixes in PLATFORMS:
