@@ -9,6 +9,10 @@ module.exports = [
     "noun": "Video",
     "kind": "list",
     "listKey": "posts",
+    "idFields": [
+      "video_id",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/youtube-videos",
     "action": {
@@ -328,6 +332,10 @@ module.exports = [
     "noun": "Channel",
     "kind": "list",
     "listKey": "channels",
+    "idFields": [
+      "channel_id",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/youtube-channels",
     "action": {
@@ -491,6 +499,7 @@ module.exports = [
     "noun": "Channel",
     "kind": "detail",
     "listKey": null,
+    "idFields": null,
     "unwrapKey": "channel",
     "docs": "https://apidirect.io/docs/youtube-channel-details",
     "action": {
@@ -623,6 +632,7 @@ module.exports = [
     "noun": "Video",
     "kind": "detail",
     "listKey": null,
+    "idFields": null,
     "unwrapKey": "video",
     "docs": "https://apidirect.io/docs/youtube-video-details",
     "action": {
@@ -731,6 +741,10 @@ module.exports = [
     "noun": "Comment",
     "kind": "list",
     "listKey": "comments",
+    "idFields": [
+      "comment_id",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/youtube-comments",
     "action": {

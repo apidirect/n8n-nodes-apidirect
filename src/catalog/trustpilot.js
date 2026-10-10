@@ -9,6 +9,10 @@ module.exports = [
     "noun": "Review",
     "kind": "list",
     "listKey": "reviews",
+    "idFields": [
+      "review_id",
+      "review_link"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/trustpilot-company-reviews",
     "action": {
@@ -692,6 +696,11 @@ module.exports = [
     "noun": "Company",
     "kind": "list",
     "listKey": "companies",
+    "idFields": [
+      "business_unit_id",
+      "domain",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/trustpilot-companies",
     "action": {
@@ -1099,6 +1108,11 @@ module.exports = [
     "noun": "Company",
     "kind": "list",
     "listKey": "companies",
+    "idFields": [
+      "business_unit_id",
+      "domain",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/trustpilot-category-companies",
     "action": {
@@ -1577,6 +1591,11 @@ module.exports = [
     "noun": "Company",
     "kind": "list",
     "listKey": "companies",
+    "idFields": [
+      "business_unit_id",
+      "domain",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/trustpilot-category-newest",
     "action": {
@@ -1913,6 +1932,7 @@ module.exports = [
     "noun": "Category",
     "kind": "detail",
     "listKey": null,
+    "idFields": null,
     "unwrapKey": "category",
     "docs": "https://apidirect.io/docs/trustpilot-category",
     "action": {
@@ -1999,6 +2019,9 @@ module.exports = [
     "noun": "Category",
     "kind": "list",
     "listKey": "categories",
+    "idFields": [
+      "category_id"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/trustpilot-categories",
     "action": {
@@ -2095,6 +2118,10 @@ module.exports = [
     "noun": "Review",
     "kind": "list",
     "listKey": "reviews",
+    "idFields": [
+      "review_id",
+      "review_link"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/trustpilot-user",
     "action": {

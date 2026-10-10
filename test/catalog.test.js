@@ -3,6 +3,7 @@
 // Zapier's publishing checks, run locally on every generated entry.
 const App = require('../index');
 const catalog = require('../src/catalog');
+const { itemId } = require('../src/lib/build');
 
 const all = [
   ...Object.values(App.triggers).map((t) => ({ kind: 'trigger', ...t })),
@@ -93,8 +94,16 @@ describe('every step', () => {
       '/v1/batch', // Run Batch Requests
     ]);
     for (const path of Object.keys(spec.paths)) {
-      if (path.startsWith('/v1/saved-searches')) continue; // hand-written saved search steps
       expect({ path, covered: covered.has(path) }).toEqual({ path, covered: true });
+    }
+  });
+
+  it('gives every trigger sample the id a live poll would assign', () => {
+    for (const entry of catalog.filter((e) => e.trigger)) {
+      // The poll ids the raw item; the sample's own `id` key only exists as a raw field where the API sends one.
+      const { id, ...rest } = entry.trigger.sample;
+      const item = entry.idFields.includes('id') ? entry.trigger.sample : rest;
+      expect({ key: entry.key, id }).toEqual({ key: entry.key, id: itemId(entry.idFields, item) });
     }
   });
 

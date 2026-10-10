@@ -1,7 +1,7 @@
 {
   "name": "apidirect-zapier",
   "version": "1.0.0",
-  "description": "Zapier integration for API Direct: real-time public data from LinkedIn, X/Twitter, Reddit, YouTube, Instagram, TikTok, Facebook, Threads, Bluesky, Truth Social, Google, news sites, forums, Amazon and Trustpilot, plus polling triggers on saved searches.",
+  "description": "Zapier integration for API Direct: real-time public data from LinkedIn, X/Twitter, Reddit, YouTube, Instagram, TikTok, Facebook, Threads, Bluesky, Truth Social, Google, news sites, forums, Amazon and Trustpilot, with polling triggers for every list endpoint.",
   "main": "index.js",
   "private": true,
   "license": "MIT",

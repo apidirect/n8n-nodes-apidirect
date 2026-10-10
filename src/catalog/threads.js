@@ -9,6 +9,10 @@ module.exports = [
     "noun": "Post",
     "kind": "list",
     "listKey": "posts",
+    "idFields": [
+      "post_id",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/threads-posts",
     "action": {
@@ -356,6 +360,11 @@ module.exports = [
     "noun": "User",
     "kind": "list",
     "listKey": "users",
+    "idFields": [
+      "user_id",
+      "username",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/threads-users",
     "action": {
@@ -493,6 +502,7 @@ module.exports = [
     "noun": "User",
     "kind": "detail",
     "listKey": null,
+    "idFields": null,
     "unwrapKey": "user",
     "docs": "https://apidirect.io/docs/threads-user",
     "action": {
@@ -596,6 +606,10 @@ module.exports = [
     "noun": "Post",
     "kind": "list",
     "listKey": "posts",
+    "idFields": [
+      "post_id",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/threads-user-posts",
     "action": {

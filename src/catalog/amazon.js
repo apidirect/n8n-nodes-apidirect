@@ -9,6 +9,10 @@ module.exports = [
     "noun": "Product",
     "kind": "list",
     "listKey": "products",
+    "idFields": [
+      "asin",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/amazon-products",
     "action": {
@@ -625,6 +629,7 @@ module.exports = [
     "noun": "Product",
     "kind": "detail",
     "listKey": null,
+    "idFields": null,
     "unwrapKey": "product",
     "docs": "https://apidirect.io/docs/amazon-product-details",
     "action": {
@@ -1047,6 +1052,7 @@ module.exports = [
     "noun": "Seller",
     "kind": "detail",
     "listKey": null,
+    "idFields": null,
     "unwrapKey": "seller",
     "docs": "https://apidirect.io/docs/amazon-seller-profile",
     "action": {
@@ -1280,6 +1286,13 @@ module.exports = [
     "noun": "Review",
     "kind": "list",
     "listKey": "reviews",
+    "idFields": [
+      [
+        "author_name",
+        "review_date",
+        "review_text"
+      ]
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/amazon-seller-reviews",
     "action": {
@@ -1553,6 +1566,10 @@ module.exports = [
     "noun": "Product",
     "kind": "list",
     "listKey": "products",
+    "idFields": [
+      "asin",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/amazon-seller-products",
     "action": {
@@ -2002,6 +2019,10 @@ module.exports = [
     "noun": "Product",
     "kind": "list",
     "listKey": "products",
+    "idFields": [
+      "asin",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/amazon-best-sellers",
     "action": {

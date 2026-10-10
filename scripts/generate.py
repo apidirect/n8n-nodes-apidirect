@@ -5,7 +5,8 @@
 
 Every GET operation in the spec becomes one catalog entry: an action (a Zapier
 "create" for endpoints that return a list, a "search" for endpoints that return
-one object) and, for endpoints a saved search can run, a polling trigger. The
+one object) and, for endpoints that return a list, a polling trigger that calls
+the same endpoint and gives each item a stable id for Zapier to dedupe on. The
 hand-written modules in src/ turn these entries into Zapier definitions.
 
 The spec is a copy of https://apidirect.io/openapi.json. Operations the
@@ -13,6 +14,7 @@ generator does not cover (SKIP below) are hand-written in src/.
 
 Standard library only.
 """
+import hashlib
 import json
 import os
 import re
@@ -23,18 +25,18 @@ OUT_DIR = os.path.join(ROOT, "src", "catalog")
 SITE = "https://apidirect.io"
 
 # Operations with hand-written steps instead of generated ones: /v1/time
-# (Check API Key, also the auth test), /v1/batch (Run Batch Requests) and the
-# saved-search endpoints. The POST variant of AI Mode takes the same fields as
-# the GET; the generated AI Mode action sends a POST when the prompt is long.
+# (Check API Key, also the auth test) and /v1/batch (Run Batch Requests). The
+# POST variant of AI Mode takes the same fields as the GET; the generated AI
+# Mode action sends a POST when the prompt is long.
 SKIP = {("get", "/v1/time"), ("post", "/v1/batch"), ("post", "/v1/web/ai-mode")}
-SKIP_PREFIXES = ("/v1/saved-searches",)
 
-# Endpoints a saved search can run, with the key holding the result list and
-# the item fields that identify one result (first present wins, groups joined
-# as "field=value|field=value"). Mirrors the API's table at
-# https://apidirect.io/docs/saved-searches#supported-endpoints; the sample id
-# of every trigger is derived from it so static samples match live ids.
-SAVEABLE = {
+# Endpoints that return a list, with the key holding the list and the item
+# fields that identify one result (first present wins, groups joined as
+# "field=value|field=value"). Each gets a polling trigger; src/lib/build.js
+# gives every polled item an `id` from these fields (falling back to a hash of
+# the item) so Zapier can dedupe, and the trigger sample's id is derived the
+# same way here so static samples match live ids.
+LISTS = {
     "/v1/amazon/best-sellers": ("products", ("asin", "url")),
     "/v1/amazon/products": ("products", ("asin", "url")),
     "/v1/amazon/seller/products": ("products", ("asin", "url")),
@@ -116,7 +118,7 @@ SAVEABLE = {
     "/v1/youtube/posts": ("posts", ("video_id", "url")),
 }
 
-# Polling trigger label and description per saveable endpoint. Zapier requires
+# Polling trigger label and description per list endpoint. Zapier requires
 # "Triggers when ..." and a trailing period; the pricing sentence is appended.
 TRIGGERS = {
     "/v1/amazon/best-sellers": ("New Amazon Best Seller", "Triggers when a product enters an Amazon best sellers list."),
@@ -397,7 +399,7 @@ def usable(v):
 
 
 def item_id(path, item):
-    _, candidates = SAVEABLE[path]
+    _, candidates = LISTS[path]
     for candidate in candidates:
         if isinstance(candidate, tuple):
             values = [item.get(f) for f in candidate]
@@ -405,7 +407,7 @@ def item_id(path, item):
                 return "|".join(f"{f}={str(v).strip()}" for f, v in zip(candidate, values))
         elif usable(item.get(candidate)):
             return str(item[candidate]).strip()
-    return "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+    return "sha256:" + hashlib.sha256(json.dumps(item, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")).hexdigest()
 
 
 def value_type(v):
@@ -506,14 +508,14 @@ def build_entry(spec, method, path, op, tag):
     example = example_of(spec, path)
     if not isinstance(example, dict):
         sys.exit(f"{path}: no 200 example in the spec; a sample is required")
-    if path in SAMPLE_FROM and not example.get(SAVEABLE[path][0]):
+    if path in SAMPLE_FROM and not example.get(LISTS[path][0]):
         source = example_of(spec, SAMPLE_FROM[path])
-        borrowed = source[SAVEABLE[SAMPLE_FROM[path]][0]]
-        example = {**example, SAVEABLE[path][0]: borrowed, "count": len(borrowed)}
+        borrowed = source[LISTS[SAMPLE_FROM[path]][0]]
+        example = {**example, LISTS[path][0]: borrowed, "count": len(borrowed)}
 
     summary = op["summary"]
-    if path in SAVEABLE:
-        kind, list_key = "list", SAVEABLE[path][0]
+    if path in LISTS:
+        kind, list_key = "list", LISTS[path][0]
         if list_key not in example or not isinstance(example[list_key], list):
             sys.exit(f"{path}: list key {list_key} missing from the 200 example")
         unwrap = None
@@ -545,6 +547,7 @@ def build_entry(spec, method, path, op, tag):
         "noun": noun,
         "kind": kind,
         "listKey": list_key,
+        "idFields": [list(c) if isinstance(c, tuple) else c for c in LISTS[path][1]] if kind == "list" else None,
         "unwrapKey": unwrap,
         "docs": op.get("externalDocs", {}).get("url"),
         "action": {"label": label, "description": action_description(op, label)},
@@ -565,7 +568,7 @@ def build_entry(spec, method, path, op, tag):
         if not items or not isinstance(items[0], dict):
             sys.exit(f"{path}: the 200 example has no {list_key} item to sample")
         item = trim(items[0], depth=1)
-        item_sample = {"id": item_id(path, items[0]), **item}
+        item_sample = {"id": item_id(path, items[0]), **{k: v for k, v in item.items() if k != "id"}}
         entry["trigger"] = {
             "label": tlabel,
             "description": tdesc,
@@ -587,8 +590,6 @@ def main():
 
     by_tag = {}
     for path, methods in spec["paths"].items():
-        if path.startswith(SKIP_PREFIXES):
-            continue
         for method, op in methods.items():
             if (method, path) in SKIP:
                 continue
@@ -597,12 +598,12 @@ def main():
             tag = op["tags"][0]
             by_tag.setdefault(tag, []).append(build_entry(spec, method, path, op, tag))
 
-    for path in SAVEABLE:
+    for path in LISTS:
         if path not in spec["paths"]:
-            sys.exit(f"SAVEABLE lists {path} but the spec has no such operation")
+            sys.exit(f"LISTS lists {path} but the spec has no such operation")
     for path in TRIGGERS:
-        if path not in SAVEABLE:
-            sys.exit(f"TRIGGERS lists {path} but SAVEABLE does not")
+        if path not in LISTS:
+            sys.exit(f"TRIGGERS lists {path} but LISTS does not")
 
     os.makedirs(OUT_DIR, exist_ok=True)
     for old in os.listdir(OUT_DIR):

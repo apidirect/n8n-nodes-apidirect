@@ -9,6 +9,10 @@ module.exports = [
     "noun": "Post",
     "kind": "list",
     "listKey": "posts",
+    "idFields": [
+      "post_id",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/truthsocial-user-posts",
     "action": {

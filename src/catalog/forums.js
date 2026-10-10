@@ -9,6 +9,9 @@ module.exports = [
     "noun": "Post",
     "kind": "list",
     "listKey": "posts",
+    "idFields": [
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/forum-posts",
     "action": {

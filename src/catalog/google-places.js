@@ -9,6 +9,9 @@ module.exports = [
     "noun": "Place",
     "kind": "list",
     "listKey": "places",
+    "idFields": [
+      "place_id"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/places-search",
     "action": {
@@ -783,6 +786,7 @@ module.exports = [
     "noun": "Place",
     "kind": "detail",
     "listKey": null,
+    "idFields": null,
     "unwrapKey": "place",
     "docs": "https://apidirect.io/docs/places-details",
     "action": {
@@ -1201,6 +1205,10 @@ module.exports = [
     "noun": "Review",
     "kind": "list",
     "listKey": "reviews",
+    "idFields": [
+      "review_id",
+      "review_link"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/places-reviews",
     "action": {
@@ -1647,6 +1655,10 @@ module.exports = [
     "noun": "Photo",
     "kind": "list",
     "listKey": "photos",
+    "idFields": [
+      "photo_id",
+      "photo_url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/places-photos",
     "action": {

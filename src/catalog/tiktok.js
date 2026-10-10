@@ -9,6 +9,9 @@ module.exports = [
     "noun": "Video",
     "kind": "list",
     "listKey": "videos",
+    "idFields": [
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/tiktok-videos",
     "action": {
@@ -432,6 +435,11 @@ module.exports = [
     "noun": "User",
     "kind": "list",
     "listKey": "users",
+    "idFields": [
+      "user_id",
+      "username",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/tiktok-users",
     "action": {
@@ -679,6 +687,7 @@ module.exports = [
     "noun": "User",
     "kind": "detail",
     "listKey": null,
+    "idFields": null,
     "unwrapKey": "user",
     "docs": "https://apidirect.io/docs/tiktok-user",
     "action": {
@@ -842,6 +851,7 @@ module.exports = [
     "noun": "Video",
     "kind": "detail",
     "listKey": null,
+    "idFields": null,
     "unwrapKey": "video",
     "docs": "https://apidirect.io/docs/tiktok-video",
     "action": {

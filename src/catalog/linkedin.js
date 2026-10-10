@@ -9,6 +9,10 @@ module.exports = [
     "noun": "Post",
     "kind": "list",
     "listKey": "posts",
+    "idFields": [
+      "urn",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/linkedin-posts",
     "action": {
@@ -500,6 +504,7 @@ module.exports = [
     "noun": "Person",
     "kind": "detail",
     "listKey": null,
+    "idFields": null,
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/linkedin-person",
     "action": {
@@ -962,6 +967,10 @@ module.exports = [
     "noun": "Post",
     "kind": "list",
     "listKey": "posts",
+    "idFields": [
+      "urn",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/linkedin-person-posts",
     "action": {
@@ -1299,6 +1308,7 @@ module.exports = [
     "noun": "Post",
     "kind": "detail",
     "listKey": null,
+    "idFields": null,
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/linkedin-post",
     "action": {
@@ -1436,6 +1446,10 @@ module.exports = [
     "noun": "Company",
     "kind": "list",
     "listKey": "companies",
+    "idFields": [
+      "company_id",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/linkedin-companies",
     "action": {
@@ -1611,6 +1625,7 @@ module.exports = [
     "noun": "Company",
     "kind": "detail",
     "listKey": null,
+    "idFields": null,
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/linkedin-company",
     "action": {
@@ -1917,6 +1932,10 @@ module.exports = [
     "noun": "Post",
     "kind": "list",
     "listKey": "posts",
+    "idFields": [
+      "urn",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/linkedin-company-posts",
     "action": {
@@ -2344,6 +2363,9 @@ module.exports = [
     "noun": "Job",
     "kind": "list",
     "listKey": "jobs",
+    "idFields": [
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/linkedin-jobs",
     "action": {
@@ -2707,6 +2729,7 @@ module.exports = [
     "noun": "Job",
     "kind": "detail",
     "listKey": null,
+    "idFields": null,
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/linkedin-job",
     "action": {

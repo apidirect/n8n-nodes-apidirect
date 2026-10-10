@@ -8,31 +8,15 @@ const catalog = require('./src/catalog');
 const { addApiKey, throwForApiError } = require('./src/lib/http');
 const { makeCreate, makeSearch, makeTrigger } = require('./src/lib/build');
 
-const savedSearchList = require('./src/triggers/saved_search_list');
-const newSavedSearchResult = require('./src/triggers/new_saved_search_result');
-const createSavedSearch = require('./src/creates/create_saved_search');
-const runSavedSearch = require('./src/creates/run_saved_search');
-const updateSavedSearch = require('./src/creates/update_saved_search');
-const deleteSavedSearch = require('./src/creates/delete_saved_search');
-const findSavedSearch = require('./src/searches/find_saved_search');
 const checkApiKey = require('./src/creates/check_api_key');
 const batchRequests = require('./src/creates/batch_requests');
 
-const triggers = {
-  [newSavedSearchResult.key]: newSavedSearchResult,
-  [savedSearchList.key]: savedSearchList,
-};
+const triggers = {};
 const creates = {
   [checkApiKey.key]: checkApiKey,
   [batchRequests.key]: batchRequests,
-  [createSavedSearch.key]: createSavedSearch,
-  [runSavedSearch.key]: runSavedSearch,
-  [updateSavedSearch.key]: updateSavedSearch,
-  [deleteSavedSearch.key]: deleteSavedSearch,
 };
-const searches = {
-  [findSavedSearch.key]: findSavedSearch,
-};
+const searches = {};
 
 for (const entry of catalog) {
   if (entry.kind === 'detail') {

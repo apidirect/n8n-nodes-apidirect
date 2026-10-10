@@ -9,6 +9,9 @@ module.exports = [
     "noun": "Article",
     "kind": "list",
     "listKey": "articles",
+    "idFields": [
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/news-articles",
     "action": {

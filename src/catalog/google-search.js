@@ -9,6 +9,9 @@ module.exports = [
     "noun": "Search Result",
     "kind": "list",
     "listKey": "results",
+    "idFields": [
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/web-search",
     "action": {
@@ -345,6 +348,7 @@ module.exports = [
     "noun": "Answer",
     "kind": "answer",
     "listKey": null,
+    "idFields": null,
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/google-ai-mode",
     "action": {

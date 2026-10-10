@@ -9,6 +9,10 @@ module.exports = [
     "noun": "Post",
     "kind": "list",
     "listKey": "posts",
+    "idFields": [
+      "post_id",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/bluesky-posts",
     "action": {
@@ -524,6 +528,11 @@ module.exports = [
     "noun": "User",
     "kind": "list",
     "listKey": "users",
+    "idFields": [
+      "user_id",
+      "username",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/bluesky-users",
     "action": {
@@ -693,6 +702,7 @@ module.exports = [
     "noun": "User",
     "kind": "detail",
     "listKey": null,
+    "idFields": null,
     "unwrapKey": "user",
     "docs": "https://apidirect.io/docs/bluesky-user",
     "action": {
@@ -829,6 +839,10 @@ module.exports = [
     "noun": "Post",
     "kind": "list",
     "listKey": "posts",
+    "idFields": [
+      "post_id",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/bluesky-user-posts",
     "action": {
@@ -1297,6 +1311,11 @@ module.exports = [
     "noun": "Follower",
     "kind": "list",
     "listKey": "followers",
+    "idFields": [
+      "user_id",
+      "username",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/bluesky-user-followers",
     "action": {
@@ -1485,6 +1504,11 @@ module.exports = [
     "noun": "Followed Account",
     "kind": "list",
     "listKey": "following",
+    "idFields": [
+      "user_id",
+      "username",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/bluesky-user-following",
     "action": {
@@ -1673,6 +1697,10 @@ module.exports = [
     "noun": "Liked Post",
     "kind": "list",
     "listKey": "posts",
+    "idFields": [
+      "post_id",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/bluesky-user-likes",
     "action": {
@@ -2207,6 +2235,7 @@ module.exports = [
     "noun": "Post",
     "kind": "detail",
     "listKey": null,
+    "idFields": null,
     "unwrapKey": "post",
     "docs": "https://apidirect.io/docs/bluesky-post",
     "action": {
@@ -2408,6 +2437,10 @@ module.exports = [
     "noun": "Comment",
     "kind": "list",
     "listKey": "comments",
+    "idFields": [
+      "post_id",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/bluesky-post-comments",
     "action": {
@@ -2828,6 +2861,11 @@ module.exports = [
     "noun": "Like",
     "kind": "list",
     "listKey": "likes",
+    "idFields": [
+      "user_id",
+      "username",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/bluesky-post-likes",
     "action": {
@@ -3032,6 +3070,10 @@ module.exports = [
     "noun": "Quote Post",
     "kind": "list",
     "listKey": "quotes",
+    "idFields": [
+      "post_id",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/bluesky-post-quotes",
     "action": {
@@ -3562,6 +3604,11 @@ module.exports = [
     "noun": "Repost",
     "kind": "list",
     "listKey": "reposts",
+    "idFields": [
+      "user_id",
+      "username",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/bluesky-post-reposts",
     "action": {

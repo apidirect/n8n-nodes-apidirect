@@ -3,18 +3,19 @@
 // Turns catalog entries (src/catalog/*.js, generated from the OpenAPI spec)
 // into Zapier triggers, creates and searches.
 
+const crypto = require('crypto');
+
 const { BASE_URL } = require('./http');
 const { normalizeDates } = require('./dates');
 const { toQuery } = require('./params');
-const savedSearches = require('./saved-searches');
 
 // AI Mode prompts can run to 12,000 characters, longer than a query string
 // should carry, so prompts past this length go in a JSON body (POST /v1/web/ai-mode).
 const AI_MODE_PATH = '/v1/web/ai-mode';
 const AI_MODE_POST_THRESHOLD = 1500;
 
-const callEndpoint = async (z, bundle, entry) => {
-  const params = toQuery(bundle.inputData, entry.inputFields);
+const callEndpoint = async (z, bundle, entry, fields = entry.inputFields) => {
+  const params = toQuery(bundle.inputData, fields);
   const request = { url: BASE_URL + entry.path, method: entry.method || 'GET', params };
   if (entry.path === AI_MODE_PATH && String(params.prompt || '').length > AI_MODE_POST_THRESHOLD) {
     request.method = 'POST';
@@ -63,12 +64,40 @@ const makeSearch = (entry) => ({
   },
 });
 
-// Polling trigger on a saved search for the endpoint + the step's inputs. The
-// search is created on first poll and reused after that. Runs never mark
-// results as seen on the API side (Zapier keeps its own seen list per Zap, and
-// two Zaps may share one search), so every poll returns the endpoint's current
-// results with their stable ids and Zapier triggers on the ones it has not
-// seen. Results come back newest first where the endpoint sorts that way.
+// A value that can identify an item on its own: a non-empty string or number.
+const usable = (v) => v !== undefined && v !== null && typeof v !== 'boolean' && typeof v !== 'object' && String(v).trim() !== '';
+
+// JSON with keys in a fixed order, so the same item always hashes the same.
+const canonical = (value) => {
+  if (Array.isArray(value)) return `[${value.map(canonical).join(',')}]`;
+  if (value && typeof value === 'object') {
+    return `{${Object.keys(value).sort().map((k) => `${JSON.stringify(k)}:${canonical(value[k])}`).join(',')}}`;
+  }
+  return JSON.stringify(value);
+};
+
+// The stable id of one polled item: the first of the entry's id fields the
+// item carries (a group of fields becomes "field=value|field=value"), or a
+// hash of the whole item when none is present. Mirrors item_id() in
+// scripts/generate.py, which derives the trigger samples' ids the same way.
+const itemId = (idFields, item) => {
+  for (const candidate of idFields || []) {
+    if (Array.isArray(candidate)) {
+      const values = candidate.map((f) => item[f]);
+      if (values.every(usable)) {
+        return candidate.map((f, i) => `${f}=${String(values[i]).trim()}`).join('|');
+      }
+    } else if (usable(item[candidate])) {
+      return String(item[candidate]).trim();
+    }
+  }
+  return `sha256:${crypto.createHash('sha256').update(canonical(item), 'utf8').digest('hex')}`;
+};
+
+// Polling trigger on a list endpoint: every poll calls the endpoint with the
+// step's inputs (sorted newest first where the endpoint supports it) and
+// returns the current page(s) of results, each with a stable `id`. Zapier
+// keeps its own list of ids it has seen per Zap and triggers on the new ones.
 const makeTrigger = (entry) => ({
   key: `new_${entry.key}`,
   noun: entry.noun,
@@ -80,19 +109,18 @@ const makeTrigger = (entry) => ({
     type: 'polling',
     inputFields: entry.trigger.inputFields,
     perform: async (z, bundle) => {
-      const params = toQuery(bundle.inputData, entry.trigger.inputFields);
-      const search = await savedSearches.findOrCreate(z, {
-        endpoint: entry.path,
-        params,
-        label: entry.trigger.label,
-      });
-      const data = await savedSearches.run(z, search.id, { includeSeen: true, markSeen: false });
-      const items = [...(data.results || []), ...(data.seen_results || [])];
-      return normalizeDates(items).map((item) => ({ ...item, id: String(item.id) }));
+      const data = await callEndpoint(z, bundle, entry, entry.trigger.inputFields);
+      const items = data && Array.isArray(data[entry.listKey]) ? data[entry.listKey] : [];
+      return items
+        .filter((item) => item && typeof item === 'object' && !Array.isArray(item))
+        .map((item) => {
+          const { id: _ignored, ...rest } = item;
+          return { id: itemId(entry.idFields, item), ...rest };
+        });
     },
     sample: entry.trigger.sample,
     outputFields: entry.trigger.outputFields,
   },
 });
 
-module.exports = { makeCreate, makeSearch, makeTrigger, callEndpoint };
+module.exports = { makeCreate, makeSearch, makeTrigger, callEndpoint, itemId };

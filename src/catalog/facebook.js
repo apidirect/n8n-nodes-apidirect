@@ -9,6 +9,10 @@ module.exports = [
     "noun": "Post",
     "kind": "list",
     "listKey": "posts",
+    "idFields": [
+      "post_id",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/facebook-search-posts",
     "action": {
@@ -474,6 +478,9 @@ module.exports = [
     "noun": "Location",
     "kind": "list",
     "listKey": "results",
+    "idFields": [
+      "id"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/facebook-search-locations",
     "action": {
@@ -572,6 +579,11 @@ module.exports = [
     "noun": "Page",
     "kind": "list",
     "listKey": "results",
+    "idFields": [
+      "facebook_id",
+      "profile_url",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/facebook-search-pages",
     "action": {
@@ -735,6 +747,10 @@ module.exports = [
     "noun": "Video",
     "kind": "list",
     "listKey": "videos",
+    "idFields": [
+      "video_id",
+      "video_url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/facebook-search-videos",
     "action": {
@@ -1000,6 +1016,10 @@ module.exports = [
     "noun": "Event",
     "kind": "list",
     "listKey": "events",
+    "idFields": [
+      "event_id",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/facebook-search-events",
     "action": {
@@ -1167,6 +1187,7 @@ module.exports = [
     "noun": "Page",
     "kind": "detail",
     "listKey": null,
+    "idFields": null,
     "unwrapKey": "page",
     "docs": "https://apidirect.io/docs/facebook-page-details",
     "action": {
@@ -1304,6 +1325,10 @@ module.exports = [
     "noun": "Post",
     "kind": "list",
     "listKey": "posts",
+    "idFields": [
+      "post_id",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/facebook-page-posts",
     "action": {
@@ -1729,6 +1754,10 @@ module.exports = [
     "noun": "Photo",
     "kind": "list",
     "listKey": "photos",
+    "idFields": [
+      "photo_id",
+      "image_url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/facebook-page-photos",
     "action": {
@@ -1842,6 +1871,10 @@ module.exports = [
     "noun": "Video",
     "kind": "list",
     "listKey": "videos",
+    "idFields": [
+      "video_id",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/facebook-page-videos",
     "action": {
@@ -2024,6 +2057,11 @@ module.exports = [
     "noun": "Reel",
     "kind": "list",
     "listKey": "reels",
+    "idFields": [
+      "video_id",
+      "post_id",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/facebook-page-reels",
     "action": {
@@ -2307,6 +2345,12 @@ module.exports = [
     "noun": "Review",
     "kind": "list",
     "listKey": "reviews",
+    "idFields": [
+      [
+        "author_url",
+        "review_text"
+      ]
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/facebook-page-reviews",
     "action": {
@@ -2467,6 +2511,7 @@ module.exports = [
     "noun": "Group",
     "kind": "detail",
     "listKey": null,
+    "idFields": null,
     "unwrapKey": "group",
     "docs": "https://apidirect.io/docs/facebook-group-details",
     "action": {
@@ -2538,6 +2583,10 @@ module.exports = [
     "noun": "Post",
     "kind": "list",
     "listKey": "posts",
+    "idFields": [
+      "post_id",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/facebook-group-posts",
     "action": {
@@ -2960,6 +3009,10 @@ module.exports = [
     "noun": "Post",
     "kind": "list",
     "listKey": "posts",
+    "idFields": [
+      "post_id",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/facebook-group-search",
     "action": {
@@ -3401,6 +3454,9 @@ module.exports = [
     "noun": "Comment",
     "kind": "list",
     "listKey": "comments",
+    "idFields": [
+      "comment_id"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/facebook-post-comments",
     "action": {

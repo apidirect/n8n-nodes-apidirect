@@ -9,6 +9,9 @@ module.exports = [
     "noun": "Post",
     "kind": "list",
     "listKey": "posts",
+    "idFields": [
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/reddit-posts",
     "action": {
@@ -324,6 +327,9 @@ module.exports = [
     "noun": "Comment",
     "kind": "list",
     "listKey": "posts",
+    "idFields": [
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/reddit-comments",
     "action": {
@@ -607,6 +613,11 @@ module.exports = [
     "noun": "User",
     "kind": "list",
     "listKey": "users",
+    "idFields": [
+      "user_id",
+      "username",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/reddit-users",
     "action": {

@@ -9,6 +9,9 @@ module.exports = [
     "noun": "Post",
     "kind": "list",
     "listKey": "posts",
+    "idFields": [
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/twitter-posts",
     "action": {
@@ -467,6 +470,11 @@ module.exports = [
     "noun": "User",
     "kind": "list",
     "listKey": "users",
+    "idFields": [
+      "user_id",
+      "username",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/twitter-users",
     "action": {
@@ -698,6 +706,7 @@ module.exports = [
     "noun": "User",
     "kind": "detail",
     "listKey": null,
+    "idFields": null,
     "unwrapKey": "user",
     "docs": "https://apidirect.io/docs/twitter-user",
     "action": {
@@ -833,6 +842,9 @@ module.exports = [
     "noun": "Tweet",
     "kind": "list",
     "listKey": "tweets",
+    "idFields": [
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/twitter-user-tweets",
     "action": {
@@ -1212,6 +1224,11 @@ module.exports = [
     "noun": "Follower",
     "kind": "list",
     "listKey": "followers",
+    "idFields": [
+      "user_id",
+      "username",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/twitter-user-followers",
     "action": {
@@ -1448,6 +1465,11 @@ module.exports = [
     "noun": "Followed Account",
     "kind": "list",
     "listKey": "following",
+    "idFields": [
+      "user_id",
+      "username",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/twitter-user-following",
     "action": {
@@ -1684,6 +1706,11 @@ module.exports = [
     "noun": "Verified Follower",
     "kind": "list",
     "listKey": "verified_followers",
+    "idFields": [
+      "user_id",
+      "username",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/twitter-user-verified-followers",
     "action": {
@@ -1920,6 +1947,9 @@ module.exports = [
     "noun": "Reply",
     "kind": "list",
     "listKey": "replies",
+    "idFields": [
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/twitter-user-replies",
     "action": {
@@ -2301,6 +2331,7 @@ module.exports = [
     "noun": "Tweet",
     "kind": "detail",
     "listKey": null,
+    "idFields": null,
     "unwrapKey": "tweet",
     "docs": "https://apidirect.io/docs/twitter-tweet",
     "action": {
@@ -2452,6 +2483,11 @@ module.exports = [
     "noun": "Retweet",
     "kind": "list",
     "listKey": "retweets",
+    "idFields": [
+      "user_id",
+      "username",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/twitter-tweet-retweets",
     "action": {
@@ -2688,6 +2724,9 @@ module.exports = [
     "noun": "Quote Tweet",
     "kind": "list",
     "listKey": "quotes",
+    "idFields": [
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/twitter-tweet-quotes",
     "action": {
@@ -3067,6 +3106,9 @@ module.exports = [
     "noun": "Reply",
     "kind": "list",
     "listKey": "comments",
+    "idFields": [
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/twitter-tweet-comments",
     "action": {
@@ -3397,6 +3439,10 @@ module.exports = [
     "noun": "Trend",
     "kind": "list",
     "listKey": "trends",
+    "idFields": [
+      "name",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/twitter-trends",
     "action": {

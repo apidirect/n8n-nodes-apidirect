@@ -9,6 +9,10 @@ module.exports = [
     "noun": "Post",
     "kind": "list",
     "listKey": "posts",
+    "idFields": [
+      "media_id",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/instagram-posts",
     "action": {
@@ -623,6 +627,11 @@ module.exports = [
     "noun": "User",
     "kind": "list",
     "listKey": "users",
+    "idFields": [
+      "user_id",
+      "username",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/instagram-users",
     "action": {
@@ -792,6 +801,7 @@ module.exports = [
     "noun": "User",
     "kind": "detail",
     "listKey": null,
+    "idFields": null,
     "unwrapKey": "user",
     "docs": "https://apidirect.io/docs/instagram-user",
     "action": {
@@ -973,6 +983,10 @@ module.exports = [
     "noun": "Post",
     "kind": "list",
     "listKey": "posts",
+    "idFields": [
+      "media_id",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/instagram-user-posts",
     "action": {
@@ -1626,6 +1640,7 @@ module.exports = [
     "noun": "Post",
     "kind": "detail",
     "listKey": null,
+    "idFields": null,
     "unwrapKey": "post",
     "docs": "https://apidirect.io/docs/instagram-post",
     "action": {
@@ -1917,6 +1932,11 @@ module.exports = [
     "noun": "Follower",
     "kind": "list",
     "listKey": "followers",
+    "idFields": [
+      "user_id",
+      "username",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/instagram-user-followers",
     "action": {
@@ -2111,6 +2131,11 @@ module.exports = [
     "noun": "Followed Account",
     "kind": "list",
     "listKey": "following",
+    "idFields": [
+      "user_id",
+      "username",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/instagram-user-following",
     "action": {
@@ -2305,6 +2330,10 @@ module.exports = [
     "noun": "Story",
     "kind": "list",
     "listKey": "stories",
+    "idFields": [
+      "media_id",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/instagram-user-stories",
     "action": {
@@ -2729,6 +2758,10 @@ module.exports = [
     "noun": "Highlight",
     "kind": "list",
     "listKey": "highlights",
+    "idFields": [
+      "highlight_id",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/instagram-user-highlights",
     "action": {
@@ -2939,6 +2972,10 @@ module.exports = [
     "noun": "Story",
     "kind": "list",
     "listKey": "stories",
+    "idFields": [
+      "media_id",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/instagram-highlight-stories",
     "action": {
@@ -3396,6 +3433,9 @@ module.exports = [
     "noun": "Comment",
     "kind": "list",
     "listKey": "comments",
+    "idFields": [
+      "comment_id"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/instagram-post-comments",
     "action": {
@@ -3762,6 +3802,9 @@ module.exports = [
     "noun": "Reply",
     "kind": "list",
     "listKey": "replies",
+    "idFields": [
+      "comment_id"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/instagram-comment-replies",
     "action": {
@@ -4147,6 +4190,11 @@ module.exports = [
     "noun": "Like",
     "kind": "list",
     "listKey": "likes",
+    "idFields": [
+      "user_id",
+      "username",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/instagram-post-likes",
     "action": {
@@ -4309,6 +4357,10 @@ module.exports = [
     "noun": "Post",
     "kind": "list",
     "listKey": "posts",
+    "idFields": [
+      "media_id",
+      "url"
+    ],
     "unwrapKey": null,
     "docs": "https://apidirect.io/docs/instagram-hashtag-posts",
     "action": {
