@@ -30,7 +30,7 @@ Built and maintained by the [API Direct](https://apidirect.io?utm_source=google-
 
 ## Set your API key
 
-1. Sign up at [apidirect.io](https://apidirect.io/signup?utm_source=google-sheets). New accounts get $5 of free credit plus 50 free requests per endpoint per month (20 for the three Google Places endpoints).
+1. Sign up at [apidirect.io](https://apidirect.io/signup?utm_source=google-sheets). Every account gets 50 free requests per endpoint per month (20 for the three Google Places endpoints), no card required.
 2. Copy a key from the [API Keys](https://apidirect.io/dashboard/keys?utm_source=google-sheets) page (it starts with `ak_live_`).
 3. In the spreadsheet, open **Extensions → API Direct → Set API key**, paste it and click **Save and test**.
 
