@@ -91,6 +91,19 @@ function paramToString_(value) {
  * Validates and normalises the parameters for an endpoint: drops blanks,
  * stringifies values, checks required parameters and enum values.
  */
+/** Endpoints whose parameters are all optional in the spec but need at least one of these. */
+var REQUIRE_ONE_OF_ = {
+  'substack/user': ['username', 'user_id', 'url'],
+  'substack/user/posts': ['username', 'user_id', 'url'],
+  'substack/user/activity': ['username', 'user_id', 'url'],
+  'substack/publication': ['publication', 'publication_id'],
+  'substack/publication/recommendations': ['publication', 'publication_id'],
+  'substack/post': ['url', 'post_id', 'slug'],
+  'substack/post/comments': ['url', 'post_id', 'slug'],
+  'substack/post/likes': ['url', 'post_id', 'slug'],
+  'substack/note': ['url', 'note_id'],
+};
+
 function prepareParams(endpoint, params) {
   var result = {};
   var given = params || {};
@@ -125,6 +138,10 @@ function prepareParams(endpoint, params) {
     }
   });
   result = orderParams_(result, endpoint.params);
+  var oneOf = REQUIRE_ONE_OF_[endpoint.key];
+  if (oneOf && !oneOf.some(function (name) { return result[name] !== undefined; })) {
+    throw new Error(endpoint.key + ' needs one of ' + oneOf.join(', ') + '.');
+  }
   if (endpoint.key === 'linkedin/posts' && !result.query) {
     var filters = ['author', 'mentions_member', 'from_company', 'author_company', 'mentions_company'];
     var hasFilter = filters.some(function (f) { return f in result; });

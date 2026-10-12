@@ -26,11 +26,11 @@ The OAuth consent screen (Google Cloud → APIs & Services → OAuth consent scr
 
 **Short description** (≤ 200):
 
-> Real-time LinkedIn, X/Twitter, Reddit, YouTube, Instagram, TikTok, Facebook, news, Google and Amazon data in Sheets. =APIDIRECT_SEARCH(), a sidebar, and scheduled refreshes.
+> Real-time LinkedIn, X/Twitter, Reddit, YouTube, Instagram, TikTok, Facebook, Substack, news, Google and Amazon data in Sheets. =APIDIRECT_SEARCH(), a sidebar, and scheduled refreshes.
 
 **Detailed description** (≤ 16,000):
 
-> API Direct puts live public data from the web into your spreadsheet. Search LinkedIn, X/Twitter, Reddit, YouTube, Instagram, TikTok, Facebook, Threads, Bluesky and Truth Social; pull Google web search, AI Mode answers, news and forum posts; look up Google Maps places and reviews; and read Amazon products and Trustpilot reviews. One hundred endpoints, one API key.
+> API Direct puts live public data from the web into your spreadsheet. Search LinkedIn, X/Twitter, Reddit, YouTube, Instagram, TikTok, Facebook, Threads, Bluesky, Truth Social and Substack; pull Google web search, AI Mode answers, news and forum posts; look up Google Maps places and reviews; and read Amazon products and Trustpilot reviews. Over a hundred endpoints, one API key.
 >
 > CUSTOM FUNCTIONS
 > Type =APIDIRECT_SEARCH("twitter", "your brand", 50) and get a table of posts with authors, dates, engagement and links. =APIDIRECT("linkedin/company", "url=…", , "employees") returns a single value. =APIDIRECT_AI("question") returns a Google AI Mode answer as text. =APIDIRECT_ENDPOINTS() lists every endpoint with its parameters and price.

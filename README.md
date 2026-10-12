@@ -5,7 +5,7 @@
 <h1 align="center">API Direct for Google Sheets</h1>
 
 <p align="center">
-  Real-time data from LinkedIn, X/Twitter, Reddit, YouTube, Instagram, TikTok, Facebook, Threads, Bluesky, Truth Social, Amazon, Trustpilot and Google (web search, AI Mode, news, forums, Maps) in your spreadsheet, through one API key.
+  Real-time data from LinkedIn, X/Twitter, Reddit, YouTube, Instagram, TikTok, Facebook, Threads, Bluesky, Truth Social, Substack, Amazon, Trustpilot and Google (web search, AI Mode, news, forums, Maps) in your spreadsheet, through one API key.
 </p>
 
 <p align="center">
@@ -56,7 +56,7 @@ Type a formula, get a table. Results spill into the cells below and to the right
 
 | Function | What it does |
 |---|---|
-| `APIDIRECT_SEARCH(platform, query, [max_results], [fields], [options])` | Searches a platform. `platform` is `twitter`, `facebook`, `instagram`, `tiktok`, `youtube`, `reddit`, `threads`, `bluesky`, `linkedin`, `amazon`, `trustpilot`, `news`, `web`, `forums` or `places`, or a variant such as `linkedin jobs`, `linkedin companies`, `youtube channels`, `reddit comments`, `twitter users`, `facebook pages`. |
+| `APIDIRECT_SEARCH(platform, query, [max_results], [fields], [options])` | Searches a platform. `platform` is `twitter`, `facebook`, `instagram`, `tiktok`, `youtube`, `reddit`, `threads`, `bluesky`, `linkedin`, `substack`, `amazon`, `trustpilot`, `news`, `web`, `forums` or `places`, or a variant such as `linkedin jobs`, `linkedin companies`, `substack notes`, `substack publications`, `youtube channels`, `reddit comments`, `twitter users`, `facebook pages`. |
 | `APIDIRECT(endpoint, [params], [max_results], [fields])` | Calls any endpoint, for example `twitter/user/tweets` or `/v1/places/reviews`. Asking for one field of a single-result endpoint returns just that value, handy for `=APIDIRECT("youtube/channel","name=mkbhd",,"subscriber_count")`. |
 | `APIDIRECT_AI(prompt, [options])` | Asks Google AI Mode and returns the answer as text. |
 | `APIDIRECT_ENDPOINTS([platform])` | Lists endpoints with their parameters and prices. |
@@ -87,7 +87,7 @@ Pick every hour, 6 hours, 12 hours, day or week. Google allows add-on time-drive
 
 ## Endpoints
 
-101 endpoints across 13 platforms, every public data endpoint in the [API reference](https://apidirect.io/openapi.json), the same set as the [n8n node](https://github.com/apidirect/n8n-nodes-apidirect) plus LinkedIn:
+118 endpoints across 14 platforms, every public data endpoint in the [API reference](https://apidirect.io/openapi.json), the same set as the [n8n node](https://github.com/apidirect/n8n-nodes-apidirect) plus LinkedIn and Substack:
 
 | Platform | Endpoints |
 |---|---|
@@ -101,6 +101,7 @@ Pick every hour, 6 hours, 12 hours, day or week. Google allows add-on time-drive
 | **Truth Social** | User Posts |
 | **Bluesky** | Search Posts, Search Users, User Profile, User Posts, User Followers, User Following, User Likes, Post Details, Post Comments, Post Likes, Post Quotes, Post Reposts |
 | **LinkedIn** | Search Posts, Person Profile, Person Posts, Post Details, Search Companies, Company Profile, Company Posts, Search Jobs, Job Details |
+| **Substack** | Search Posts, Search Users, Search Publications, Search Notes, User Profile, User Posts, User Activity, Publication Details, Publication Posts, Publication Recommendations, Post Details, Post Comments, Post Likes, Note Details, Category Publications, Category Feed, Trending Posts |
 | **Amazon** | Search Products, Product Details, Seller Profile, Seller Reviews, Seller Products, Best Sellers |
 | **Trustpilot** | Company Reviews, Search Companies, Category Companies, Category Newest, Category Details, Search Categories, User Profile |
 | **Google** | Web Search, AI Mode, News Articles, Forum Posts, Places Search, Place Details, Place Reviews, Place Photos |

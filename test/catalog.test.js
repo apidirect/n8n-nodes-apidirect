@@ -7,8 +7,19 @@ const env = createEnv();
 const CATALOG = env.get('CATALOG');
 
 test('catalog has every platform and one endpoint per public operation', () => {
-  assert.equal(CATALOG.platforms.length, 13);
-  assert.equal(CATALOG.endpoints.length, 101);
+  assert.equal(CATALOG.platforms.length, 14);
+  assert.equal(CATALOG.endpoints.length, 118);
+  const substack = CATALOG.endpoints.filter((e) => e.platform === 'substack');
+  assert.equal(substack.length, 17, 'Substack ships in full');
+  const byKey = Object.fromEntries(CATALOG.endpoints.map((e) => [e.key, e]));
+  assert.equal(byKey['substack/posts'].listKey, 'posts');
+  assert.equal(byKey['substack/publication/recommendations'].listKey, 'recommends');
+  assert.equal(byKey['substack/note'].kind, 'detail');
+  assert.ok(byKey['substack/note'].fields.includes('body'));
+  assert.equal(byKey['substack/trending'].label, 'Trending Posts');
+  assert.equal(byKey['substack/users'].docs, 'https://apidirect.io/docs/substack-users');
+  assert.equal(CATALOG.aliases['substack'], 'substack/posts');
+  assert.equal(CATALOG.aliases['substack notes'], 'substack/notes');
   const suspended = CATALOG.endpoints.filter((e) => e.suspended);
   assert.deepEqual(suspended.map((e) => e.key), ['facebook/group/search'], 'suspended endpoints still ship, flagged');
   assert.match(suspended[0].description, /^Search for posts within a specific Facebook group/);

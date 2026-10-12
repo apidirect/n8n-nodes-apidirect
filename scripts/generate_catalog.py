@@ -17,7 +17,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SPEC = os.path.join(ROOT, "spec", "openapi.json")
 OUT = os.path.join(ROOT, "src", "Catalog.js")
 
-# Platforms in the order the n8n node lists its resources, plus LinkedIn.
+# Platforms in the order the n8n node lists its resources, plus LinkedIn and Substack.
 PLATFORMS = [
     ("twitter", "Twitter/X", ["twitter"]),
     ("facebook", "Facebook", ["facebook"]),
@@ -29,6 +29,7 @@ PLATFORMS = [
     ("truthsocial", "Truth Social", ["truthsocial"]),
     ("bluesky", "Bluesky", ["bluesky"]),
     ("linkedin", "LinkedIn", ["linkedin"]),
+    ("substack", "Substack", ["substack"]),
     ("amazon", "Amazon", ["amazon"]),
     ("trustpilot", "Trustpilot", ["trustpilot"]),
     ("google", "Google", ["web", "news", "forums", "places"]),
@@ -46,6 +47,7 @@ STRIP_WORDS = {
     "truthsocial": ["Truth Social"],
     "bluesky": ["Bluesky"],
     "linkedin": ["LinkedIn"],
+    "substack": ["Substack"],
     "amazon": ["Amazon"],
     "trustpilot": ["Trustpilot"],
     "google": ["Google"],
@@ -80,6 +82,7 @@ PRIMARY_SEARCH = {
     "threads": "threads/posts",
     "bluesky": "bluesky/posts",
     "linkedin": "linkedin/posts",
+    "substack": "substack/posts",
     "amazon": "amazon/products",
     "trustpilot": "trustpilot/companies",
     "google": "web/search",
@@ -98,6 +101,10 @@ ALIASES = {
     "google maps": "places/search",
     "jobs": "linkedin/jobs",
     "linkedin jobs": "linkedin/jobs",
+    "newsletters": "substack/publications",
+    "newsletter": "substack/publications",
+    "substack newsletters": "substack/publications",
+    "substack trending": "substack/trending",
     "linkedin companies": "linkedin/companies",
     "companies": "linkedin/companies",
     "trustpilot reviews": "trustpilot/company/reviews",
@@ -215,6 +222,19 @@ ID_FIELDS = {
     "/v1/youtube/posts": ["video_id", "url"],
     "/v1/youtube/channels": ["channel_id", "url"],
     "/v1/youtube/comments": ["comment_id", "url"],
+    "/v1/substack/posts": ["url"],
+    "/v1/substack/users": ["user_id", "username"],
+    "/v1/substack/publications": ["publication_id", "subdomain", "url"],
+    "/v1/substack/notes": ["note_id"],
+    "/v1/substack/user/posts": ["url"],
+    "/v1/substack/user/activity": ["note_id", "url", ["author_id", "date", "body"]],
+    "/v1/substack/publication/posts": ["url"],
+    "/v1/substack/publication/recommendations": ["publication_id", "subdomain", "url"],
+    "/v1/substack/post/comments": ["comment_id"],
+    "/v1/substack/post/likes": ["user_id", "url"],
+    "/v1/substack/category/publications": ["publication_id", "subdomain", "url"],
+    "/v1/substack/category/feed": ["note_id", "url"],
+    "/v1/substack/trending": ["url"],
 }
 
 # Detail endpoints whose response is the object itself (no wrapper key).
@@ -224,7 +244,15 @@ FLAT_DETAIL = {"/v1/linkedin/person", "/v1/linkedin/post", "/v1/linkedin/company
 TEXT_ENDPOINTS = {"/v1/web/ai-mode"}
 
 # Which array holds the rows when the response has more than one.
-LIST_KEY_OVERRIDES = {"/v1/trustpilot/companies": "companies", "/v1/trustpilot/user": "reviews"}
+LIST_KEY_OVERRIDES = {
+    "/v1/trustpilot/companies": "companies", "/v1/trustpilot/user": "reviews",
+    "/v1/substack/posts": "posts",  # also returns matching publications
+    "/v1/substack/publication/recommendations": "recommends",  # recommended_by is the other list
+}
+
+# Detail endpoints whose response also carries an array (e.g. a note with its replies):
+# the wrapper key of the object the table is built from.
+DETAIL_KEY_OVERRIDES = {"/v1/substack/note": "note"}
 
 # Public operations deliberately left out of the catalog (none at the moment; every data
 # endpoint in the spec ships, including ones the API marks temporarily unavailable).
@@ -368,6 +396,9 @@ def build(spec):
             kind = "text"
         elif path in FLAT_DETAIL:
             fields = field_names(spec, response)
+        elif path in DETAIL_KEY_OVERRIDES:
+            list_key = DETAIL_KEY_OVERRIDES[path]
+            fields = field_names(spec, props[list_key])
         else:
             arrays = [k for k, v in props.items()
                       if deref(spec, v).get("type") == "array"

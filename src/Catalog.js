@@ -1,7 +1,7 @@
 // GENERATED FILE: do not edit by hand. Run `python3 scripts/generate_catalog.py`.
-// Endpoint catalog rendered from spec/openapi.json (API Direct OpenAPI 1.1.0).
+// Endpoint catalog rendered from spec/openapi.json (API Direct OpenAPI 1.2.0).
 var CATALOG = {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "baseUrl": "https://apidirect.io",
   "platforms": [
     {
@@ -43,6 +43,10 @@ var CATALOG = {
     {
       "id": "linkedin",
       "label": "LinkedIn"
+    },
+    {
+      "id": "substack",
+      "label": "Substack"
     },
     {
       "id": "amazon",
@@ -5111,6 +5115,1386 @@ var CATALOG = {
       "docs": "https://apidirect.io/docs/reddit-users"
     },
     {
+      "key": "substack/posts",
+      "path": "/v1/substack/posts",
+      "method": "GET",
+      "platform": "substack",
+      "label": "Search Posts",
+      "summary": "Search Substack Posts",
+      "description": "Search Substack posts by keyword across every publication.",
+      "price": "$0.003 per request",
+      "freeTier": "50 requests/month",
+      "suspended": false,
+      "kind": "list",
+      "listKey": "posts",
+      "params": [
+        {
+          "name": "query",
+          "label": "Query",
+          "type": "string",
+          "required": true,
+          "description": "Search keyword (max 500 characters)"
+        },
+        {
+          "name": "page",
+          "label": "Page",
+          "type": "integer",
+          "required": false,
+          "description": "Page number for pagination (1-101). Each page returns 16-20 posts.",
+          "default": 1,
+          "min": 1,
+          "max": 101
+        },
+        {
+          "name": "posted_ago",
+          "label": "Posted Ago",
+          "type": "string",
+          "required": false,
+          "description": "Only return posts from this period: 24h (past day), 7d (past week), 30d (past month), or 12m (past year). Omit for all time. Any other value returns 400.",
+          "enum": [
+            "24h",
+            "7d",
+            "30d",
+            "12m"
+          ]
+        },
+        {
+          "name": "language",
+          "label": "Language",
+          "type": "string",
+          "required": false,
+          "description": "Two-letter language code, e.g. es, to rank posts in that language first"
+        },
+        {
+          "name": "get_sentiment",
+          "label": "Get Sentiment",
+          "type": "boolean",
+          "required": false,
+          "description": "Set to true to add AI emotion analysis (Plutchik's Wheel) to each result. Adds +$0.001 per request to the cost. Returns emotion scores, dominant emotion, intensity, and polarity.",
+          "default": false
+        }
+      ],
+      "fields": [
+        "title",
+        "subtitle",
+        "url",
+        "date",
+        "author",
+        "author_name",
+        "author_id",
+        "author_url",
+        "source",
+        "domain",
+        "snippet",
+        "likes",
+        "comments",
+        "restacks",
+        "reactions.❤",
+        "is_paid",
+        "audience",
+        "type",
+        "wordcount",
+        "lang",
+        "cover_image_url",
+        "podcast_url",
+        "podcast_duration",
+        "tags",
+        "publication",
+        "publication_id",
+        "publication_url",
+        "slug",
+        "post_id",
+        "authors",
+        "replies",
+        "audio_url",
+        "podcast_image_url",
+        "video_duration"
+      ],
+      "idFields": [
+        "url"
+      ],
+      "docs": "https://apidirect.io/docs/substack-posts"
+    },
+    {
+      "key": "substack/users",
+      "path": "/v1/substack/users",
+      "method": "GET",
+      "platform": "substack",
+      "label": "Search Users",
+      "summary": "Search Substack Users",
+      "description": "Search Substack authors and publication profiles by name or keyword.",
+      "price": "$0.003 per request",
+      "freeTier": "50 requests/month",
+      "suspended": false,
+      "kind": "list",
+      "listKey": "users",
+      "params": [
+        {
+          "name": "query",
+          "label": "Query",
+          "type": "string",
+          "required": true,
+          "description": "Search keyword (max 500 characters)"
+        },
+        {
+          "name": "page",
+          "label": "Page",
+          "type": "integer",
+          "required": false,
+          "description": "Page number for pagination (1-4). Each page returns up to 20 profiles.",
+          "default": 1,
+          "min": 1,
+          "max": 4
+        }
+      ],
+      "fields": [
+        "username",
+        "full_name",
+        "user_id",
+        "biography",
+        "profile_pic_url",
+        "follower_count",
+        "subscriber_count",
+        "subscriber_count_label",
+        "bestseller_tier",
+        "is_bestseller",
+        "paid_subscriber_band",
+        "paid_subscriber_floor",
+        "leaderboard.board",
+        "leaderboard.category",
+        "leaderboard.category_id",
+        "leaderboard.rank",
+        "twitter_handle",
+        "primary_publication.publication_id",
+        "primary_publication.name",
+        "primary_publication.subdomain",
+        "primary_publication.url",
+        "primary_publication.logo_url",
+        "date_joined",
+        "url"
+      ],
+      "idFields": [
+        "user_id",
+        "username"
+      ],
+      "docs": "https://apidirect.io/docs/substack-users"
+    },
+    {
+      "key": "substack/publications",
+      "path": "/v1/substack/publications",
+      "method": "GET",
+      "platform": "substack",
+      "label": "Search Publications",
+      "summary": "Search Substack Publications",
+      "description": "Search Substack publications by name or keyword.",
+      "price": "$0.003 per request",
+      "freeTier": "50 requests/month",
+      "suspended": false,
+      "kind": "list",
+      "listKey": "publications",
+      "params": [
+        {
+          "name": "query",
+          "label": "Query",
+          "type": "string",
+          "required": true,
+          "description": "Search keyword (max 500 characters)."
+        },
+        {
+          "name": "page",
+          "label": "Page",
+          "type": "integer",
+          "required": false,
+          "description": "Page number for pagination (1-4). Each page returns up to 20 publications.",
+          "default": 1,
+          "min": 1,
+          "max": 4
+        },
+        {
+          "name": "language",
+          "label": "Language",
+          "type": "string",
+          "required": false,
+          "description": "Two-letter language code, e.g. es, to rank publications in that language first"
+        }
+      ],
+      "fields": [
+        "author",
+        "author_id",
+        "author_name",
+        "author_url",
+        "bestseller_tier",
+        "cover_image_url",
+        "created_at",
+        "custom_domain",
+        "description",
+        "domain",
+        "first_post_date",
+        "has_podcast",
+        "podcast",
+        "sections",
+        "author_pic_url",
+        "logo_url_wide",
+        "founding_plan_name",
+        "has_recommendations",
+        "has_chat",
+        "is_bestseller",
+        "language",
+        "logo_url",
+        "name",
+        "paid_enabled",
+        "paid_subscriber_band",
+        "paid_subscriber_floor",
+        "plans",
+        "publication_id",
+        "ranking_detail",
+        "source",
+        "subdomain",
+        "subscriber_count",
+        "subscriber_count_label",
+        "twitter_handle",
+        "type",
+        "url"
+      ],
+      "idFields": [
+        "publication_id",
+        "subdomain",
+        "url"
+      ],
+      "docs": "https://apidirect.io/docs/substack-publications"
+    },
+    {
+      "key": "substack/notes",
+      "path": "/v1/substack/notes",
+      "method": "GET",
+      "platform": "substack",
+      "label": "Search Notes",
+      "summary": "Search Substack Notes",
+      "description": "Search Substack Notes by keyword.",
+      "price": "$0.003 per page",
+      "freeTier": "50 requests/month",
+      "suspended": false,
+      "kind": "list",
+      "listKey": "notes",
+      "params": [
+        {
+          "name": "query",
+          "label": "Query",
+          "type": "string",
+          "required": true,
+          "description": "Search keyword (max 500 characters)."
+        },
+        {
+          "name": "sort_by",
+          "label": "Sort By",
+          "type": "string",
+          "required": false,
+          "description": "Sort order",
+          "enum": [
+            "most_recent",
+            "top"
+          ],
+          "default": "most_recent"
+        },
+        {
+          "name": "pages",
+          "label": "Pages",
+          "type": "integer",
+          "required": false,
+          "description": "Number of pages to fetch and merge into one response (1-250, billed per page returned). Each page returns up to 12 notes. Fetching stops early when there are no more results.",
+          "default": 1,
+          "min": 1,
+          "max": 250
+        },
+        {
+          "name": "get_sentiment",
+          "label": "Get Sentiment",
+          "type": "boolean",
+          "required": false,
+          "description": "Set to true to add AI emotion analysis (Plutchik's Wheel) to each result. Adds +$0.001 per page to the cost. Returns emotion scores, dominant emotion, intensity, and polarity.",
+          "default": false
+        }
+      ],
+      "fields": [
+        "attachments",
+        "author",
+        "author_id",
+        "author_name",
+        "author_url",
+        "body",
+        "date",
+        "domain",
+        "lang",
+        "likes",
+        "note_id",
+        "publication",
+        "replies",
+        "restacks",
+        "reactions.❤",
+        "author_pic_url",
+        "author_bestseller_tier",
+        "source",
+        "url"
+      ],
+      "idFields": [
+        "note_id"
+      ],
+      "docs": "https://apidirect.io/docs/substack-notes"
+    },
+    {
+      "key": "substack/user",
+      "path": "/v1/substack/user",
+      "method": "GET",
+      "platform": "substack",
+      "label": "User Profile",
+      "summary": "Substack User Profile",
+      "description": "Get a Substack author's full profile by handle, user ID or profile URL.",
+      "price": "$0.003 per request",
+      "freeTier": "50 requests/month",
+      "suspended": false,
+      "kind": "detail",
+      "listKey": "user",
+      "params": [
+        {
+          "name": "username",
+          "label": "Username",
+          "type": "string",
+          "required": false,
+          "description": "Substack handle, e.g. lenny, with or without a leading @ (max 100 characters). Provide one of username, user_id or url."
+        },
+        {
+          "name": "user_id",
+          "label": "User ID",
+          "type": "string",
+          "required": false,
+          "description": "Numeric Substack user ID, as returned in user_id. Provide one of username, user_id or url."
+        },
+        {
+          "name": "url",
+          "label": "URL",
+          "type": "string",
+          "required": false,
+          "description": "Profile URL, e.g. https://substack.com/@lenny (max 500 characters). Provide one of username, user_id or url."
+        }
+      ],
+      "fields": [
+        "username",
+        "full_name",
+        "user_id",
+        "biography",
+        "profile_pic_url",
+        "follower_count",
+        "subscriber_count",
+        "subscriber_count_label",
+        "bestseller_tier",
+        "is_bestseller",
+        "paid_subscriber_band",
+        "paid_subscriber_floor",
+        "primary_publication.publication_id",
+        "primary_publication.name",
+        "primary_publication.subdomain",
+        "primary_publication.url",
+        "primary_publication.logo_url",
+        "date_joined",
+        "url",
+        "publications",
+        "links",
+        "twitter_handle",
+        "leaderboard.category",
+        "leaderboard.category_id",
+        "leaderboard.rank",
+        "leaderboard.board",
+        "subscriptions_count",
+        "slug",
+        "recommendation_count",
+        "has_guest_posts",
+        "subscriptions",
+        "has_posts"
+      ],
+      "idFields": [],
+      "docs": "https://apidirect.io/docs/substack-user"
+    },
+    {
+      "key": "substack/user/posts",
+      "path": "/v1/substack/user/posts",
+      "method": "GET",
+      "platform": "substack",
+      "label": "User Posts",
+      "summary": "Substack User Posts",
+      "description": "Get an author's posts across all their publications, newest first.",
+      "price": "$0.003 per page",
+      "freeTier": "50 requests/month",
+      "suspended": false,
+      "kind": "list",
+      "listKey": "posts",
+      "params": [
+        {
+          "name": "username",
+          "label": "Username",
+          "type": "string",
+          "required": false,
+          "description": "Substack handle, e.g. lenny, with or without a leading @ (max 100 characters). Provide one of username, user_id or url."
+        },
+        {
+          "name": "user_id",
+          "label": "User ID",
+          "type": "string",
+          "required": false,
+          "description": "Numeric Substack user ID, as returned in user_id. Provide one of username, user_id or url."
+        },
+        {
+          "name": "url",
+          "label": "URL",
+          "type": "string",
+          "required": false,
+          "description": "Profile URL, e.g. https://substack.com/@lenny (max 500 characters). Provide one of username, user_id or url."
+        },
+        {
+          "name": "pages",
+          "label": "Pages",
+          "type": "integer",
+          "required": false,
+          "description": "Number of pages to fetch and merge into one response (1-60, billed per page returned). Each page returns up to 50 posts. Fetching stops early when there are no more results.",
+          "default": 1,
+          "min": 1,
+          "max": 60
+        },
+        {
+          "name": "get_sentiment",
+          "label": "Get Sentiment",
+          "type": "boolean",
+          "required": false,
+          "description": "Set to true to add AI emotion analysis (Plutchik's Wheel) to each result. Adds +$0.001 per page to the cost. Returns emotion scores, dominant emotion, intensity, and polarity.",
+          "default": false
+        }
+      ],
+      "fields": [
+        "title",
+        "subtitle",
+        "url",
+        "date",
+        "author",
+        "author_name",
+        "author_id",
+        "author_url",
+        "source",
+        "domain",
+        "snippet",
+        "likes",
+        "comments",
+        "restacks",
+        "reactions.❤",
+        "is_paid",
+        "audience",
+        "type",
+        "wordcount",
+        "lang",
+        "cover_image_url",
+        "podcast_url",
+        "podcast_duration",
+        "tags",
+        "publication",
+        "publication_id",
+        "publication_url",
+        "slug",
+        "post_id",
+        "authors",
+        "replies",
+        "audio_url",
+        "podcast_image_url",
+        "video_duration"
+      ],
+      "idFields": [
+        "url"
+      ],
+      "docs": "https://apidirect.io/docs/substack-user-posts"
+    },
+    {
+      "key": "substack/user/activity",
+      "path": "/v1/substack/user/activity",
+      "method": "GET",
+      "platform": "substack",
+      "label": "User Activity",
+      "summary": "Substack User Activity",
+      "description": "Get an author's public activity feed: their Notes and the posts they publish or restack, newest first, or only their notes, posts, replies, restacks or likes.",
+      "price": "$0.003 per page",
+      "freeTier": "50 requests/month",
+      "suspended": false,
+      "kind": "list",
+      "listKey": "items",
+      "params": [
+        {
+          "name": "username",
+          "label": "Username",
+          "type": "string",
+          "required": false,
+          "description": "Substack handle, e.g. lenny, with or without a leading @ (max 100 characters). Provide one of username, user_id or url."
+        },
+        {
+          "name": "user_id",
+          "label": "User ID",
+          "type": "string",
+          "required": false,
+          "description": "Numeric Substack user ID, as returned in user_id. Provide one of username, user_id or url."
+        },
+        {
+          "name": "url",
+          "label": "URL",
+          "type": "string",
+          "required": false,
+          "description": "Profile URL, e.g. https://substack.com/@lenny (max 500 characters). Provide one of username, user_id or url."
+        },
+        {
+          "name": "type",
+          "label": "Type",
+          "type": "string",
+          "required": false,
+          "description": "Only one kind of activity: note, post, reply, restack or like. Omit for notes, posts and restacks.",
+          "enum": [
+            "note",
+            "post",
+            "reply",
+            "restack",
+            "like"
+          ]
+        },
+        {
+          "name": "pages",
+          "label": "Pages",
+          "type": "integer",
+          "required": false,
+          "description": "Number of pages to fetch and merge into one response (1-250, billed per page returned). Each page returns 12 items. Fetching stops early when there are no more results.",
+          "default": 1,
+          "min": 1,
+          "max": 250
+        }
+      ],
+      "fields": [
+        "note_id",
+        "body",
+        "date",
+        "author",
+        "author_name",
+        "author_id",
+        "author_url",
+        "source",
+        "domain",
+        "likes",
+        "replies",
+        "restacks",
+        "reactions.❤",
+        "author_pic_url",
+        "author_bestseller_tier",
+        "lang",
+        "attachments",
+        "publication",
+        "url",
+        "type",
+        "activity"
+      ],
+      "idFields": [
+        "note_id",
+        "url",
+        [
+          "author_id",
+          "date",
+          "body"
+        ]
+      ],
+      "docs": "https://apidirect.io/docs/substack-user-activity"
+    },
+    {
+      "key": "substack/publication",
+      "path": "/v1/substack/publication",
+      "method": "GET",
+      "platform": "substack",
+      "label": "Publication Details",
+      "summary": "Substack Publication Details",
+      "description": "Get a Substack publication by subdomain, custom domain, URL or ID.",
+      "price": "$0.003 per request",
+      "freeTier": "50 requests/month",
+      "suspended": false,
+      "kind": "detail",
+      "listKey": "publication",
+      "params": [
+        {
+          "name": "publication",
+          "label": "Publication",
+          "type": "string",
+          "required": false,
+          "description": "Publication subdomain (lenny), host (lenny.substack.com, www.lennysnewsletter.com) or any URL on it (max 500 characters). Provide either publication or publication_id."
+        },
+        {
+          "name": "publication_id",
+          "label": "Publication ID",
+          "type": "string",
+          "required": false,
+          "description": "Numeric publication ID, as returned in publication_id. Provide either publication or publication_id."
+        }
+      ],
+      "fields": [
+        "publication_id",
+        "name",
+        "subdomain",
+        "url",
+        "custom_domain",
+        "description",
+        "logo_url",
+        "cover_image_url",
+        "author",
+        "author_name",
+        "author_id",
+        "author_url",
+        "subscriber_count",
+        "subscriber_count_label",
+        "ranking_detail",
+        "paid_subscriber_band",
+        "paid_subscriber_floor",
+        "bestseller_tier",
+        "is_bestseller",
+        "paid_enabled",
+        "plans",
+        "has_podcast",
+        "podcast",
+        "sections",
+        "author_pic_url",
+        "logo_url_wide",
+        "founding_plan_name",
+        "has_recommendations",
+        "has_chat",
+        "language",
+        "type",
+        "twitter_handle",
+        "created_at",
+        "first_post_date",
+        "source",
+        "domain",
+        "contributors"
+      ],
+      "idFields": [],
+      "docs": "https://apidirect.io/docs/substack-publication"
+    },
+    {
+      "key": "substack/publication/posts",
+      "path": "/v1/substack/publication/posts",
+      "method": "GET",
+      "platform": "substack",
+      "label": "Publication Posts",
+      "summary": "Substack Publication Posts",
+      "description": "Get a publication's posts, newest first, top or most discussed, or search them by keyword.",
+      "price": "$0.003 per request",
+      "freeTier": "50 requests/month",
+      "suspended": false,
+      "kind": "list",
+      "listKey": "posts",
+      "params": [
+        {
+          "name": "publication",
+          "label": "Publication",
+          "type": "string",
+          "required": true,
+          "description": "Publication subdomain (lenny), host (lenny.substack.com, www.lennysnewsletter.com) or any URL on it (max 500 characters)"
+        },
+        {
+          "name": "query",
+          "label": "Query",
+          "type": "string",
+          "required": false,
+          "description": "Keyword to search the publication's posts for (max 500 characters). Results are by relevance; sort_by is ignored."
+        },
+        {
+          "name": "sort_by",
+          "label": "Sort By",
+          "type": "string",
+          "required": false,
+          "description": "Sort order for the archive",
+          "enum": [
+            "most_recent",
+            "top",
+            "discussions"
+          ],
+          "default": "most_recent"
+        },
+        {
+          "name": "podcasts_only",
+          "label": "Podcasts Only",
+          "type": "boolean",
+          "required": false,
+          "description": "Set to true to return only podcast episodes (most_recent archive only).",
+          "default": false
+        },
+        {
+          "name": "page",
+          "label": "Page",
+          "type": "integer",
+          "required": false,
+          "description": "Page number for pagination. Each page returns up to 20 posts.",
+          "default": 1,
+          "min": 1
+        },
+        {
+          "name": "get_sentiment",
+          "label": "Get Sentiment",
+          "type": "boolean",
+          "required": false,
+          "description": "Set to true to add AI emotion analysis (Plutchik's Wheel) to each result. Adds +$0.001 per request to the cost. Returns emotion scores, dominant emotion, intensity, and polarity.",
+          "default": false
+        }
+      ],
+      "fields": [
+        "title",
+        "subtitle",
+        "url",
+        "date",
+        "author",
+        "author_name",
+        "author_id",
+        "author_url",
+        "source",
+        "domain",
+        "snippet",
+        "likes",
+        "comments",
+        "restacks",
+        "reactions.❤",
+        "is_paid",
+        "audience",
+        "type",
+        "wordcount",
+        "lang",
+        "cover_image_url",
+        "podcast_url",
+        "podcast_duration",
+        "tags",
+        "publication",
+        "publication_id",
+        "publication_url",
+        "slug",
+        "post_id",
+        "authors",
+        "replies",
+        "audio_url",
+        "podcast_image_url",
+        "video_duration"
+      ],
+      "idFields": [
+        "url"
+      ],
+      "docs": "https://apidirect.io/docs/substack-publication-posts"
+    },
+    {
+      "key": "substack/publication/recommendations",
+      "path": "/v1/substack/publication/recommendations",
+      "method": "GET",
+      "platform": "substack",
+      "label": "Publication Recommendations",
+      "summary": "Substack Publication Recommendations",
+      "description": "Get the publications a Substack publication recommends to its readers, and the publications that recommend it.",
+      "price": "$0.003 per request",
+      "freeTier": "50 requests/month",
+      "suspended": false,
+      "kind": "list",
+      "listKey": "recommends",
+      "params": [
+        {
+          "name": "publication",
+          "label": "Publication",
+          "type": "string",
+          "required": false,
+          "description": "Publication subdomain (lenny), host (lenny.substack.com, www.lennysnewsletter.com) or any URL on it (max 500 characters). Provide either publication or publication_id."
+        },
+        {
+          "name": "publication_id",
+          "label": "Publication ID",
+          "type": "string",
+          "required": false,
+          "description": "Numeric publication ID, as returned in publication_id. Provide either publication or publication_id."
+        }
+      ],
+      "fields": [
+        "publication_id",
+        "name",
+        "subdomain",
+        "url",
+        "logo_url",
+        "description",
+        "author",
+        "author_name",
+        "author_id",
+        "author_url",
+        "language",
+        "paid_enabled",
+        "blurb",
+        "date"
+      ],
+      "idFields": [
+        "publication_id",
+        "subdomain",
+        "url"
+      ],
+      "docs": "https://apidirect.io/docs/substack-publication-recommendations"
+    },
+    {
+      "key": "substack/post",
+      "path": "/v1/substack/post",
+      "method": "GET",
+      "platform": "substack",
+      "label": "Post Details",
+      "summary": "Substack Post Details",
+      "description": "Get a Substack post by URL, ID, or publication and slug.",
+      "price": "$0.003 per request",
+      "freeTier": "50 requests/month",
+      "suspended": false,
+      "kind": "detail",
+      "listKey": "post",
+      "params": [
+        {
+          "name": "url",
+          "label": "URL",
+          "type": "string",
+          "required": false,
+          "description": "Post URL, e.g. https://www.lennysnewsletter.com/p/all-of-the-lenny-and-friends-summit (max 500 characters). Provide url, post_id, or publication and slug."
+        },
+        {
+          "name": "post_id",
+          "label": "Post ID",
+          "type": "string",
+          "required": false,
+          "description": "Numeric post ID, as returned in post_id. Provide url, post_id, or publication and slug."
+        },
+        {
+          "name": "publication",
+          "label": "Publication",
+          "type": "string",
+          "required": false,
+          "description": "Publication subdomain, host or URL, used together with slug."
+        },
+        {
+          "name": "slug",
+          "label": "Slug",
+          "type": "string",
+          "required": false,
+          "description": "Post URL slug, e.g. all-of-the-lenny-and-friends-summit, used together with publication."
+        },
+        {
+          "name": "get_sentiment",
+          "label": "Get Sentiment",
+          "type": "boolean",
+          "required": false,
+          "description": "Set to true to add AI emotion analysis (Plutchik's Wheel) to each result. Adds +$0.001 per request to the cost. Returns emotion scores, dominant emotion, intensity, and polarity.",
+          "default": false
+        }
+      ],
+      "fields": [
+        "title",
+        "subtitle",
+        "url",
+        "date",
+        "author",
+        "author_name",
+        "author_id",
+        "author_url",
+        "source",
+        "domain",
+        "snippet",
+        "likes",
+        "comments",
+        "restacks",
+        "authors",
+        "replies",
+        "audio_url",
+        "podcast_image_url",
+        "video_duration",
+        "reactions.❤",
+        "is_paid",
+        "audience",
+        "type",
+        "wordcount",
+        "lang",
+        "cover_image_url",
+        "podcast_url",
+        "podcast_duration",
+        "tags",
+        "publication",
+        "publication_id",
+        "publication_url",
+        "slug",
+        "post_id",
+        "body_html",
+        "body_text",
+        "body_is_preview",
+        "updated_at",
+        "previous_post_slug",
+        "next_post_slug",
+        "publication_details.publication_id",
+        "publication_details.name",
+        "publication_details.subdomain",
+        "publication_details.url",
+        "publication_details.logo_url"
+      ],
+      "idFields": [],
+      "docs": "https://apidirect.io/docs/substack-post"
+    },
+    {
+      "key": "substack/post/comments",
+      "path": "/v1/substack/post/comments",
+      "method": "GET",
+      "platform": "substack",
+      "label": "Post Comments",
+      "summary": "Substack Post Comments",
+      "description": "Get the full comment thread of a Substack post, nested.",
+      "price": "$0.003 per request",
+      "freeTier": "50 requests/month",
+      "suspended": false,
+      "kind": "list",
+      "listKey": "comments",
+      "params": [
+        {
+          "name": "url",
+          "label": "URL",
+          "type": "string",
+          "required": false,
+          "description": "Post URL, e.g. https://www.lennysnewsletter.com/p/all-of-the-lenny-and-friends-summit (max 500 characters). Provide url, post_id, or publication and slug."
+        },
+        {
+          "name": "post_id",
+          "label": "Post ID",
+          "type": "string",
+          "required": false,
+          "description": "Numeric post ID, as returned in post_id. Provide url, post_id, or publication and slug."
+        },
+        {
+          "name": "publication",
+          "label": "Publication",
+          "type": "string",
+          "required": false,
+          "description": "Publication subdomain, host or URL, used together with slug."
+        },
+        {
+          "name": "slug",
+          "label": "Slug",
+          "type": "string",
+          "required": false,
+          "description": "Post URL slug, e.g. all-of-the-lenny-and-friends-summit, used together with publication."
+        },
+        {
+          "name": "sort_by",
+          "label": "Sort By",
+          "type": "string",
+          "required": false,
+          "description": "Sort order for the thread",
+          "enum": [
+            "relevance",
+            "most_recent",
+            "oldest"
+          ],
+          "default": "relevance"
+        },
+        {
+          "name": "get_sentiment",
+          "label": "Get Sentiment",
+          "type": "boolean",
+          "required": false,
+          "description": "Set to true to add AI emotion analysis (Plutchik's Wheel) to each result. Adds +$0.001 per request to the cost. Returns emotion scores, dominant emotion, intensity, and polarity.",
+          "default": false
+        }
+      ],
+      "fields": [
+        "comment_id",
+        "body",
+        "date",
+        "author",
+        "author_name",
+        "author_id",
+        "author_url",
+        "likes",
+        "replies",
+        "restacks",
+        "is_author",
+        "is_pinned",
+        "author_pic_url",
+        "reactions.❤",
+        "liked_by",
+        "status",
+        "url",
+        "children"
+      ],
+      "idFields": [
+        "comment_id"
+      ],
+      "docs": "https://apidirect.io/docs/substack-post-comments"
+    },
+    {
+      "key": "substack/post/likes",
+      "path": "/v1/substack/post/likes",
+      "method": "GET",
+      "platform": "substack",
+      "label": "Post Likes",
+      "summary": "Substack Post Likes",
+      "description": "Get the people who liked a Substack post.",
+      "price": "$0.003 per request",
+      "freeTier": "50 requests/month",
+      "suspended": false,
+      "kind": "list",
+      "listKey": "likes",
+      "params": [
+        {
+          "name": "url",
+          "label": "URL",
+          "type": "string",
+          "required": false,
+          "description": "Post URL, e.g. https://www.lennysnewsletter.com/p/all-of-the-lenny-and-friends-summit (max 500 characters). Provide url, post_id, or publication and slug."
+        },
+        {
+          "name": "post_id",
+          "label": "Post ID",
+          "type": "string",
+          "required": false,
+          "description": "Numeric post ID, as returned in post_id. Provide url, post_id, or publication and slug."
+        },
+        {
+          "name": "publication",
+          "label": "Publication",
+          "type": "string",
+          "required": false,
+          "description": "Publication subdomain, host or URL, used together with slug."
+        },
+        {
+          "name": "slug",
+          "label": "Slug",
+          "type": "string",
+          "required": false,
+          "description": "Post URL slug, e.g. all-of-the-lenny-and-friends-summit, used together with publication."
+        }
+      ],
+      "fields": [
+        "full_name",
+        "user_id",
+        "profile_pic_url",
+        "bestseller_tier",
+        "is_bestseller",
+        "primary_publication.publication_id",
+        "primary_publication.name",
+        "primary_publication.subdomain",
+        "primary_publication.url",
+        "primary_publication.logo_url",
+        "url"
+      ],
+      "idFields": [
+        "user_id",
+        "url"
+      ],
+      "docs": "https://apidirect.io/docs/substack-post-likes"
+    },
+    {
+      "key": "substack/note",
+      "path": "/v1/substack/note",
+      "method": "GET",
+      "platform": "substack",
+      "label": "Note Details",
+      "summary": "Substack Note Details",
+      "description": "Get a Substack Note by URL or ID, with its replies.",
+      "price": "$0.003 per request",
+      "freeTier": "50 requests/month",
+      "suspended": false,
+      "kind": "detail",
+      "listKey": "note",
+      "params": [
+        {
+          "name": "url",
+          "label": "URL",
+          "type": "string",
+          "required": false,
+          "description": "Note URL, e.g. https://substack.com/@hamish/note/c-355659691 (max 500 characters). Provide either url or note_id."
+        },
+        {
+          "name": "note_id",
+          "label": "Note ID",
+          "type": "string",
+          "required": false,
+          "description": "Numeric note ID, with or without the c- prefix. Provide either url or note_id."
+        },
+        {
+          "name": "get_sentiment",
+          "label": "Get Sentiment",
+          "type": "boolean",
+          "required": false,
+          "description": "Set to true to add AI emotion analysis (Plutchik's Wheel) to each result. Adds +$0.001 per request to the cost. Returns emotion scores, dominant emotion, intensity, and polarity.",
+          "default": false
+        }
+      ],
+      "fields": [
+        "note_id",
+        "body",
+        "date",
+        "author",
+        "author_name",
+        "author_id",
+        "author_url",
+        "source",
+        "domain",
+        "likes",
+        "replies",
+        "restacks",
+        "reactions.❤",
+        "author_pic_url",
+        "author_bestseller_tier",
+        "lang",
+        "attachments",
+        "publication",
+        "url"
+      ],
+      "idFields": [],
+      "docs": "https://apidirect.io/docs/substack-note"
+    },
+    {
+      "key": "substack/category/publications",
+      "path": "/v1/substack/category/publications",
+      "method": "GET",
+      "platform": "substack",
+      "label": "Category Publications",
+      "summary": "Substack Category Publications",
+      "description": "Get a Substack category's leaderboard: the top publications ranked by Substack, each with its full details (subscriber badge, paid band, prices, author) and rank.",
+      "price": "$0.003 per request",
+      "freeTier": "50 requests/month",
+      "suspended": false,
+      "kind": "list",
+      "listKey": "publications",
+      "params": [
+        {
+          "name": "category",
+          "label": "Category",
+          "type": "string",
+          "required": true,
+          "description": "Category ID or slug, e.g. 4 or technology (bestsellers and podcasts for the site-wide boards). See Category IDs (https://apidirect.io/docs/substack-category-ids)"
+        },
+        {
+          "name": "tier",
+          "label": "Tier",
+          "type": "string",
+          "required": false,
+          "description": "all, paid or rising (bestsellers: rising; podcasts: all or paid)",
+          "enum": [
+            "all",
+            "paid",
+            "rising"
+          ]
+        },
+        {
+          "name": "page",
+          "label": "Page",
+          "type": "integer",
+          "required": false,
+          "description": "Page number (default: 1), 25 publications per page. Up to 21 pages; rising 10; bestsellers and podcasts 4",
+          "default": 1,
+          "min": 1,
+          "max": 21
+        }
+      ],
+      "fields": [
+        "publication_id",
+        "name",
+        "subdomain",
+        "url",
+        "custom_domain",
+        "description",
+        "logo_url",
+        "cover_image_url",
+        "author",
+        "author_name",
+        "author_id",
+        "author_url",
+        "subscriber_count",
+        "subscriber_count_label",
+        "ranking_detail",
+        "paid_subscriber_band",
+        "paid_subscriber_floor",
+        "bestseller_tier",
+        "is_bestseller",
+        "paid_enabled",
+        "plans",
+        "has_podcast",
+        "podcast",
+        "sections",
+        "author_pic_url",
+        "logo_url_wide",
+        "founding_plan_name",
+        "has_recommendations",
+        "has_chat",
+        "language",
+        "type",
+        "twitter_handle",
+        "created_at",
+        "first_post_date",
+        "source",
+        "domain",
+        "rank"
+      ],
+      "idFields": [
+        "publication_id",
+        "subdomain",
+        "url"
+      ],
+      "docs": "https://apidirect.io/docs/substack-category-publications"
+    },
+    {
+      "key": "substack/category/feed",
+      "path": "/v1/substack/category/feed",
+      "method": "GET",
+      "platform": "substack",
+      "label": "Category Feed",
+      "summary": "Substack Category Feed",
+      "description": "Get a Substack category's feed: the posts and notes Substack shows for the topic, top, newest or posts only.",
+      "price": "$0.003 per page",
+      "freeTier": "50 requests/month",
+      "suspended": false,
+      "kind": "list",
+      "listKey": "items",
+      "params": [
+        {
+          "name": "category",
+          "label": "Category",
+          "type": "string",
+          "required": true,
+          "description": "Category ID or slug, e.g. 4 or technology. See Category IDs (https://apidirect.io/docs/substack-category-ids)"
+        },
+        {
+          "name": "sort_by",
+          "label": "Sort By",
+          "type": "string",
+          "required": false,
+          "description": "Sort order: top, most_recent or posts (posts only, no notes)",
+          "enum": [
+            "top",
+            "most_recent",
+            "posts"
+          ],
+          "default": "top"
+        },
+        {
+          "name": "pages",
+          "label": "Pages",
+          "type": "integer",
+          "required": false,
+          "description": "Number of pages to fetch and merge into one response (1-250, billed per page returned). Each page returns about 11 items. Fetching stops early when there are no more results.",
+          "default": 1,
+          "min": 1,
+          "max": 250
+        }
+      ],
+      "fields": [
+        "attachments",
+        "author",
+        "author_id",
+        "author_name",
+        "author_url",
+        "body",
+        "date",
+        "domain",
+        "lang",
+        "likes",
+        "note_id",
+        "publication",
+        "replies",
+        "restacks",
+        "reactions.❤",
+        "author_pic_url",
+        "author_bestseller_tier",
+        "source",
+        "type",
+        "url",
+        "audience",
+        "comments",
+        "cover_image_url",
+        "is_paid",
+        "podcast_duration",
+        "podcast_url",
+        "post_id",
+        "post_type",
+        "publication_id",
+        "publication_url",
+        "authors",
+        "audio_url",
+        "podcast_image_url",
+        "video_duration",
+        "slug",
+        "snippet",
+        "subtitle",
+        "tags",
+        "title",
+        "wordcount"
+      ],
+      "idFields": [
+        "note_id",
+        "url"
+      ],
+      "docs": "https://apidirect.io/docs/substack-category-feed"
+    },
+    {
+      "key": "substack/trending",
+      "path": "/v1/substack/trending",
+      "method": "GET",
+      "platform": "substack",
+      "label": "Trending Posts",
+      "summary": "Substack Trending Posts",
+      "description": "Get the posts currently trending across all of Substack, as featured on its explore page.",
+      "price": "$0.003 per request",
+      "freeTier": "50 requests/month",
+      "suspended": false,
+      "kind": "list",
+      "listKey": "posts",
+      "params": [
+        {
+          "name": "get_sentiment",
+          "label": "Get Sentiment",
+          "type": "boolean",
+          "required": false,
+          "description": "Set to true to add AI emotion analysis (Plutchik's Wheel) to each result. Adds +$0.001 per request to the cost. Returns emotion scores, dominant emotion, intensity, and polarity.",
+          "default": false
+        }
+      ],
+      "fields": [
+        "title",
+        "subtitle",
+        "url",
+        "date",
+        "author",
+        "author_name",
+        "author_id",
+        "author_url",
+        "source",
+        "domain",
+        "snippet",
+        "likes",
+        "comments",
+        "restacks",
+        "reactions.❤",
+        "is_paid",
+        "audience",
+        "type",
+        "wordcount",
+        "lang",
+        "cover_image_url",
+        "podcast_url",
+        "podcast_duration",
+        "tags",
+        "publication",
+        "publication_id",
+        "publication_url",
+        "slug",
+        "post_id",
+        "authors",
+        "replies",
+        "audio_url",
+        "podcast_image_url",
+        "video_duration"
+      ],
+      "idFields": [
+        "url"
+      ],
+      "docs": "https://apidirect.io/docs/substack-trending"
+    },
+    {
       "key": "threads/posts",
       "path": "/v1/threads/posts",
       "method": "GET",
@@ -7185,6 +8569,7 @@ var CATALOG = {
     "threads": "threads/posts",
     "bluesky": "bluesky/posts",
     "linkedin": "linkedin/posts",
+    "substack": "substack/posts",
     "amazon": "amazon/products",
     "trustpilot": "trustpilot/companies",
     "google": "web/search",
@@ -7205,6 +8590,10 @@ var CATALOG = {
     "reddit posts": "reddit/posts",
     "reddit comments": "reddit/comments",
     "reddit users": "reddit/users",
+    "substack posts": "substack/posts",
+    "substack users": "substack/users",
+    "substack publications": "substack/publications",
+    "substack notes": "substack/notes",
     "threads posts": "threads/posts",
     "threads users": "threads/users",
     "tiktok videos": "tiktok/videos",
@@ -7225,6 +8614,10 @@ var CATALOG = {
     "maps": "places/search",
     "google maps": "places/search",
     "jobs": "linkedin/jobs",
+    "newsletters": "substack/publications",
+    "newsletter": "substack/publications",
+    "substack newsletters": "substack/publications",
+    "substack trending": "substack/trending",
     "companies": "linkedin/companies",
     "trustpilot reviews": "trustpilot/company/reviews",
     "events": "facebook/events",

@@ -109,6 +109,16 @@ test('sendRequest retries concurrency limits and 5xx with backoff, then gives up
   assert.equal(calls, 1, 'no retry when the deadline would be missed');
 });
 
+test('endpoints with only optional lookups need at least one of them', () => {
+  const env = createEnv();
+  const prepare = env.fn('prepareParams');
+  const find = env.fn('findEndpoint');
+  assert.throws(() => prepare(find('substack/user'), {}), /needs one of username, user_id, url/);
+  assert.deepEqual(prepare(find('substack/user'), { username: 'acme' }), { username: 'acme' });
+  assert.throws(() => prepare(find('substack/post/comments'), { sort_by: 'oldest' }), /needs one of url, post_id, slug/);
+  assert.deepEqual(prepare(find('substack/post/comments'), { url: 'https://x.substack.com/p/y', sort_by: 'Oldest' }), { url: 'https://x.substack.com/p/y', sort_by: 'oldest' });
+});
+
 test('callPath sends JSON bodies and query strings', () => {
   const env = createEnv({ fetchHandler: () => ({ code: 200, body: { reply_parts: [] } }) });
   const callPath = env.fn('callPath');
