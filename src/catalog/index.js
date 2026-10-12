@@ -11,6 +11,7 @@ module.exports = [
   ...require('./linkedin'),
   ...require('./news'),
   ...require('./reddit'),
+  ...require('./substack'),
   ...require('./threads'),
   ...require('./tiktok'),
   ...require('./trustpilot'),

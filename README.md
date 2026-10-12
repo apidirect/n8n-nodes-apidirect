@@ -1,13 +1,13 @@
 # API Direct for Zapier
 
-The [Zapier](https://zapier.com) integration for [API Direct](https://apidirect.io?utm_source=zapier): real-time public data from LinkedIn, X/Twitter, Reddit, YouTube, Instagram, TikTok, Facebook, Threads, Bluesky, Truth Social, Google (web search, AI Mode, news, forums, Maps), Amazon and Trustpilot, in any Zap.
+The [Zapier](https://zapier.com) integration for [API Direct](https://apidirect.io?utm_source=zapier): real-time public data from LinkedIn, X/Twitter, Reddit, YouTube, Instagram, TikTok, Facebook, Threads, Bluesky, Substack, Truth Social, Google (web search, AI Mode, news, forums, Maps), Amazon and Trustpilot, in any Zap.
 
 Built with the [Zapier Platform CLI](https://docs.zapier.com/platform/quickstart/cli-tutorial).
 
 ## What it does
 
-- **103 actions covering every operation in the public spec** (104 operations: AI Mode's GET and POST are one action that posts long prompts). Endpoints that return a list (Search Twitter Posts, Get LinkedIn Company Posts, Get Google Place Reviews, ...) are actions whose results come through as line items. Endpoints that return one object (Find Twitter User, Find LinkedIn Person, Find Google Place, ...) are searches. Run Batch Requests and Check API Key cover `/v1/batch` and `/v1/time`.
-- **79 polling triggers**, one per endpoint that returns a list: New Twitter Post Matching Search, New Reddit Post Matching Search, New LinkedIn Job Matching Search, New Google Place Review, New Instagram Follower, and so on. Each poll calls the endpoint with the step's inputs (newest first where the endpoint sorts that way) and gives every result a stable `id` built from the fields that identify it (post URL, user id, review id, ...), which Zapier dedupes on per Zap.
+- **120 actions covering every operation in the public spec** (121 operations in v1.2.0: AI Mode's GET and POST are one action that posts long prompts). Endpoints that return a list (Search Twitter Posts, Get LinkedIn Company Posts, Get Google Place Reviews, ...) are actions whose results come through as line items. Endpoints that return one object (Find Twitter User, Find LinkedIn Person, Find Google Place, ...) are searches. Run Batch Requests and Check API Key cover `/v1/batch` and `/v1/time`.
+- **92 polling triggers**, one per endpoint that returns a list: New Twitter Post Matching Search, New Reddit Post Matching Search, New LinkedIn Job Matching Search, New Substack Post Matching Search, New Google Place Review, New Instagram Follower, and so on. Each poll calls the endpoint with the step's inputs (newest first where the endpoint sorts that way) and gives every result a stable `id` built from the fields that identify it (post URL, user id, review id, ...), which Zapier dedupes on per Zap.
 
 Authentication is the API key from the [dashboard](https://apidirect.io/dashboard/keys), sent as `X-API-Key`. Every endpoint has a monthly free tier; beyond it, each call bills at the price on its [pricing](https://apidirect.io/docs/pricing) row (the step descriptions repeat it).
 
@@ -22,7 +22,7 @@ src/lib/http.js              base URL, X-API-Key middleware, API error -> Zapier
 src/lib/dates.js             "YYYY-MM-DD HH:MM:SS" (UTC) -> ISO 8601
 src/creates/                 hand-written Check API Key and Run Batch Requests
 scripts/generate.py          the generator (standard-library Python)
-spec/openapi.json            its input: the API Direct OpenAPI spec, LinkedIn included
+spec/openapi.json            its input: a copy of the public API Direct OpenAPI spec (v1.2.0)
 test/                        jest + nock tests, including Zapier's publishing checks
 ```
 
