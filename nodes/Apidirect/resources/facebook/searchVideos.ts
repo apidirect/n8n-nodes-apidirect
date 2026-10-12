@@ -42,7 +42,7 @@ export const facebookSearchVideosFields: INodeProperties[] = [
 				name: "endDate",
 				type: "string",
 				default: "",
-				description: "Filter videos until this date",
+				description: "Only videos up to this date (YYYY-MM-DD)",
 				routing: {
 					send: {
 						type: "query",
@@ -104,7 +104,7 @@ export const facebookSearchVideosFields: INodeProperties[] = [
 				name: "startDate",
 				type: "string",
 				default: "",
-				description: "Filter videos from this date",
+				description: "Only videos from this date onward (YYYY-MM-DD)",
 				routing: {
 					send: {
 						type: "query",

@@ -5,6 +5,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.7.0] - 2026-10-12
+
+### Added
+
+- Substack resource with 17 operations: Search Posts, Search Users, Search Publications, Search Notes, User Profile, User Posts, User Activity, Publication Details, Publication Posts, Publication Recommendations, Post Details, Post Comments, Post Likes, Note Details, Category Publications, Category Feed and Trending Posts.
+
 ## [0.6.2] - 2026-10-01
 
 ### Changed

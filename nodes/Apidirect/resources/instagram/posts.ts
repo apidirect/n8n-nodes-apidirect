@@ -8,7 +8,7 @@ export const instagramPostsFields: INodeProperties[] = [
 		name: "query",
 		type: "string",
 		default: "",
-		description: "Search keyword (max 500 characters)",
+		description: "Search keyword (max 500 characters). Cannot start with # or @.",
 		routing: {
 			send: {
 				type: "query",

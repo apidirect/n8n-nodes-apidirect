@@ -27,7 +27,7 @@ export const tiktokVideoFields: INodeProperties[] = [
 		name: "videoId",
 		type: "string",
 		default: "",
-		description: "Numeric TikTok video ID, as returned by search_tiktok. Provide exactly one of: URL, Video ID.",
+		description: "Numeric TikTok video ID: the number at the end of a video URL, e.g. 7516594811734854943. Provide exactly one of: URL, Video ID.",
 		routing: {
 			send: {
 				type: "query",

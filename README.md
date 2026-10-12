@@ -15,7 +15,7 @@
   <a href="LICENSE.md"><img src="https://img.shields.io/npm/l/n8n-nodes-apidirect" alt="License: MIT"></a>
 </p>
 
-Built and maintained by the API Direct team. API Direct is a pay-as-you-go API for real-time data from Twitter/X, Facebook, Instagram, TikTok, YouTube, Reddit, Threads, Truth Social, Bluesky, Amazon, Trustpilot, and Google, all through one key and one consistent interface. There are no subscriptions: you only pay for the requests you make.
+Built and maintained by the API Direct team. API Direct is a pay-as-you-go API for real-time data from Twitter/X, Facebook, Instagram, TikTok, YouTube, Reddit, Threads, Truth Social, Bluesky, Substack, Amazon, Trustpilot, and Google, all through one key and one consistent interface. There are no subscriptions: you only pay for the requests you make.
 
 **Contents:** [Installation](#installation) · [Credentials](#credentials) · [Operations](#operations) · [Usage](#usage) · [Compatibility](#compatibility) · [Support](#support) · [Changelog](#changelog)
 
@@ -37,7 +37,7 @@ n8n tests the key automatically against the cheapest endpoint (`/v1/time`, $0.00
 
 ## Operations
 
-One node, twelve resources, 92 operations:
+One node, thirteen resources, 109 operations:
 
 | Resource | Operations |
 |---|---|
@@ -50,6 +50,7 @@ One node, twelve resources, 92 operations:
 | **Threads** | Search Posts, Search Users, User Profile, User Posts |
 | **Truth Social** | User Posts |
 | **Bluesky** | Search Posts, Search Users, User Profile, User Posts, User Followers, User Following, User Likes, Post Details, Post Comments, Post Likes, Post Quotes, Post Reposts |
+| **Substack** | Search Posts, Search Users, Search Publications, Search Notes, User Profile, User Posts, User Activity, Publication Details, Publication Posts, Publication Recommendations, Post Details, Post Comments, Post Likes, Note Details, Category Publications, Category Feed, Trending Posts |
 | **Amazon** | Product Search, Product Details, Seller Profile, Seller Reviews, Seller Products, Best Sellers |
 | **Trustpilot** | Company Reviews, Company Search, Category Companies, Category Newest, Category Details, Category Search, User Profile |
 | **Google** | Web Search, AI Mode, News Articles, Forum Posts, Places Search, Place Details, Place Reviews, Place Photos |

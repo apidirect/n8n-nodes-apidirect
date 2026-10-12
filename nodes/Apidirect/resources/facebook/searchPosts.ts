@@ -42,7 +42,7 @@ export const facebookSearchPostsFields: INodeProperties[] = [
 				name: "endDate",
 				type: "string",
 				default: "",
-				description: "Filter posts until this date",
+				description: "Only posts up to this date (YYYY-MM-DD)",
 				routing: {
 					send: {
 						type: "query",
@@ -117,7 +117,7 @@ export const facebookSearchPostsFields: INodeProperties[] = [
 				name: "startDate",
 				type: "string",
 				default: "",
-				description: "Filter posts from this date",
+				description: "Only posts from this date onward (YYYY-MM-DD)",
 				routing: {
 					send: {
 						type: "query",

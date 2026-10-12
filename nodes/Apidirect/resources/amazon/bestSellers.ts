@@ -8,7 +8,7 @@ export const amazonBestSellersFields: INodeProperties[] = [
 		name: "category",
 		type: "string",
 		default: "",
-		description: "Category slug, e.g. electronics or software (see /docs/amazon-categories)",
+		description: "Category slug, e.g. electronics or software (see https://apidirect.io/docs/amazon-categories)",
 		routing: {
 			send: {
 				type: "query",
