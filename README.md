@@ -44,7 +44,7 @@ One node, thirteen resources, 109 operations:
 | **Twitter/X** | Search Posts, Search Users, User Profile, User Tweets, User Followers, User Following, Verified Followers, User Replies, Tweet Details, Tweet Retweets, Tweet Quotes, Tweet Comments, Trends |
 | **Facebook** | Page Details, Page Posts, Page Photos, Page Videos, Page Reels, Page Reviews, Group Details, Group Posts, Group Posts Search, Post Comments, Search Posts, Search Pages, Search Videos, Search Events, Search Locations |
 | **Instagram** | Search Posts, Search Users, User Profile, User Posts, Post Details, User Followers, User Following, User Stories, User Highlights, Highlight Stories, Post Comments, Comment Replies, Post Likes, Hashtag Posts |
-| **TikTok** | Search Videos, Search Users, User Profile, Video Details |
+| **TikTok** | Search Videos, Search Users, User Profile, Video Details, User Videos, User Likes, User Stories, User Followers, User Following, Video Comments, Comment Replies, Search Hashtags, Hashtag Details, Hashtag Videos, Music Details, Music Videos, Playlist Details, Playlist Videos |
 | **YouTube** | Search Videos, Search Channels, Channel Details, Video Details, Video Comments |
 | **Reddit** | Search Posts, Search Comments, Search Users |
 | **Threads** | Search Posts, Search Users, User Profile, User Posts |
