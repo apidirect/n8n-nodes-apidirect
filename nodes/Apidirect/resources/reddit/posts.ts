@@ -51,6 +51,19 @@ export const redditPostsFields: INodeProperties[] = [
 				},
 			},
 			{
+				displayName: "Include Nsfw",
+				name: "includeNsfw",
+				type: "boolean",
+				default: false,
+				description: "Whether to include posts marked NSFW (left out by default)",
+				routing: {
+					send: {
+						type: "query",
+						property: "include_nsfw",
+					},
+				},
+			},
+			{
 				displayName: "Page",
 				name: "page",
 				type: "number",
@@ -89,12 +102,16 @@ export const redditPostsFields: INodeProperties[] = [
 						value: "7d",
 					},
 					{
+						name: "All",
+						value: "all",
+					},
+					{
 						name: "Default",
 						value: "",
 					},
 				],
 				default: "",
-				description: "Only posts from this period: \"1h\", \"24h\", \"7d\", \"30d\", or \"12m\" (default: all time). Works with every sort_by.",
+				description: "Only posts from this period: \"1h\", \"24h\", \"7d\", \"30d\", \"12m\", or \"all\" (default: all). Works with every sort_by.",
 				routing: {
 					send: {
 						type: "query",
@@ -112,6 +129,10 @@ export const redditPostsFields: INodeProperties[] = [
 						value: "hot",
 					},
 					{
+						name: "Most Commented",
+						value: "most_commented",
+					},
+					{
 						name: "Most Recent",
 						value: "most_recent",
 					},
@@ -125,11 +146,24 @@ export const redditPostsFields: INodeProperties[] = [
 					},
 				],
 				default: "most_recent",
-				description: "Sort order: \"most_recent\", \"relevance\", \"hot\", or \"top\"",
+				description: "Sort order: \"most_recent\", \"relevance\", \"hot\", \"top\", or \"most_commented\"",
 				routing: {
 					send: {
 						type: "query",
 						property: "sort_by",
+					},
+				},
+			},
+			{
+				displayName: "Subreddit",
+				name: "subreddit",
+				type: "string",
+				default: "",
+				description: "Only posts from this subreddit, with or without r/ (e.g. Python)",
+				routing: {
+					send: {
+						type: "query",
+						property: "subreddit",
 					},
 				},
 			},

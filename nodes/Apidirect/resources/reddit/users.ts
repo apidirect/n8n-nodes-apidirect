@@ -23,4 +23,33 @@ export const redditUsersFields: INodeProperties[] = [
 			},
 		},
 	},
+	{
+		displayName: "Additional Fields",
+		name: "additionalFields",
+		type: "collection",
+		placeholder: "Add Field",
+		default: {
+		},
+		displayOptions: {
+			show: {
+				resource: ["reddit"],
+				operation: ["users"],
+			},
+		},
+		options: [
+			{
+				displayName: "Pages",
+				name: "pages",
+				type: "number",
+				default: 1,
+				description: "Number of pages to fetch, 1-4 (default: 1). Each page returns up to 25 users. Each page fetched is billed as one request.",
+				routing: {
+					send: {
+						type: "query",
+						property: "pages",
+					},
+				},
+			},
+		],
+	},
 ];

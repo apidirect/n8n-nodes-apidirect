@@ -5,6 +5,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.9.0] - 2026-10-19
+
+### Added
+
+- Reddit resource gains 11 operations: Search Subreddits, Post Details, Post Comments, Post Crossposts, User Profile, User Posts, User Comments, Subreddit Details, Subreddit Posts, Subreddit Rules and Trending Posts.
+
+### Changed
+
+- Reddit Search Posts gains the Most Commented sort, an all-time Posted Ago option and Include NSFW; Search Comments gains a Subreddit filter; Search Users gains Pages (1-4, billed per page).
+
 ## [0.8.0] - 2026-10-13
 
 ### Added

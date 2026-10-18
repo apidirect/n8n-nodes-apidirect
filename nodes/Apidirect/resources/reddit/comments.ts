@@ -90,6 +90,19 @@ export const redditCommentsFields: INodeProperties[] = [
 					},
 				},
 			},
+			{
+				displayName: "Subreddit",
+				name: "subreddit",
+				type: "string",
+				default: "",
+				description: "Only comments from this subreddit, with or without r/ (e.g. Python)",
+				routing: {
+					send: {
+						type: "query",
+						property: "subreddit",
+					},
+				},
+			},
 		],
 	},
 ];

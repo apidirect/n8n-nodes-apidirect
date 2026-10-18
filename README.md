@@ -37,7 +37,7 @@ n8n tests the key automatically against the cheapest endpoint (`/v1/time`, $0.00
 
 ## Operations
 
-One node, thirteen resources, 109 operations:
+One node, thirteen resources, 134 operations:
 
 | Resource | Operations |
 |---|---|
@@ -46,7 +46,7 @@ One node, thirteen resources, 109 operations:
 | **Instagram** | Search Posts, Search Users, User Profile, User Posts, Post Details, User Followers, User Following, User Stories, User Highlights, Highlight Stories, Post Comments, Comment Replies, Post Likes, Hashtag Posts |
 | **TikTok** | Search Videos, Search Users, User Profile, Video Details, User Videos, User Likes, User Stories, User Followers, User Following, Video Comments, Comment Replies, Search Hashtags, Hashtag Details, Hashtag Videos, Music Details, Music Videos, Playlist Details, Playlist Videos |
 | **YouTube** | Search Videos, Search Channels, Channel Details, Video Details, Video Comments |
-| **Reddit** | Search Posts, Search Comments, Search Users |
+| **Reddit** | Search Posts, Search Comments, Search Users, Search Subreddits, Post Details, Post Comments, Post Crossposts, User Profile, User Posts, User Comments, Subreddit Details, Subreddit Posts, Subreddit Rules, Trending Posts |
 | **Threads** | Search Posts, Search Users, User Profile, User Posts |
 | **Truth Social** | User Posts |
 | **Bluesky** | Search Posts, Search Users, User Profile, User Posts, User Followers, User Following, User Likes, Post Details, Post Comments, Post Likes, Post Quotes, Post Reposts |
