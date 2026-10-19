@@ -5,6 +5,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.9.2] - 2026-10-19
+
+### Changed
+
+- Reddit Post Comments accepts up to 80 pages (about 4,000 comments per thread), up from 10.
+
 ## [0.9.1] - 2026-10-19
 
 ### Changed
