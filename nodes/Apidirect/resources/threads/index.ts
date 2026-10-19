@@ -22,7 +22,7 @@ export const threadsDescription: INodeProperties[] = [
 				name: "Search Posts",
 				value: "posts",
 				action: "Search posts",
-				description: "Search Threads posts by keyword ($0.006 per request)",
+				description: "Search Threads posts by keyword ($0.006 per page)",
 				routing: {
 					request: {
 						method: "GET",
@@ -66,7 +66,7 @@ export const threadsDescription: INodeProperties[] = [
 				name: "User Posts",
 				value: "userPosts",
 				action: "Get user posts",
-				description: "Get a user's recent posts (their feed) on Threads by username ($0.006 per request)",
+				description: "Get a user's recent posts (their feed) on Threads by username ($0.006 per page)",
 				routing: {
 					request: {
 						method: "GET",

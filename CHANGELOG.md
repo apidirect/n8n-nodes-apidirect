@@ -5,6 +5,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.9.1] - 2026-10-19
+
+### Changed
+
+- Threads Search Posts gains Pages (1-200, billed per page) and Threads User Posts gains Pages (1-60, billed per page).
+
 ## [0.9.0] - 2026-10-19
 
 ### Added
