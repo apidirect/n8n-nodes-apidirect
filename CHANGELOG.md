@@ -5,6 +5,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.9.3] - 2026-11-05
+
+### Changed
+
+- Substack Publication Posts takes Pages (1-100, billed per page) in place of Page, and fetches up to 100 pages of 20 posts in one call.
+- TikTok Search Videos: the Region description now asks for an ISO 3166-1 alpha-2 country code.
+
 ## [0.9.2] - 2026-10-19
 
 ### Changed

@@ -42,7 +42,7 @@ export const substackPublicationPostsFields: INodeProperties[] = [
 				name: "getSentiment",
 				type: "boolean",
 				default: false,
-				description: "Whether to add AI emotion analysis (dominant emotion, polarity, intensity) to each result. Adds $0.001 per request.",
+				description: "Whether to add AI emotion analysis (dominant emotion, polarity, intensity) to each result. Adds $0.001 per page.",
 				routing: {
 					send: {
 						type: "query",
@@ -51,15 +51,15 @@ export const substackPublicationPostsFields: INodeProperties[] = [
 				},
 			},
 			{
-				displayName: "Page",
-				name: "page",
+				displayName: "Pages",
+				name: "pages",
 				type: "number",
 				default: 1,
-				description: "Page number (default: 1). 20 posts per page.",
+				description: "Number of pages to fetch, 1-100 (default: 1). Each page returns up to 20 posts; you are billed per page returned.",
 				routing: {
 					send: {
 						type: "query",
-						property: "page",
+						property: "pages",
 					},
 				},
 			},

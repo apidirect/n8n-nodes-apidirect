@@ -107,7 +107,7 @@ export const tiktokVideosFields: INodeProperties[] = [
 				name: "region",
 				type: "string",
 				default: "",
-				description: "2-letter region code, e.g. \"us\", \"gb\", \"jp\"",
+				description: "ISO 3166-1 alpha-2 country code (e.g. us, gb, jp; use gb for the UK, not uk)",
 				routing: {
 					send: {
 						type: "query",

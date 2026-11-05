@@ -189,7 +189,7 @@ export const substackDescription: INodeProperties[] = [
 				name: "Publication Posts",
 				value: "publicationPosts",
 				action: "Get publication posts",
-				description: "Get a publication's posts, newest first, top or most discussed, or search them by keyword ($0.003 per request)",
+				description: "Get a publication's posts, newest first, top or most discussed, or search them by keyword ($0.003 per page)",
 				routing: {
 					request: {
 						method: "GET",
