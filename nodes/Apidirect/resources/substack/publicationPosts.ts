@@ -51,6 +51,24 @@ export const substackPublicationPostsFields: INodeProperties[] = [
 				},
 			},
 			{
+				displayName: "Page",
+				name: "page",
+				type: "number",
+				default: 1,
+				description: "Page number (default: 1). 20 posts per page.",
+				routing: {
+					send: {
+						type: "query",
+						property: "page",
+					},
+				},
+				displayOptions: {
+					show: {
+						"@version": [1],
+					},
+				},
+			},
+			{
 				displayName: "Pages",
 				name: "pages",
 				type: "number",
@@ -60,6 +78,11 @@ export const substackPublicationPostsFields: INodeProperties[] = [
 					send: {
 						type: "query",
 						property: "pages",
+					},
+				},
+				displayOptions: {
+					hide: {
+						"@version": [1],
 					},
 				},
 			},

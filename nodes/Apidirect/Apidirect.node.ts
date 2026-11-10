@@ -43,7 +43,7 @@ export class Apidirect implements INodeType {
 		name: 'apidirect',
 		icon: { light: 'file:apidirect.svg', dark: 'file:apidirect.dark.svg' },
 		group: ['transform'],
-		version: 1,
+		version: [1, 2],
 		// Readable subtitle, e.g. "Twitter: Search Posts" rather than "posts: twitter".
 		// Operation values repeat across resources, so names are keyed by "resource.operation".
 		subtitle:

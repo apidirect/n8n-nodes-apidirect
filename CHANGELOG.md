@@ -5,6 +5,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.9.4] - 2026-11-10
+
+### Fixed
+
+- Workflows saved before 0.9.3 keep their Substack Publication Posts Page setting. The node now has two versions (light versioning, since the node is declarative): version 1 keeps Page (a page number) and version 2 has Pages (number of pages to fetch). Existing nodes stay on version 1 and new nodes use version 2.
+
 ## [0.9.3] - 2026-11-05
 
 ### Changed
